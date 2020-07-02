@@ -1,0 +1,14 @@
+C:\Users\김보경\main
+git clone https://lab.hanium.or.kr/20_hf086/main.git
+git config --global user.email " "
+git remote add sanbo https://lab.hanium.or.kr/20_hf086/main.git
+
+<push>
+1. git add sth.html
+2. git add sth.css
+3. git add sth.php
+4. git commit -m "blah blah"
+5. git push sanbo master
+
+<pull>
+git pull sanbo master
