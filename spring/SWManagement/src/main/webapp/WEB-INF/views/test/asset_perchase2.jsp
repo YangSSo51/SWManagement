@@ -22,14 +22,14 @@
         </div>
       </header>
 <%@ include file="navbar.jsp"%>
-	<div class="right-container">
+          <div class="right-container">
             <form class="center_form" style="margin-top:60px;">
               <input type="search" name="" value="" placeholder="자산명 입력">
               <button type="button" name="button">검색</button>
             </form>
             <div class="tab-group">
-              <a href="<c:url value="/asset/perchase/desc"/>"><button type="button" name="button" class="white" >최신순</button></a>
-              <a href="<c:url value="/asset/perchase/asc"/>"><button type="button" name="button" style="margin-left:-5px;">오래된 순</button></a>
+              <a href="<c:url value="/asset/perchase/desc"/>"><button type="button" name="button">최신순</button></a>
+              <a href="<c:url value="/asset/perchase/asc"/>"><button type="button" name="button" class="white" style="margin-left:-5px;">오래된 순</button></a>
             </div>
             <hr>
             <table class="list" style="margin-top:30px;">
@@ -47,8 +47,8 @@
               </tr>
               <tr>
                 <td style="width:30px;">1</td>
-                <td>주급수계통</td>
-                <td>2020-03-28</td>
+                <td>발전소제어계통</td>
+                <td>2020-05-31</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
@@ -59,8 +59,8 @@
               </tr>
               <tr>
                 <td style="width:30px;">2</td>
-                <td>발전소경보계통</td>
-                <td>2020-03-30</td>
+                <td>터빈제어설비유지보수PC</td>
+                <td>2020-05-05</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
@@ -71,15 +71,15 @@
               </tr>
               <tr>
                 <td style="width:30px;">3</td>
-                <td>제어봉제어계통</td>
-                <td>2020-03-31</td>
+                <td>자동지진정지계통</td>
+                <td>2020-04-30</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
-                <td>X</td>
+                <td>O</td>
               </tr>
               <tr>
                 <td style="width:30px;">4</td>
@@ -95,20 +95,20 @@
               </tr>
               <tr>
                 <td style="width:30px;">5</td>
-                <td>자동지진정지계통</td>
-                <td>2020-04-30</td>
+                <td>제어봉제어계통</td>
+                <td>2020-03-31</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
-                <td>O</td>
+                <td>X</td>
               </tr>
               <tr>
                 <td style="width:30px;">6</td>
-                <td>터빈제어설비유지보수PC</td>
-                <td>2020-05-05</td>
+                <td>발전소경보계통</td>
+                <td>2020-03-30</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
@@ -119,8 +119,8 @@
               </tr>
               <tr>
                 <td style="width:30px;">7</td>
-                <td>발전소제어계통</td>
-                <td>2020-05-31</td>
+                <td>주급수계통</td>
+                <td>2020-03-28</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
@@ -144,24 +144,17 @@
                     <p>
                       <span>자산명</span>
                     </p>
-                      <input type="text" placeholder="주급수계통"></input>
+                    <select class="" name="" style="width:200px; margin-left:20px;">
+                      <option value="" >ServerUnix_9</option>
+                    </select>
                 <p>
                   <span>설비유형</span>
                 </p>
-                  <select class="" name="" style="margin-left:20px;">
-                    <option value="">PLC/DCS</option>
-                    <option value="">PC/Server</option>
-                  </select>
+                  <input type="text" placeholder="PC/Server"></input>
                 <p>
                   <span>OS유형</span>
                 </p>
-                <select class="" name="" style="margin-left:20px;">
-                  <option value="">WinXP</option>
-                  <option value="">Win 2000</option>
-                  <option value="">Win 2003</option>
-                  <option value="">Win Vista</option>
-                  <option value="">Win7</option>
-                </select>
+                <input type="text" placeholder="Window7"></input>
                 <p>
                   <span>구매자</span>
                 </p>

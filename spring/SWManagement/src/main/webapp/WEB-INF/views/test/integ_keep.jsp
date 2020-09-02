@@ -7,6 +7,12 @@
 <head>
 <meta charset="EUC-KR">
 <title>자산무결성 관리</title>
+    <style>
+    td a{
+    	text-decoration:underline;
+    	color:blue;
+    }
+    </style>
 </head>
 <body>
       <header>
@@ -24,80 +30,186 @@
         </div>
       </header>
 	<%@ include file="navbar.jsp"%>
-          <div class="right-container" style="margin-top:100px;">
-          	<form action="">
-              <table class="asset_table">
-                <tr>
-                  <th>자산</th>
-                  <th>버전</th>
-                </tr>
-                <tr>
-                  <td onclick="clickBtn(this)">001<i class="fa fa-caret-right"></i></td>
-                  <td onclick="clickBtn(this)">Ver_2020_1<i class="fa fa-caret-right"></i></td>
-                </tr>
-                <tr>
-                  <td onclick="clickBtn(this)">002<i class="fa fa-caret-right"></i></td>
-                  <td onclick="clickBtn(this)">Ver_2020_2<i class="fa fa-caret-right"></i></td>
-                </tr>
-                <tr>
-                  <td onclick="clickBtn(this)">003<i class="fa fa-caret-right"></i></td>
-                  <td onclick="clickBtn(this)">Ver_2020_3<i class="fa fa-caret-right"></i></td>
-                </tr>
-                <tr>
-                  <td onclick="clickBtn(this)">004<i class="fa fa-caret-right"></i></td>
-                  <td onclick="clickBtn(this)">Ver_2020_4<i class="fa fa-caret-right"></i></td>
-                </tr>
-                <tr>
-                  <td style="background-color: #fff;"></td>
-                  <td onclick="clickBtn(this)">Ver_2020_5<i class="fa fa-caret-right"></i></td>
-                </tr>
-                <tr>
-                  <td style="background-color: #fff;"></td>
-                  <td style="background-color: #fff;">
-                  	<button type="button" id="modal_open_btn" style="float:right;">추가</button>
-                  </td>
-                </tr>
-              </table>
-              </form>
-              <div class="asset_right">
-                <div class="asset_title">
-              	    미리보기 창
-                </div>
-                <img src="<c:url value="/resources/test.png"/>" alt="">
-                <button type="button" style="width:80px; float:right;">상세보기</button>
-              </div>
+           <div class="right-container">
+            <form class="center_form">
+              <select class="select" name="">
+                <option value="자산명">자산명</option>
+              </select>
+              <select class="select" name="">
+                <option value="점검연도">점검연도</option>
+              </select>
+              <select class="select" name="">
+                <option value="점검결과">점검결과</option>
+              </select>
+              <button type="button" name="button">검색</button>
+            </form>
+            <table class="list">
+              <tr>
+                <th style="width:30px;">번호</th>
+                <th>버전명</th>
+                <th>점검연도</th>
+                <th>점검일자</th>
+                <th>점검설비</th>
+                <th>점검주기</th>
+                <th>점검자</th>
+                <th>점검결과</th>
+              </tr>
+              <tr>
+                <td style="width:30px;">1</td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">주급수계통_2020_1</a></td>
+                <td>2020</td>
+                <td>09-30</td>
+                <td>주급수계통</td>
+                <td>3분기</td>
+                <td>김은지</td>
+                <td>적합</td>
+              </tr>
+              <tr>
+                <td style="width:30px;">2</td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">발전소경보계통_2020_1</a></td>
+                <td>2020</td>
+                <td>08-28</td>
+                <td>발전소경보계통</td>
+                <td>3분기</td>
+                <td>양소영</td>
+                <td>적합</td>
+              </tr>
+              <tr>
+                <td style="width:30px;">3</td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">터빈제어설비_2020_2</a></td>
+                <td>2020</td>
+                <td>07-15</td>
+                <td>터빈제어설비</td>
+                <td>2분기</td>
+                <td>주소영</td>
+                <td>적합</td>
+              </tr>
+              <tr>
+                <td style="width:30px;">4</td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">유지보수PC_2020_1</a></td>
+                <td>2020</td>
+                <td>03-02</td>
+                <td>유지보수PC</td>
+                <td>2분기</td>
+                <td>주소영</td>
+                <td>적합</td>
+              </tr>
+              <tr>
+                <td style="width:30px;">5</td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">자동지진정지계통_2020_1</a></td>
+                <td>2020</td>
+                <td>06-01</td>
+                <td>자동지진정지계통</td>
+                <td>1분기</td>
+                <td>권해나</td>
+                <td>적합</td>
+              </tr>
+              <tr>
+                <td style="width:30px;">6</td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">자동지진정지계_2020_1</a></td>
+                <td>2020</td>
+                <td>03-01</td>
+                <td>자동지진정지계</td>
+                <td>1분기</td>
+                <td>권해나</td>
+                <td>부적합</td>
+              </tr>
+              <tr>
+                <td style="width:30px;">7</td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">터빈제어설비_2020_1</a></td>
+                <td>2020</td>
+                <td>01-15</td>
+                <td>터빈제어설비</td>
+                <td>2분기</td>
+                <td>주소영</td>
+                <td>부적합</td>
+              </tr>
+              <tr>
+                <td style="width:30px;">8</td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">유지보수PC_2020_1</a></td>
+                <td>2020</td>
+                <td>01-15</td>
+                <td>유지보수PC</td>
+                <td>2분기</td>
+                <td>주소영</td>
+                <td>적합</td>
+              </tr>
+            </table>
+            <div class="button_group">
+                <button type="button" id="modal_open_btn">추가</button>
+            </div>
               <div id="modal1">
                 <div class="modal_layer">
                 <div class="middle_modal_content">
                   <div class="modal_title">
-            	       무결성 유지 점검
+                   	 무결성 유지 점검
                   </div>
                     <form class="" action="index.html" method="post">
                   <p>
-                    <span>파일명</span>
-                    <input type="text"></input>
+                    <span>자산명</span>
+                    <select class="" name="" style="margin-left:20px;">
+                      <option value="">발전소경보계통</option>
+                    </select>
                   </p>
                   <p>
                     <span>점검자</span>
-                    <input type="text"></input>
+                    <input type="text" style="margin-left:20px;" placeholder="양소영"></input>
+                  </p>
+                  <p>
+                    <span>점검연도</span>
+                    <input type="text" style="margin-left:5px;" placeholder="2020"></input>
                   </p>
                   <p>
                     <span>점검일자</span>
-                    <input type="text" style="margin-left:5px;"></input>
+                    <input type="text" style="margin-left:5px;" placeholder="08-28"></input>
                   </p>
-                  <p></p>
+                  <p>
+                    <span>점검분기</span>
+                    <select class="" name="" style="margin-left:5px;">
+                      <option value="">3분기</option>
+                    </select>
+                  </p>
                   <p><span>점검내용</span></p>
                   <div class="textarea">
                     <textarea name="name" rows="4" cols="38"></textarea>
                   </div>
-                  <p><span>무결성 매핑</span></p>
+                  </form>
+                  <div class="modal_button" style="width:300px;">
+                    <button type="button" id="modal_close_btn">취소</button>
+                    <button type="button" id="submit" onclick="modal(1,2)">다음</button>
+                  </div>
+                </div>
+              </div><!--modal layer-->
+              </div><!--modal-->
+              <div id="modal2">
+                <div class="modal_layer">
+                <div class="middle_modal_content">
+                  <div class="modal_title">
+                    	무결성 매핑
+                  </div>
+                    <form class="" action="index.html" method="post">
                   <div class="soft-text">
-               	  운영/제어로직 해시
+                  	운영/제어로직 해시
                   </div>
                   <input type="text" style="width:220px;"></input>
                   <button class="bluebtn">확인</button>
                   <div class="soft-text">
-                  	  엔지니어링 S/W 해시
+                	  제어시스템 펌 웨어 해시값 입력
+                  </div>
+                  <input type="text" style="width:220px;"></input>
+                  <button class="bluebtn">확인</button>
+                  <div class="soft-text">
+                	  운영매개변수 해시값 입력
+                  </div>
+                  <input type="text" style="width:220px;"></input>
+                  <button class="bluebtn">확인</button>
+                  <div class="soft-text">
+                  	설정정보 해시값 입력
+                  </div>
+                  <input type="text" style="width:220px;"></input>
+                  <button class="bluebtn">확인</button>
+                  <div class="soft-text">
+                   	 엔지니어링 S/W 해시
                   </div>
                   <input type="text" style="width:220px;"></input>
                   <button class="bluebtn">확인</button>
@@ -108,7 +220,7 @@
                   </form>
                   <div class="modal_button" style="width:300px;">
                     <button type="button" id="modal_close_btn">취소</button>
-                    <button type="button" id="submit" onclick="modal(1,2)">저장</button>
+                    <button type="submit" >저장</button>
                   </div>
                 </div>
               </div><!--modal layer-->
@@ -123,55 +235,10 @@
        $("#modal_close_btn").click(function(){
           $("#modal1").attr("style", "display:none");
       });
-      function getStyle(elem, cssprop, cssprop2){
-          //IE
-          if(elem.currentStyle){
-              return elem.currentStyle[cssprop];
-
-          //다른 브라우저
-          }else if(document.defaultView && document.defaultView.getComputedStyle){
-              return document.defaultView.getComputedStyle(elem, null).getPropertyValue(cssprop2);
-
-          //대비책
-          }else{
-              return null;
-          }
-      }
-      function rgbToHex ( rgbType ){
-
-        // 컬러값과 쉼표만 남기고 삭제.
-        var rgb = rgbType.replace( /[^%,.\d]/g, "" );
-
-        // 쉼표(,)를 기준으로 분리해서, 배열에 담기.
-        rgb = rgb.split( "," );
-
-        // 컬러값이 "%"일 경우, 변환하기.
-        for ( var x = 0; x < 3; x++ ) {
-                if ( rgb[ x ].indexOf( "%" ) > -1 ) rgb[ x ] = Math.round( parseFloat( rgb[ x ] ) * 2.55 );
-        }
-
-        // 16진수 문자로 변환.
-        var toHex = function( string ){
-                string = parseInt( string, 10 ).toString( 16 );
-                string = ( string.length === 1 ) ? "0" + string : string;
-
-                return string;
-        };
-
-        var r = toHex( rgb[ 0 ] );
-        var g = toHex( rgb[ 1 ] );
-        var b = toHex( rgb[ 2 ] );
-
-        var hexType = "#" + r + g + b;
-
-        return hexType;
-      }
-      var clickTimes = 0;
-      function clickBtn(x){
-        var currentColor = getStyle(x, "backgroundColor", "background-color");
-        currentColor = rgbToHex(currentColor).toUpperCase();
-        if(currentColor=="#FFFFFF") x.style.backgroundColor="#E1E1E1";
-        if(currentColor=="#E1E1E1") x.style.backgroundColor="#fff";
+      function modal(x,y){
+            $("#modal"+x).attr("style", "display:none");
+            $("#modal"+y).attr("style", "display:block");
       }
   </script>
+
 </html>
