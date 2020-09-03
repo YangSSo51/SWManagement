@@ -37,10 +37,10 @@
                 <th style="width:30px;">Id</th>
                 <th>자산명</th>
                 <th>등록 일자</th>
-                <th>기술적 보안항목 점검여부</th>
-                <th>Secure coding 적용여부</th>
-                <th>취약점 체크 여부</th>
-                <th>무결성 검증 기능 탑재</th>
+                <th>기술적 보안<br>항목 점검여부</th>
+                <th>Secure coding <br>적용여부</th>
+                <th>취약점 <br>체크 여부</th>
+                <th>무결성 검증<br> 기능 탑재</th>
                 <th>봉인 훼손</th>
                 <th>기능/성능 시험</th>
                 <th>구매확정</th>
@@ -417,7 +417,7 @@
                 <div class="modal_title">
                   자산 보안 항목 점검(내부점검)-[기능/성능 시험]
                 </div>
-                <table class="modal_basic_table">
+                                <table class="modal_basic_table">
                   <tr>
                     <th style="width:30px;">항목 번호</th>
                     <th>점검 분야</th>
@@ -426,25 +426,25 @@
                   </tr>
                   <tr>
                     <td style="width:30px;">1</td>
-                    <td>네트워크 견고성</td>
-                    <td class="long-td">비정상적이거나 과도한 양의 통신 데이터가 유입되는 경우에도 명령,제어,모니터링 등의 필수 서비스를 제공하는가?</td>
+                    <td>네트워크 <br>견고성</td>
+                    <td class="long-td">비정상적이거나 과도한 양의 통신 데이터가 유입되는 경우에도 명령,제어,모니터링 등의  <br>필수 서비스를 제공하는가?</td>
                     <td style="width:70px;"><span>Y<input type="checkbox"></span><span>N<input type="checkbox" name="no6"></span></td>
                   </tr>
                   <tr>
                     <td style="width:30px;">2</td>
-                    <td>서비스 지속성</td>
+                    <td>서비스  <br>지속성</td>
                     <td class="long-td">업무 연속성 확보를 위한 기능이 정상적으로 제공되고 있는가?</td>
                     <td style="width:70px;"><span>Y<input type="checkbox"></span><span>N<input type="checkbox" name="no6"></span></td>
                   </tr>
                   <tr>
                     <td style="width:30px;">3</td>
                     <td>보안기능</td>
-                    <td class="long-td">식별/인증,접근통제,전송 및 저장 데이터 보호 등 보안성 확보를 위한 보안기능을 제공하고 있는가?</td>
+                    <td class="long-td">식별/인증,접근통제,전송 및 저장 데이터 보호 등 보안성 확보를 위한  <br>보안기능을 제공하고 있는가?</td>
                     <td style="width:70px;"><span>Y<input type="checkbox"></span><span>N<input type="checkbox" name="no6"></span></td>
                   </tr>
                   <tr>
                     <td style="width:30px;">4</td>
-                    <td>현장장치 계층</td>
+                    <td>현장장치 <br> 계층</td>
                     <td class="long-td">제어 소프트웨어로부터 명령을 받아 현장 장치를 제어하는 역할을 정상적으로 수행하고 있는가?</td>
                     <td style="width:70px;"><span>Y<input type="checkbox"></span><span>N<input type="checkbox" name="no6"></span></td>
                   </tr>
@@ -457,7 +457,7 @@
                   <tr>
                     <td style="width:30px;">6</td>
                     <td>운영 계층</td>
-                    <td class="long-td">제어 하드웨어와 통신하며 현장 장치의 상태를 모니터링하고 제어 명령을 정상적으로 내리고 있는가?</td>
+                    <td class="long-td">제어 하드웨어와 통신하며 현장 장치의 상태를 모니터링하고 <br> 제어 명령을 정상적으로 내리고 있는가?</td>
                     <td style="width:70px;"><span>Y<input type="checkbox"></span><span>N<input type="checkbox" name="no6"></span></td>
                   </tr>
                 </table>

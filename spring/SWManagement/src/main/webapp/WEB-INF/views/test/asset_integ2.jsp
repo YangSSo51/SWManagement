@@ -38,12 +38,12 @@
                 <th>자산명</th>
                 <th>설비유형</th>
                 <th>OS유형</th>
-                <th>무결성 점검 기능 보유 여부</th>
-                <th>하드웨어 접근 통제 여부</th>
-                <th>운영/제어로직 해시 값 입력</th>
-                <th>제어시스템 펌 웨어 해시 값 입력</th>
-                <th>운영매개변수 해시값 입력</th>
-                <th>설정정보 해시값 입력</th>
+                <th>무결성<br> 점검 기능<br> 보유 여부</th>
+                <th>하드웨어 <br>접근 통제 여부</th>
+                <th>운영/제어로직 <br>해시 값 입력</th>
+                <th>제어시스템 펌 웨어  <br>해시 값 입력</th>
+                <th>운영매개변수  <br>해시값 입력</th>
+                <th>설정정보  <br>해시값 입력</th>
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" name="check" onclick="check(1)"></td>

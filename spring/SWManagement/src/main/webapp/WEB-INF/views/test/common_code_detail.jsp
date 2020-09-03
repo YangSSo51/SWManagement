@@ -147,20 +147,21 @@
                     </tr>
                     <tr>
                       <td>
-                          <select class="" name="" style="width:100px; padding-left:20px;">
-                            <option value="" >A001</option>
+                          <select class="" name="" style="width:100px; padding-left:30px;">
+                            <option value="" >A1</option>
+                            <option value="" >A2</option>
                           </select>
                       </td>
-                      <td><input type="text" placeholder="자산" style="width:100px;margin-left:50px;"></input></td>
+                      <td><input type="text" placeholder="설비유형" style="width:100px;margin-left:50px;"></input></td>
                   </table>
                   <p>
                     <span>상세코드</span>
                   </p>
-                    <input type="text" placeholder="A001_1"></input>
+                    <input type="text" placeholder="A1_1"></input>
                   <p>
                     <span>상세코드명</span>
                   </p>
-                  <input type="text" placeholder="터빈계통PLC"></input>
+                  <input type="text" placeholder="PLC/DCS"></input>
                   <p><span>사용여부</span></p>
                     <div class="modal_inner">
                       <span>예</span>
@@ -168,7 +169,6 @@
                       <span>아니요</span>
                       <label><input type="checkbox"></label>
                     </div>
-                  </p>
                     <div class="modal_button" style="width:300px;">
                       <button type="button" id="modal_close_btn">취소</button>
                       <button type="button" id="submit">등록</button>

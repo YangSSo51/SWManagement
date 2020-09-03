@@ -22,7 +22,7 @@
             <p>SW관리 프로그램</p>
           </div>
           <div class="menu">
-            	자산무결성 관리
+            	무결성 유지 점검
           </div>
           <div class="login">
             Admin님

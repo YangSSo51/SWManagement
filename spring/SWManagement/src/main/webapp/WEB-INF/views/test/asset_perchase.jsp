@@ -37,10 +37,10 @@
                 <th style="width:30px;">Id</th>
                 <th>자산명</th>
                 <th>등록 일자</th>
-                <th>기술적 보안항목 점검여부</th>
-                <th>Secure coding 적용여부</th>
-                <th>취약점 체크 여부</th>
-                <th>무결성 검증 기능 탑재</th>
+                <th>기술적 보안<br>항목 점검여부</th>
+                <th>Secure coding <br>적용여부</th>
+                <th>취약점 <br>체크 여부</th>
+                <th>무결성 검증<br> 기능 탑재</th>
                 <th>봉인 훼손</th>
                 <th>기능/성능 시험</th>
                 <th>구매확정</th>
@@ -138,7 +138,7 @@
               <div class="modal_layer">
               <div class="small_modal_content">
                 <div class="modal_title">
-                  자산명
+       	           자산명
                 </div>
                   <form class="" action="index.html" method="post">
                     <p>
@@ -178,7 +178,7 @@
               <div class="modal_layer">
               <div class="modal_content">
                 <div class="modal_title">
-                  자산 보안 항목 점검-[기술적 보안 항목]
+            	     자산 보안 항목 점검-[기술적 보안 항목]
                 </div>
                 <table class="modal_basic_table">
                   <tr>
@@ -228,7 +228,7 @@
               <div class="modal_layer">
               <div class="modal_content">
                 <div class="modal_title">
-                  자산 보안 항목 점검-[무결성 점검 기능 탑재 여부]
+                 	 자산 보안 항목 점검-[무결성 점검 기능 탑재 여부]
                 </div>
                 <table class="modal_basic_table">
                   <tr>
@@ -250,7 +250,7 @@
               <div class="modal_layer">
               <div class="modal_content">
                 <div class="modal_title">
-                  자산 보안 항목 점검-[Secure Coding 적용 여부]
+              	    자산 보안 항목 점검-[Secure Coding 적용 여부]
                 </div>
                 <table class="modal_basic_table">
                   <tr>
@@ -319,7 +319,7 @@
               <div class="modal_layer">
               <div class="modal_content">
                 <div class="modal_title">
-                  자산 보안 항목 점검-[신규 취약점 및 악성코드 존재 여부]
+          	       자산 보안 항목 점검-[신규 취약점 및 악성코드 존재 여부]
                 </div>
                 <table class="modal_basic_table">
                   <tr>
@@ -399,7 +399,7 @@
               <div class="modal_layer">
               <div class="modal_content">
                 <div class="modal_title">
-                  자산 보안 항목 점검(내부점검)-[봉인 훼손 여부 확인]
+           		       자산 보안 항목 점검(내부점검)-[봉인 훼손 여부 확인]
                 </div>
                 <table class="modal_basic_table">
                   <tr>
@@ -422,7 +422,7 @@
               <div class="modal_layer">
               <div class="modal_content">
                 <div class="modal_title">
-                  자산 보안 항목 점검(내부점검)-[기능/성능 시험]
+               	   자산 보안 항목 점검(내부점검)-[기능/성능 시험]
                 </div>
                 <table class="modal_basic_table">
                   <tr>
@@ -433,25 +433,25 @@
                   </tr>
                   <tr>
                     <td style="width:30px;">1</td>
-                    <td>네트워크 견고성</td>
-                    <td class="long-td">비정상적이거나 과도한 양의 통신 데이터가 유입되는 경우에도 명령,제어,모니터링 등의 필수 서비스를 제공하는가?</td>
+                    <td>네트워크 <br>견고성</td>
+                    <td class="long-td">비정상적이거나 과도한 양의 통신 데이터가 유입되는 경우에도 명령,제어,모니터링 등의  <br>필수 서비스를 제공하는가?</td>
                     <td style="width:70px;"><span>Y<input type="checkbox"></span><span>N<input type="checkbox" name="no6"></span></td>
                   </tr>
                   <tr>
                     <td style="width:30px;">2</td>
-                    <td>서비스 지속성</td>
+                    <td>서비스  <br>지속성</td>
                     <td class="long-td">업무 연속성 확보를 위한 기능이 정상적으로 제공되고 있는가?</td>
                     <td style="width:70px;"><span>Y<input type="checkbox"></span><span>N<input type="checkbox" name="no6"></span></td>
                   </tr>
                   <tr>
                     <td style="width:30px;">3</td>
                     <td>보안기능</td>
-                    <td class="long-td">식별/인증,접근통제,전송 및 저장 데이터 보호 등 보안성 확보를 위한 보안기능을 제공하고 있는가?</td>
+                    <td class="long-td">식별/인증,접근통제,전송 및 저장 데이터 보호 등 보안성 확보를 위한  <br>보안기능을 제공하고 있는가?</td>
                     <td style="width:70px;"><span>Y<input type="checkbox"></span><span>N<input type="checkbox" name="no6"></span></td>
                   </tr>
                   <tr>
                     <td style="width:30px;">4</td>
-                    <td>현장장치 계층</td>
+                    <td>현장장치 <br> 계층</td>
                     <td class="long-td">제어 소프트웨어로부터 명령을 받아 현장 장치를 제어하는 역할을 정상적으로 수행하고 있는가?</td>
                     <td style="width:70px;"><span>Y<input type="checkbox"></span><span>N<input type="checkbox" name="no6"></span></td>
                   </tr>
@@ -464,7 +464,7 @@
                   <tr>
                     <td style="width:30px;">6</td>
                     <td>운영 계층</td>
-                    <td class="long-td">제어 하드웨어와 통신하며 현장 장치의 상태를 모니터링하고 제어 명령을 정상적으로 내리고 있는가?</td>
+                    <td class="long-td">제어 하드웨어와 통신하며 현장 장치의 상태를 모니터링하고 <br> 제어 명령을 정상적으로 내리고 있는가?</td>
                     <td style="width:70px;"><span>Y<input type="checkbox"></span><span>N<input type="checkbox" name="no6"></span></td>
                   </tr>
                 </table>
@@ -493,14 +493,14 @@
     }
 
     function modal(x,y,z){
-      if($("input[name=no"+x+"]:checked").length==z){
+      //if($("input[name=no"+x+"]:checked").length==z){
         if(x==6){
           $("#modal"+x).attr("style", "display:none");
         }else{
           $("#modal"+x).attr("style", "display:none");
           $("#modal"+y).attr("style", "display:block");
         }
-      }else{
+      /*}else{
         if(x==1 || x==3 || x==4){
           alert(" *보안 항목 점검을 계속 진행할 수 없습니다.\n부적합 항목을 공급사 측에 전달한 후 계속 진행하세요.");
         }else if(x==2){
@@ -508,7 +508,7 @@
         }else if(x==5 || x==6){
           alert(" *디지털 시스템 발전소에 반입할 수 없습니다\n디지털 시스템 발전소 반출 처리 해주시기 바랍니다.");
         }
-      }
+      }*/
     }
     $("input[name=no1]").click(function(){
        alert(" *보안 항목 점검을 계속 진행할 수 없습니다.\n부적합 항목을 공급사 측에 전달한 후 계속 진행하세요.");
