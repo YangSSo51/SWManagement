@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,18 +22,17 @@
         </div>
       </header>
 <%@ include file="navbar.jsp"%>
-
           <div class="right-container">
             <div class="danger-select">
               <h3>위험 관리 내역을 확인할 자산을 선택하세요</h3>
               <select class="select" name="">
-                <option value="터빈계통PLC">터빈계통PLC</option>
+                <option value="터빈계통PLC">자동지진정지계</option>
               </select>
               <button type="button" name="button">선택</button>
             </div>
             <table class="danger-list1">
               <tr>
-                <td style="border-right:none;">  (터빈계통PLC)의 위험 관리 내역서</td>
+                <td style="border-right:none;">  (자동지진정지계)의 위험 관리 내역서</td>
                 <td style="border-left:none;" ></td>
               </tr>
               <tr>
@@ -44,7 +41,13 @@
               </tr>
               <tr>
                 <td class="small-td">버전</td>
-                <td><input type="text" name="" value="버전 입력"></td>
+                <td>
+                <select class="" name="">
+                  <option value="">터빈제어설비_2020_1</option>
+                  <option value="">터빈제어설비_2020_2</option>
+                  <option value="">새 버전 추가</option>
+                </select>
+              </td>
               </tr>
               <tr>
                 <td class="small-td">점검주기</td>
@@ -66,10 +69,10 @@
                 <th>이행여부</th>
               </tr>
               <tr>
-                <td class="small-td">1</td>
-                <td>인적보안 정책 및 절차</td>
                 <td class="small-td">1.1</td>
-                <td>개인 보안 정책을 수립하고 있는가?</td>
+                <td>계정관리</td>
+                <td class="small-td">1.1</td>
+                <td>필수디지털자산 계정 관리(승인, 사용, 변경, 불용 및 삭제 절차) 및 문서화를 하고 있는가?</td>
                 <td class="small-td">상</td>
                 <td><select class="yn-select" name="">
                   <option value="Y">Y</option>
@@ -77,21 +80,10 @@
                 </select></td>
               </tr>
               <tr>
-                <td class="small-td">1</td>
-                <td>인적반환</td>
+                <td class="small-td">1.1</td>
+                <td>계정관리</td>
                 <td class="small-td">1.2</td>
-                <td><p>접근 허가 프로그램은 개인 업무 종료시의</p><p>규정을 준수하고 있는가?</p></td>
-                <td class="small-td">상</td>
-                <td><select class="yn-select" name="">
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
-                </select></td>
-              </tr>
-              <tr>
-                <td class="small-td">1</td>
-                <td>결함 고정</td>
-                <td class="small-td">1.1</td>
-                <td><p>자산 평가를 실시하여 결함이 제거되었는지</p><p>검증하고 있는가?</p></td>
+                <td>검토절차의 수립 및 이에 따른 필수디지털자산 계정의 <br>불법적인 사용 및 변경 여부에 대해 주기적 검토를 하고 있는가?(최소 분기 1회)</td>
                 <td class="small-td">중</td>
                 <td><select class="yn-select" name="">
                   <option value="Y">Y</option>
@@ -99,10 +91,21 @@
                 </select></td>
               </tr>
               <tr>
-                <td class="small-td">1</td>
-                <td>인적반환</td>
-                <td class="small-td">1.2</td>
-                <td><p>보안 경고 및 취약성 평가 프로세스를</p><p>식별하고 자산의 정확한 보안 결함을</p><p>알아내고 있는가?</p></td>
+                <td class="small-td">1.1</td>
+                <td>계정관리</td>
+                <td class="small-td">1.3</td>
+                <td>주어진 업무를 수행하는데 필요한 만큼의 제한된 접근권한을 각 계정에 부여하고 있는가?</td>
+                <td class="small-td">상</td>
+                <td><select class="yn-select" name="">
+                  <option value="Y">Y</option>
+                  <option value="N">N</option>
+                </select></td>
+              </tr>
+              <tr>
+                <td class="small-td">1.1</td>
+                <td>계정관리</td>
+                <td class="small-td">1.4</td>
+                <td>업무의 변경 시 계정에 대한 접근권한 검토를 통해 <br>업무에 기반한 제한된 접근권한이 부여되고 있음을 보장하고 있는가?</td>
                 <td class="small-td">상</td>
                 <td><select class="yn-select" name="">
                   <option value="Y">Y</option>
@@ -114,6 +117,6 @@
               <a href="#"><button class="button">완료</button></a>
             </div>
         </div>
-</body>
+  </body>
 
 </html>

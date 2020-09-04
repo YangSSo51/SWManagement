@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -88,37 +89,49 @@ public class UserController {
 		return mav;
 	}
 	
-	
-	
-	@RequestMapping(value="/asset_perchase",method=RequestMethod.GET)
-	public String asset_perchase() throws Exception {
-		return "test/asset_perchase";
+	@RequestMapping(value="/asset/perchase/{order}",method=RequestMethod.GET)
+	public String asset_perchase(@PathVariable("order") String order) throws Exception {
+		if(order.equals("asc")) return "test/asset_perchase";
+		else return "test/asset_perchase2";
 	}
-	@RequestMapping(value="/asset_integ",method=RequestMethod.GET)
-	public String asset_integ() throws Exception {
-		return "test/asset_integ";
+	@RequestMapping(value="/asset/integ/{id}",method=RequestMethod.GET)
+	public String asset_integ(@PathVariable("id") int id) throws Exception {
+		if(id==1)return "test/asset_integ";
+		else return "test/asset_integ2";
 	}
-	@RequestMapping(value="/common_code",method=RequestMethod.GET)
+	@RequestMapping(value="/common/code",method=RequestMethod.GET)
 	public String common_code() throws Exception {
 		return "test/common_code";
 	}
-	@RequestMapping(value="/common_code_detail",method=RequestMethod.GET)
-	public String common_code_detail() throws Exception {
-		return "test/common_code_detail";
+	@RequestMapping(value="/common/code/detail/{id}",method=RequestMethod.GET)
+	public String common_code_detail(@PathVariable("id") int id) throws Exception {
+		if(id==1) return "test/common_code_detail";
+		else return "test/common_code_detail2";
 	}
-	@RequestMapping(value="/config_keep",method=RequestMethod.GET)
+	@RequestMapping(value="/config/keep",method=RequestMethod.GET)
 	public String config_keep() throws Exception {
 		return "test/config_keep";
 	}
-	@RequestMapping(value="/risk_manage",method=RequestMethod.GET)
+	
+	@RequestMapping(value="/risk/read",method=RequestMethod.GET)
+	public String risk_read() throws Exception {
+		return "test/risk_read";
+	}
+	
+	@RequestMapping(value="/risk/manage",method=RequestMethod.GET)
 	public String risk_manage() throws Exception {
 		return "test/risk_manage";
 	}
-	@RequestMapping(value="/integ_keep",method=RequestMethod.GET)
+	
+	@RequestMapping(value="/integ/keep",method=RequestMethod.GET)
 	public String integ_keep() throws Exception {
 		return "test/integ_keep";
 	}
-	@RequestMapping(value="/vul_check",method=RequestMethod.GET)
+	@RequestMapping(value="/integ/keep/detail",method=RequestMethod.GET)
+	public String integ_keep_detail() throws Exception {
+		return "test/integ_keep_detail";
+	}
+	@RequestMapping(value="/vul/check",method=RequestMethod.GET)
 	public String vul_check() throws Exception {
 		return "test/vul_check";
 	}

@@ -18,6 +18,7 @@ button{
 	border: none;
 	border-radius: 5px;
 	outline: none;
+	cursor:pointer;
 }
 
 button:hover{
@@ -145,11 +146,18 @@ footer{
   margin-left: 10px;
 }
 
+/*center page*/
+.center-page{
+	margin: 0 auto;
+  text-align: center;
+  vertical-align: middle;
+}
 /*table*/
+
 .list {
 	margin: 50px auto;
 	margin-bottom: 20px;
-	width: 900px;
+	width: 1200px;
 }
 
 
@@ -157,7 +165,7 @@ footer{
 	font-weight: bold;
 	width: 100px;
 	padding: 10px;
-	font-size: 18px;
+	font-size: 16px;
 	border-bottom: 1px solid #dbdbdb;
 	padding: auto 0px;
   background-color: #F2F2F2;
@@ -182,10 +190,56 @@ footer{
 	text-overflow: ellipsis;
 }
 
+/*detail table*/
+.detail-list {
+	margin: 80px auto;
+	margin-bottom: 20px;
+	width: 1100px;
+	table-layout: fixed;
+}
+
+.detail-list tr{
+	height: 60px;
+}
+.detail-list .detail-title{
+	font-weight: bold;
+	width: 20px;
+	padding: 10px;
+	font-size: 16px;
+	padding: auto 0px;
+  background-color: #dbdbdb;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.detail-list .border-none{
+	border-left:none;
+	border-right:none;
+
+}
+
+.detail-list td{
+	width: 160px;
+	height: 30px;
+	border: 1px solid #c0c0c0;
+	vertical-align: middle;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: left;
+	padding-left: 20px;
+}
+
+.detail-list .small-td{
+	width:50px;
+}
+.detail-list #right{ border-right:none; }
+.detail-list #side{ border-left:none; border-right: none;}
+.detail-list #left{ border-left:none; }
 /*button*/
 .button_group{
 	margin: 30px auto;
-	width: 900px;
+	width: 1200px;
 }
 .button_group button{
 	margin-top:20px;
@@ -211,8 +265,8 @@ footer{
 
 /*danger*/
 .danger-search{
-	margin: 100px 0 20px 18%;
-	width: 1100px;
+	margin: 100px 0 20px 6%;
+	width: 1200px;
 }
 .danger-search input{
 	margin: 10px;
@@ -311,7 +365,7 @@ td p{
 }
 
 /*modal*/
-#modal,#modal1,#modal2,#modal3,#modal4,#modal5,#modal6 {
+#modal,#modal0,#modal1,#modal2,#modal3,#modal4,#modal5,#modal6 {
 	display: none;
 	position:relative;
 	width:100%;
@@ -321,7 +375,7 @@ td p{
 	z-index:20;
 }
 
-#modal h2,#modal1 h2,#modal2 h2,#modal3 h2,#modal4 h2,#modal5 h2,#modal6 h2 {
+#modal h2,#modal0 h2,#modal1 h2,#modal2 h2,#modal3 h2,#modal4 h2,#modal5 h2,#modal6 h2 {
 	margin:0;
 }
 
@@ -482,7 +536,28 @@ td p{
 }
 
 /*code*/
-#modal .small_modal_content {
+.tab-group{
+	margin-left: 100px;
+	margin-top: 50px;
+	width:1200px;
+}
+
+.tab-group button{
+	width: 100px;
+	font-weight: bold;
+}
+.tab-group .white{
+	background-color: white;
+	color:#74b666;
+	border:1px solid #74B666;
+}
+hr{
+	width:1200px;
+	border: none;
+	border-top:1px solid #dbdbdb;
+	margin-top: 0;
+}
+#modal .small_modal_content, #modal0 .small_modal_content{
 	width:300px;
 	margin:80px auto;
 	padding:20px;

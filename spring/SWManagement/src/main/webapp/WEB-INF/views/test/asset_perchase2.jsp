@@ -22,14 +22,14 @@
         </div>
       </header>
 <%@ include file="navbar.jsp"%>
-	<div class="right-container">
+          <div class="right-container">
             <form class="center_form" style="margin-top:60px;">
               <input type="search" name="" value="" placeholder="자산명 입력">
               <button type="button" name="button">검색</button>
             </form>
             <div class="tab-group">
-              <a href="<c:url value="/asset/perchase/desc"/>"><button type="button" name="button" class="white" >최신순</button></a>
-              <a href="<c:url value="/asset/perchase/asc"/>"><button type="button" name="button" style="margin-left:-5px;">오래된 순</button></a>
+              <a href="<c:url value="/asset/perchase/desc"/>"><button type="button" name="button">최신순</button></a>
+              <a href="<c:url value="/asset/perchase/asc"/>"><button type="button" name="button" class="white" style="margin-left:-5px;">오래된 순</button></a>
             </div>
             <hr>
             <table class="list" style="margin-top:30px;">
@@ -47,8 +47,8 @@
               </tr>
               <tr>
                 <td style="width:30px;">1</td>
-                <td>주급수계통</td>
-                <td>2020-03-28</td>
+                <td>발전소제어계통</td>
+                <td>2020-05-31</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
@@ -59,8 +59,8 @@
               </tr>
               <tr>
                 <td style="width:30px;">2</td>
-                <td>발전소경보계통</td>
-                <td>2020-03-30</td>
+                <td>터빈제어설비유지보수PC</td>
+                <td>2020-05-05</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
@@ -71,15 +71,15 @@
               </tr>
               <tr>
                 <td style="width:30px;">3</td>
-                <td>제어봉제어계통</td>
-                <td>2020-03-31</td>
+                <td>자동지진정지계통</td>
+                <td>2020-04-30</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
-                <td>X</td>
+                <td>O</td>
               </tr>
               <tr>
                 <td style="width:30px;">4</td>
@@ -95,20 +95,20 @@
               </tr>
               <tr>
                 <td style="width:30px;">5</td>
-                <td>자동지진정지계통</td>
-                <td>2020-04-30</td>
+                <td>제어봉제어계통</td>
+                <td>2020-03-31</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
-                <td>O</td>
+                <td>X</td>
               </tr>
               <tr>
                 <td style="width:30px;">6</td>
-                <td>터빈제어설비유지보수PC</td>
-                <td>2020-05-05</td>
+                <td>발전소경보계통</td>
+                <td>2020-03-30</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
@@ -119,8 +119,8 @@
               </tr>
               <tr>
                 <td style="width:30px;">7</td>
-                <td>발전소제어계통</td>
-                <td>2020-05-31</td>
+                <td>주급수계통</td>
+                <td>2020-03-28</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
@@ -138,30 +138,23 @@
               <div class="modal_layer">
               <div class="small_modal_content">
                 <div class="modal_title">
-       	           자산명
+                  자산명
                 </div>
                   <form class="" action="index.html" method="post">
                     <p>
                       <span>자산명</span>
                     </p>
-                      <input type="text" placeholder="주급수계통"></input>
+                    <select class="" name="" style="width:200px; margin-left:20px;">
+                      <option value="" >ServerUnix_9</option>
+                    </select>
                 <p>
                   <span>설비유형</span>
                 </p>
-                  <select class="" name="" style="margin-left:20px;">
-                    <option value="">PLC/DCS</option>
-                    <option value="">PC/Server</option>
-                  </select>
+                  <input type="text" placeholder="PC/Server"></input>
                 <p>
                   <span>OS유형</span>
                 </p>
-                <select class="" name="" style="margin-left:20px;">
-                  <option value="">WinXP</option>
-                  <option value="">Win 2000</option>
-                  <option value="">Win 2003</option>
-                  <option value="">Win Vista</option>
-                  <option value="">Win7</option>
-                </select>
+                <input type="text" placeholder="Window7"></input>
                 <p>
                   <span>구매자</span>
                 </p>
@@ -178,7 +171,7 @@
               <div class="modal_layer">
               <div class="modal_content">
                 <div class="modal_title">
-            	     자산 보안 항목 점검-[기술적 보안 항목]
+                  자산 보안 항목 점검-[기술적 보안 항목]
                 </div>
                 <table class="modal_basic_table">
                   <tr>
@@ -228,7 +221,7 @@
               <div class="modal_layer">
               <div class="modal_content">
                 <div class="modal_title">
-                 	 자산 보안 항목 점검-[무결성 점검 기능 탑재 여부]
+                  자산 보안 항목 점검-[무결성 점검 기능 탑재 여부]
                 </div>
                 <table class="modal_basic_table">
                   <tr>
@@ -250,7 +243,7 @@
               <div class="modal_layer">
               <div class="modal_content">
                 <div class="modal_title">
-              	    자산 보안 항목 점검-[Secure Coding 적용 여부]
+                  자산 보안 항목 점검-[Secure Coding 적용 여부]
                 </div>
                 <table class="modal_basic_table">
                   <tr>
@@ -319,7 +312,7 @@
               <div class="modal_layer">
               <div class="modal_content">
                 <div class="modal_title">
-          	       자산 보안 항목 점검-[신규 취약점 및 악성코드 존재 여부]
+                  자산 보안 항목 점검-[신규 취약점 및 악성코드 존재 여부]
                 </div>
                 <table class="modal_basic_table">
                   <tr>
@@ -399,7 +392,7 @@
               <div class="modal_layer">
               <div class="modal_content">
                 <div class="modal_title">
-           		       자산 보안 항목 점검(내부점검)-[봉인 훼손 여부 확인]
+                  자산 보안 항목 점검(내부점검)-[봉인 훼손 여부 확인]
                 </div>
                 <table class="modal_basic_table">
                   <tr>
@@ -422,9 +415,9 @@
               <div class="modal_layer">
               <div class="modal_content">
                 <div class="modal_title">
-               	   자산 보안 항목 점검(내부점검)-[기능/성능 시험]
+                  자산 보안 항목 점검(내부점검)-[기능/성능 시험]
                 </div>
-                <table class="modal_basic_table">
+                                <table class="modal_basic_table">
                   <tr>
                     <th style="width:30px;">항목 번호</th>
                     <th>점검 분야</th>
@@ -493,14 +486,14 @@
     }
 
     function modal(x,y,z){
-      //if($("input[name=no"+x+"]:checked").length==z){
+      if($("input[name=no"+x+"]:checked").length==z){
         if(x==6){
           $("#modal"+x).attr("style", "display:none");
         }else{
           $("#modal"+x).attr("style", "display:none");
           $("#modal"+y).attr("style", "display:block");
         }
-      /*}else{
+      }else{
         if(x==1 || x==3 || x==4){
           alert(" *보안 항목 점검을 계속 진행할 수 없습니다.\n부적합 항목을 공급사 측에 전달한 후 계속 진행하세요.");
         }else if(x==2){
@@ -508,7 +501,7 @@
         }else if(x==5 || x==6){
           alert(" *디지털 시스템 발전소에 반입할 수 없습니다\n디지털 시스템 발전소 반출 처리 해주시기 바랍니다.");
         }
-      }*/
+      }
     }
     $("input[name=no1]").click(function(){
        alert(" *보안 항목 점검을 계속 진행할 수 없습니다.\n부적합 항목을 공급사 측에 전달한 후 계속 진행하세요.");
