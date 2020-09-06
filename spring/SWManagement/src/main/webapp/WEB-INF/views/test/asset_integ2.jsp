@@ -47,8 +47,8 @@
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" name="check" onclick="check(1)"></td>
-                <td>주급수계통</td>
-                <td>DCS</td>
+                <td>주급수계통/DCS</td>
+                <td>PLC</td>
                 <td>Firmware</td>
                 <td>O</td>
                 <td>O</td>
@@ -59,7 +59,7 @@
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" name="check" onclick="check(2)" ></td>
-                <td>발전소경보계통</td>
+                <td>발전소경보계통/PLC</td>
                 <td>PLC</td>
                 <td>Firmware</td>
                 <td>O</td>
@@ -71,7 +71,7 @@
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" name="check" onclick="check(3)" ></td>
-                <td>자동지진정지계통</td>
+                <td>제어봉제어계통/PLC</td>
                 <td>PLC</td>
                 <td>Firmware</td>
                 <td>O</td>
@@ -83,7 +83,7 @@
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" name="check" onclick="check(4)" ></td>
-                <td>발전소제어계통</td>
+                <td>자동지진정지계통/PLC</td>
                 <td>PLC</td>
                 <td>Firmware</td>
                 <td>O</td>

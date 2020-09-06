@@ -47,8 +47,8 @@
               </tr>
               <tr>
                 <td style="width:30px;">1</td>
-                <td>발전소제어계통</td>
-                <td>2020-05-31</td>
+                <td>발전소경보계통/MCR OIS</td>
+                <td>2020-09-30</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
@@ -59,8 +59,8 @@
               </tr>
               <tr>
                 <td style="width:30px;">2</td>
-                <td>터빈제어설비유지보수PC</td>
-                <td>2020-05-05</td>
+                <td>주급수계통/DCS</td>
+                <td>2020-08-28</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
@@ -71,20 +71,20 @@
               </tr>
               <tr>
                 <td style="width:30px;">3</td>
-                <td>자동지진정지계통</td>
-                <td>2020-04-30</td>
+                <td>주급수계통/제어서버</td>
+                <td>2020-07-15</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
-                <td>O</td>
+                <td>X</td>
               </tr>
               <tr>
                 <td style="width:30px;">4</td>
-                <td>지진감시계통</td>
-                <td>2020-04-15</td>
+                <td>발전소경보계통/PLC</td>
+                <td>2020-06-01</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
@@ -95,20 +95,20 @@
               </tr>
               <tr>
                 <td style="width:30px;">5</td>
-                <td>제어봉제어계통</td>
-                <td>2020-03-31</td>
+                <td>제어봉제어계통/PLC </td>
+                <td>2020-03-02</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
-                <td>X</td>
+                <td>O</td>
               </tr>
               <tr>
                 <td style="width:30px;">6</td>
-                <td>발전소경보계통</td>
-                <td>2020-03-30</td>
+                <td>지진감시계통/제어PC</td>
+                <td>2020-03-01</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
@@ -119,8 +119,8 @@
               </tr>
               <tr>
                 <td style="width:30px;">7</td>
-                <td>주급수계통</td>
-                <td>2020-03-28</td>
+                <td>자동지진정지계통/PLC</td>
+                <td>2020-01-15</td>
                 <td>O</td>
                 <td>O</td>
                 <td>O</td>
@@ -130,7 +130,6 @@
                 <td>O</td>
               </tr>
             </table>
-
             <div class="button_group">
                 <button type="button" style="width:100px;" id="modal_open_btn">신규 자산 등록</button>
             </div>

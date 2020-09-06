@@ -26,13 +26,13 @@
             <div class="danger-select">
               <h3>위험 관리 내역을 확인할 자산을 선택하세요</h3>
               <select class="select" name="">
-                <option value="터빈계통PLC">자동지진정지계</option>
+                <option value="">주급수계통/DCS</option>
               </select>
               <button type="button" name="button">선택</button>
             </div>
             <table class="danger-list1">
               <tr>
-                <td style="border-right:none;">  (자동지진정지계)의 위험 관리 내역서</td>
+                <td style="border-right:none;">(주급수계통/DCS)의 위험 관리 내역서</td>
                 <td style="border-left:none;" ></td>
               </tr>
               <tr>
@@ -43,8 +43,8 @@
                 <td class="small-td">버전</td>
                 <td>
                 <select class="" name="">
-                  <option value="">터빈제어설비_2020_1</option>
-                  <option value="">터빈제어설비_2020_2</option>
+                  <option value="">주급수계통/DCS_2020_1</option>
+                  <option value="">주급수계통/DCS_2020_2</option>
                   <option value="">새 버전 추가</option>
                 </select>
               </td>

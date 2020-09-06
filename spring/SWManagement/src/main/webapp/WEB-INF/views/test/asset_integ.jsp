@@ -45,7 +45,7 @@
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" name="check" onclick="check(1)"></td>
-                <td>발전소경보계통</td>
+                <td>발전소경보계통/MCR OIS</td>
                 <td>PC</td>
                 <td>Win 7</td>
                 <td>O</td>
@@ -55,9 +55,9 @@
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" name="check" onclick="check(2)"></td>
-                <td>지진감시계통</td>
-                <td>PC</td>
-                <td>Win XP</td>
+                <td>주급수계통/제어서버</td>
+                <td>Server</td>
+                <td>LINUX</td>
                 <td>O</td>
                 <td>O</td>
                 <td><input type="text" placeholder="b94a005a0c5"  name="input[2][1]" disabled></td>
@@ -65,7 +65,7 @@
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" name="check" onclick="check(3)"></td>
-                <td>터빈제어설비유지보수PC</td>
+                <td>지진감시계통/제어PC</td>
                 <td>PC</td>
                 <td>Win 2003</td>
                 <td>O</td>

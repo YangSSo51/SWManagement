@@ -23,65 +23,68 @@
       </header>
 <%@ include file="navbar.jsp"%>
         <div class="right-container">
-            <div class="danger-search">
-              <h3>위험 관리 내역을 확인할 자산을 선택하세요</h3>
-              <input type="text" name="" value="">
-              <button type="button" name="button">찾기</button>
-            </div>
-              <table class="list" style="margin-top:0;">
+            <form class="center_form">
+              <select class="select" name="">
+                <option value="자산명">자산명</option>
+                <option value="버전">버전</option>
+              </select>
+              <input type="search" name="" value="" placeholder="">
+              <button type="button" name="button">검색</button>
+            </form>
+              <table class="list" style="margin-top:50px;">
                 <tr>
                   <th style="width:30px;">id</th>
-                  <th>자산 명</th>
-                  <th>버전</th>
+                  <th>자산명</th>
+                  <th>위험관리보고서</th>
                   <th>점검일자</th>
                   <th>점검주기</th>
                 </tr>
                 <tr>
                   <td style="width:30px;">1</td>
-                  <td>발전소경보계통</td>
-                  <td>발전소경보계통_2020_1</td>
-                  <td>2020.08.28</td>
+                  <td>발전소경보계통/MCR OIS</td>
+                  <td>발전소경보계통/MCR OIS_2020_1</td>
+                  <td>2020.09.30</td>
                   <td>3분기</td>
                 </tr>
                 <tr>
                   <td style="width:30px;">2</td>
-                  <td>터빈제어설비</td>
-                  <td>터빈제어설비_2020_2</td>
-                  <td>2020.07.15</td>
+                  <td>주급수계통/DCS</td>
+                  <td>주급수계통/DCS_2020_1</td>
+                  <td>2020.08.28</td>
                   <td>2분기</td>
                 </tr>
                 <tr>
                   <td style="width:30px;">3</td>
-                  <td>유지보수PC</td>
-                  <td>유지보수PC_2020_2</td>
-                  <td>2020.06.01</td>
+                  <td>주급수계통/제어서버</td>
+                  <td>주급수계통/제어서버_2020_2</td>
+                  <td>2020.07.15</td>
                   <td>2분기</td>
                 </tr>
                 <tr>
                   <td style="width:30px;">4</td>
-                  <td>자동지진정지계통</td>
-                  <td>자동지진정지계통_2020_2</td>
-                  <td>2020.01.15</td>
+                  <td>발전소경보계통/PLC</td>
+                  <td>발전소경보계통/PLC_2020_2</td>
+                  <td>2020.06.01</td>
                   <td>1분기</td>
                 </tr>
                 <tr>
                   <td style="width:30px;">5</td>
-                  <td>자동지진정지계</td>
-                  <td>자동지진정지계_2020_1</td>
-                  <td>2020.03.01</td>
+                  <td>제어봉제어계통/PLC</td>
+                  <td>제어봉제어계통/PLC_2020_1</td>
+                  <td>2020.03.02</td>
                   <td>1분기</td>
                 </tr>
                 <tr>
                   <td style="width:30px;">6</td>
-                  <td>터빈제어설비</td>
-                  <td>터빈제어설비_2020_1</td>
-                  <td>2020.01.15</td>
+                  <td>지진감시계통/제어PC</td>
+                  <td>지진감시계통/제어PC_2020_1</td>
+                  <td>2020.03.01</td>
                   <td>2분기</td>
                 </tr>
                 <tr>
                   <td style="width:30px;">7</td>
-                  <td>유지보수PC</td>
-                  <td>유지보수PC_2020_2</td>
+                  <td>자동지진정지계통/PLC</td>
+                  <td>자동지진정지계통/PLC_2020_1</td>
                   <td>2020.01.15</td>
                   <td>2분기</td>
                 </tr>

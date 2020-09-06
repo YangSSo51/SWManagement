@@ -37,26 +37,39 @@
               </tr>
               <tr>
                 <td style="width:30px;">1</td>
-                <td>발전소경보계통</td>
+                <td>발전소경보계통/MCR OIS</td>
                 <td><button type="button" class="detail-btn">상세보기</button></td>
-                <td>2019-02-24</td>
+                <td>2020-09-30</td>
                 <td><i class="fa fa-check"></i></td>
               </tr>
-              <tr>
+             <tr>
                 <td style="width:30px;">2</td>
-                <td>터빈제어설비</td>
+                <td>주급수계통/제어서버</td>
                 <td><button type="button" class="detail-btn">상세보기</button></td>
-                <td>2020-08-28</td>
+                <td>2020-07-15</td>
                 <td><i class="fa fa-close"></i></td>
               </tr>
               <tr>
                 <td style="width:30px;">3</td>
-                <td>자동지진정지계통</td>
+                <td>제어봉제어계통/PLC </td>
                 <td><button type="button" class="detail-btn">상세보기</button></td>
-                <td>2020-07-31</td>
+                <td>2020-03-02</td>
                 <td><i class="fa fa-check"></i></td>
               </tr>
-
+              <tr>
+                <td style="width:30px;">4</td>
+                <td>지진감시계통/제어PC</td>
+                <td><button type="button" class="detail-btn">상세보기</button></td>
+                <td>2020-03-01</td>
+                <td><i class="fa fa-close"></i></td>
+              </tr>
+              <tr>
+                <td style="width:30px;">5</td>
+                <td>자동지진정지계통/PLC</td>
+                <td><button type="button" class="detail-btn">상세보기</button></td>
+                <td>2020-01-15</td>
+                <td><i class="fa fa-check"></i></td>
+              </tr>
             </table>
 
             <div class="button_group">
@@ -72,7 +85,7 @@
                   <p>
                     <span>자산명</span>
                     <select class="" name="" style="margin-left:20px;">
-                      <option value="">발전소경보계통</option>
+                      <option value="">주급수계통/DCS</option>
                     </select>
                   </p>
                   <p>
@@ -96,7 +109,7 @@
                   <p></p>
                   <p><span>작업 내용</span></p>
                   <div class="textarea">
-                    <textarea name="name" rows="4" cols="40" placeholder="발전소경보계통 내부 소프트웨어 업데이트 작업"></textarea>
+                    <textarea name="name" rows="4" cols="40" placeholder="주급수계통/DCS 내부 소프트웨어 업데이트 작업"></textarea>
                   </div>
                   <p><span>필요 기자재</span></p>
                   <div class="textarea">
@@ -121,7 +134,7 @@
                     <form class="" action="index.html" method="post">
                   <p>
                     <span>자산명</span>
-                    <input type="text" placeholder="발전소경보계통"></input>
+                    <input type="text" placeholder="주급수계통/DCS"></input>
                   </p>
                   <p>
                     <span>신청자</span>

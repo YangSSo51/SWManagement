@@ -9,8 +9,7 @@
 <title>자산무결성 관리</title>
     <style>
     td a{
-    	text-decoration:underline;
-    	color:blue;
+    	color:green;
     }
     </style>
 </head>
@@ -46,7 +45,7 @@
             <table class="list">
               <tr>
                 <th style="width:30px;">번호</th>
-                <th>버전명</th>
+                <th>무결성점검보고서</th>
                 <th>점검연도</th>
                 <th>점검일자</th>
                 <th>점검설비</th>
@@ -56,83 +55,73 @@
               </tr>
               <tr>
                 <td style="width:30px;">1</td>
-                <td><a href="<c:url value="/integ/keep/detail"/>">주급수계통_2020_1</a></td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">발전소경보계통/MCR OIS_2020_1</a></td>
                 <td>2020</td>
                 <td>09-30</td>
-                <td>주급수계통</td>
-                <td>3분기</td>
-                <td>김은지</td>
-                <td>적합</td>
-              </tr>
-              <tr>
-                <td style="width:30px;">2</td>
-                <td><a href="<c:url value="/integ/keep/detail"/>">발전소경보계통_2020_1</a></td>
-                <td>2020</td>
-                <td>08-28</td>
-                <td>발전소경보계통</td>
+                <td>발전소경보계통/MCR OIS</td>
                 <td>3분기</td>
                 <td>양소영</td>
                 <td>적합</td>
               </tr>
               <tr>
+                <td style="width:30px;">2</td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">주급수계통/DCS_2020_1</a></td>
+                <td>2020</td>
+                <td>08-28</td>
+                <td>주급수계통/DCS</td>
+                <td>3분기</td>
+                <td>김은지</td>
+                <td>적합</td>
+              </tr>
+              <tr>
                 <td style="width:30px;">3</td>
-                <td><a href="<c:url value="/integ/keep/detail"/>">터빈제어설비_2020_2</a></td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">주급수계통/제어서버_2020_1</a></td>
                 <td>2020</td>
                 <td>07-15</td>
-                <td>터빈제어설비</td>
-                <td>2분기</td>
-                <td>주소영</td>
+                <td>주급수계통/제어서버</td>
+                <td>3분기</td>
+                <td>양소영</td>
                 <td>적합</td>
               </tr>
               <tr>
                 <td style="width:30px;">4</td>
-                <td><a href="<c:url value="/integ/keep/detail"/>">유지보수PC_2020_1</a></td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">발전소경보계통/PLC_2020_2</a></td>
                 <td>2020</td>
-                <td>03-02</td>
-                <td>유지보수PC</td>
+                <td>06-01</td>
+                <td>발전소경보계통/PLC</td>
                 <td>2분기</td>
                 <td>주소영</td>
                 <td>적합</td>
               </tr>
               <tr>
                 <td style="width:30px;">5</td>
-                <td><a href="<c:url value="/integ/keep/detail"/>">자동지진정지계통_2020_1</a></td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">제어봉제어계통/PLC_2020_1</a></td>
                 <td>2020</td>
-                <td>06-01</td>
-                <td>자동지진정지계통</td>
-                <td>1분기</td>
-                <td>권해나</td>
+                <td>03-02</td>
+                <td>제어봉제어계통/PLC</td>
+                <td>2분기</td>
+                <td>주소영</td>
                 <td>적합</td>
               </tr>
               <tr>
                 <td style="width:30px;">6</td>
-                <td><a href="<c:url value="/integ/keep/detail"/>">자동지진정지계_2020_1</a></td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">지진감시계통/제어PC_2020_1</a></td>
                 <td>2020</td>
                 <td>03-01</td>
-                <td>자동지진정지계</td>
+                <td>지진감시계통/제어PC</td>
                 <td>1분기</td>
                 <td>권해나</td>
-                <td>부적합</td>
+                <td>적합</td>
               </tr>
               <tr>
                 <td style="width:30px;">7</td>
-                <td><a href="<c:url value="/integ/keep/detail"/>">터빈제어설비_2020_1</a></td>
+                <td><a href="<c:url value="/integ/keep/detail"/>">자동지진정지계통/PLC_2020_1</a></td>
                 <td>2020</td>
                 <td>01-15</td>
-                <td>터빈제어설비</td>
+                <td>자동지진정지계통/PLC</td>
                 <td>2분기</td>
-                <td>주소영</td>
+                <td>권해나</td>
                 <td>부적합</td>
-              </tr>
-              <tr>
-                <td style="width:30px;">8</td>
-                <td><a href="<c:url value="/integ/keep/detail"/>">유지보수PC_2020_1</a></td>
-                <td>2020</td>
-                <td>01-15</td>
-                <td>유지보수PC</td>
-                <td>2분기</td>
-                <td>주소영</td>
-                <td>적합</td>
               </tr>
             </table>
             <div class="button_group">
@@ -148,7 +137,7 @@
                   <p>
                     <span>자산명</span>
                     <select class="" name="" style="margin-left:20px;">
-                      <option value="">발전소경보계통</option>
+                      <option value="">주급수계통/DCS</option>
                     </select>
                   </p>
                   <p>

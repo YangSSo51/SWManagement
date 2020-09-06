@@ -34,7 +34,7 @@
             <table class="detail-list">
               <tr>
                 <td class="detail-title">버전명</td>
-                <td>발전소경보계통_2020_1</td>
+                <td>주급수계통/제어서버_2020_1</td>
                 <td class="detail-title">점검자</td>
                 <td class="small-td">양소영</td>
               </tr>
@@ -42,7 +42,7 @@
                 <td class="detail-title">점검연도</td>
                 <td>2020</td>
                 <td class="detail-title">점검일자</td>
-                <td class="small-td">08-28</td>
+                <td class="small-td">07-15</td>
               </tr>
               <tr>
                 <td class="detail-title">점검분기</td>
@@ -52,13 +52,13 @@
               </tr>
               <tr>
                 <td class="detail-title">점검설비</td>
-                <td id="right">발전소경보계통</td>
+                <td id="right">주급수계통/제어서버_2020_1</td>
                 <td class="small-td" id="side"></td>
                 <td class="small-td" id="left"></td>
               </tr>
               <tr>
                 <td class="detail-title">점검내용</td>
-                <td id="right">해당 자산은 8월 28일 진행한 무결성 유지 점검에서 무결성 정보 유치중 상태를 받았음</td>
+                <td id="right">해당 자산은 7월 15일 진행한 무결성 유지 점검에서 무결성 정보 유치중 상태를 받았음</td>
                 <td class="small-td" id="side"></td>
                 <td class="small-td" id="left"></td>
               </tr>

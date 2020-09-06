@@ -149,7 +149,7 @@
                     <p>
                       <span>점검항목 번호</span>
                     </p>
-                      <input type="text" placeholder="11.1"></input>
+                      <input type="text" placeholder="1.1.1"></input>
                       <p>
                         <span>점검항목 중요도</span>
                       <select class="" name="">
