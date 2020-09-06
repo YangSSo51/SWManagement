@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sw.web.mapper.assetPurchaseMapper">
+  
+
+     <insert id="insert"> 
+   		insert into asset_purchase values
+ 		(#{asset_id}, #{date},#{person},#{tech_list},#{secure_coding},#{integ_check},#{ransom},#{seal_damage},#{performance},#{confirm})
+     </insert> 
+     
+ 	
+     <select id="selectById" resultType="AssetPurchaseVO">
+ 		select * from asset_purchase where asset_id = #{asset_id}
+     </select>
+ 	
+     <select id="selectAll" resultType="AssetPurchaseVO">
+     <![CDATA[
+ 		select * from asset_purchase
+      ]]> 
+     </select>
+ 		
+</mapper>  
