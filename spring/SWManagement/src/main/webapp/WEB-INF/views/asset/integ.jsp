@@ -30,9 +30,9 @@
       </header>
 <%@ include file="navbar.jsp"%>
         <div class="right-container">
-            <form class="center_form" >
-              <input type="search" name="" value="" placeholder="자산명 입력">
-              <button type="button" name="button">검색</button>
+            <form class="center_form" action="<c:url value="/asset/read/"/>" method="GET" >
+              <input type="search" name="name" value="" placeholder="자산명 입력">
+              <button type="submit" name="button">검색</button>
             </form>
             <div class="tab-group">
               <a href="<c:url value="/asset/integ/2"/>"><button type="button" name="button" class="white">PLC</button></a>
@@ -106,6 +106,7 @@
     	            }
     	        }
     	    });
+    	    location.reload();
     	})
   </script>
   

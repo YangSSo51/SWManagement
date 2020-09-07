@@ -16,7 +16,7 @@
      </select>
  	
  	 <select id="selectByName" resultType="AssetManageVO">
- 		select * from asset_manage where asset_name = #{asset_name}
+ 		select * from asset_manage where asset_name LIKE CONCAT('%',#{asset_name},'%') 
      </select>
      
      <select id="selectAll" resultType="AssetManageVO">

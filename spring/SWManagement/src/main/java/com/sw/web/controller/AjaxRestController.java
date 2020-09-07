@@ -26,18 +26,21 @@ public class AjaxRestController {
     	System.out.println(data);
     	JsonParser jsonParser = new JsonParser();
     	JsonObject jo = (JsonObject) jsonParser.parse(data);
-    	JsonArray array = jo.get("vo").getAsJsonArray();
-    	JsonObject object;
-    	for(int i=0;i<array.size();i++) {
-        	AssetManageVO vo = new AssetManageVO();
-    		object = (JsonObject) array.get(i);
-    		vo.setAsset_id(object.get("asset_id").getAsInt());
-    		vo.setInteg_check(object.get("integ_check").getAsString());
-    		vo.setHw_access(object.get("hw_access").getAsString());
-    		vo.setHash_logic(object.get("hash_logic").getAsString());
-    		vo.setHash_engine(object.get("hash_engine").getAsString());
-
-    		AssetManageService.updateServer(vo);
+    	System.out.println(jo.get("vo").getAsJsonArray().isJsonNull());
+    	if(!jo.get("vo").getAsJsonArray().isJsonNull()) {
+	    	JsonArray array = jo.get("vo").getAsJsonArray();
+	    	JsonObject object;
+	    	for(int i=0;i<array.size();i++) {
+	        	AssetManageVO vo = new AssetManageVO();
+	    		object = (JsonObject) array.get(i);
+	    		vo.setAsset_id(object.get("asset_id").getAsInt());
+	    		vo.setInteg_check(object.get("integ_check").getAsString());
+	    		vo.setHw_access(object.get("hw_access").getAsString());
+	    		vo.setHash_logic(object.get("hash_logic").getAsString());
+	    		vo.setHash_engine(object.get("hash_engine").getAsString());
+	
+	    		AssetManageService.updateServer(vo);
+	    	}
     	}
 	return "redirect:/asset/read/list";
 	}
