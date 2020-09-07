@@ -28,7 +28,7 @@
           </div>
         </div>
       </header>
-<%@ include file="navbar.jsp"%>
+<%@ include file="../navbar.jsp"%>
         <div class="right-container">
             <form class="center_form" action="<c:url value="/asset/read/"/>" method="GET" >
               <input type="search" name="name" value="" placeholder="자산명 입력">

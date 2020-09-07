@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sw.web.mapper.integKeepMapper">
+  
+   <insert id="insert"> 
+   		insert into integ_keep values
+ 		( #{integ_id},#{version},#{year},#{date},#{person},#{content},#{cycle},#{compare},#{hw_access},#{asset_id},#{result})
+     </insert> 
+ 	
+ 	<select id="selectAll" resultType="IntegKeepVO">
+     <![CDATA[
+ 		select * from integ_keep
+      ]]> 
+     </select>
+     
+ 	 <select id="selectById" resultType="IntegKeepVO">
+ 		select * from integ_keep where integ_id = #{id}
+     </select> 
+     
+     <select id="selectByAssetId" resultType="IntegKeepVO">
+ 		select * from integ_keep where asset_id = #{id}
+     </select>
+ 	
+ 	 <select id="selectBySearch" resultType="IntegKeepVO">
+ 		select * from integ_keep where asset_id=#{id}
+     </select>
+     
+     
+    <update id="update">
+	 	update integ_keep set cycle=#{cycle}, person=#{person},content=#{content},result=#{result}
+		 where integ_id=#{integ_id}
+    </update>
+
+ 
+    <delete id="delete">
+		delete from integ_keep where integ_id = #{id}
+    </delete>
+ 		
+</mapper>  

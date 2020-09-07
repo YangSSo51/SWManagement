@@ -10,23 +10,29 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.AssetPurchaseVO;
+import com.sw.web.domain.IntegKeepVO;
 import com.sw.web.service.AssetManageService;
+import com.sw.web.service.IntegKeepService;
 
 @Controller
 @RequestMapping(value="integ")
 public class IntegKeepController {
 	@Autowired
 	private AssetManageService AssetManageService;
+	@Autowired
+	private IntegKeepService IntegKeepService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	//integ_keep에 기본정보 더해줌
 	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public String createAssetPost(@ModelAttribute("Asset") AssetManageVO vo) throws Exception {
+	public String createIntegPost(@ModelAttribute("Asset") AssetManageVO vo) throws Exception {
 		//asset_manage에서 readById로 integ_count값 가져와서 하나 증가시키고 version에 넣어주기
 		//asset_id값 가져와서 넘겨주기
 		AssetManageService.add(vo);
@@ -34,13 +40,23 @@ public class IntegKeepController {
 		return "redirect:/asset/purchase";
 	}
 	
-	//asset_manage 내용 보여줌
+	//integ_keep 내용 보여줌
 	@RequestMapping(value="/read/list",method=RequestMethod.GET)
-	public String readAssetAllGet(Model model) throws Exception {
-		List<AssetManageVO> vo = AssetManageService.readList();
+	public String readIntegAllGet(Model model) throws Exception {
+		List<IntegKeepVO> vo = IntegKeepService.readList();
+		List<AssetManageVO> asset_vo = AssetManageService.readList();
+		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
+		AssetManageVO temp;
+		
+		for(int i=0;i<vo.size();i++) {
+			temp = AssetManageService.readById(vo.get(i).getAsset_id());
+			asset_name.add(temp);
+		}
 		model.addAttribute("vo",vo);
-		//asset_id로 자산명 가져와서 보여주기
-		return "asset/integ";
+		model.addAttribute("asset_name",asset_name);
+		model.addAttribute("asset_vo",asset_vo);
+
+		return "integ/keep";
 	}
 		
 	//자산명,점검연도,적합 여부에 따라 검색결과를 출력해줌
