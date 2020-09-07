@@ -26,7 +26,8 @@ public class AjaxRestController {
     	System.out.println(data);
     	JsonParser jsonParser = new JsonParser();
     	JsonObject jo = (JsonObject) jsonParser.parse(data);
-    	System.out.println(jo.get("vo").getAsJsonArray().isJsonNull());
+    	//System.out.println(jo.get("vo").getAsJsonArray().isJsonNull());
+    	//nullpoint exception
     	if(!jo.get("vo").getAsJsonArray().isJsonNull()) {
 	    	JsonArray array = jo.get("vo").getAsJsonArray();
 	    	JsonObject object;
