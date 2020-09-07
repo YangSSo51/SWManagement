@@ -35,7 +35,10 @@ public class AssetManageServiceImpl implements AssetManageService {
 	public List<AssetManageVO> readByName(String name) throws Exception {
 		return assetManageDAO.readByName(name);
 	}
-		
+	
+	public void updateIntegCount(int integ_count) throws Exception{
+		assetManageDAO.updateIntegCount(integ_count);
+	}
 	public void updatePLC(AssetManageVO vo) throws Exception {
 		assetManageDAO.updatePLC(vo);
 	}

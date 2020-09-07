@@ -44,6 +44,9 @@ public class AssetManageDAOImpl implements AssetManageDAO {
 		return list;
 	}
 
+	public void updateIntegCount(int integ_count) throws Exception{
+		sqlSession.update(namespace+".updateIntegCount",integ_count);
+	}
 	@Override
 	public void updatePLC(AssetManageVO vo) throws Exception {
 	    sqlSession.update(namespace + ".updatePLC", vo);

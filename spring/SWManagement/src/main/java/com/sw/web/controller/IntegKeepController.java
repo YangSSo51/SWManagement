@@ -27,7 +27,7 @@ public class IntegKeepController {
 	//integ_keep에 기본정보 더해줌
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createAssetPost(@ModelAttribute("Asset") AssetManageVO vo) throws Exception {
-		//asset_manage에서 integ_count값 가져와서 하나 증가시키고 version에 넣어주기
+		//asset_manage에서 readById로 integ_count값 가져와서 하나 증가시키고 version에 넣어주기
 		//asset_id값 가져와서 넘겨주기
 		AssetManageService.add(vo);
 		

@@ -12,7 +12,7 @@
      </insert> 
  	 
      <select id="selectById" resultType="AssetManageVO">
- 		select * from asset_manage where asset_id = #{asset_id}
+ 		select * from asset_manage where asset_id = #{id}
      </select>
  	
  	 <select id="selectByName" resultType="AssetManageVO">
@@ -25,6 +25,11 @@
       ]]> 
      </select>
      
+    <update id="updateIntegCount">
+	 	update asset_manage set integ_count=#{integ_count}
+		 where asset_id=#{asset_id}
+    </update>
+    
      <update id="updatePLC">
 	 	update asset_manage set integ_check=#{integ_check},hw_access=#{hw_access},hash_logic=#{hash_logic},
 	 	hash_firm=#{hash_firm},hash_op=#{hash_op},hash_step=#{hash_step}
@@ -37,7 +42,7 @@
     </update>
  
     <delete id="delete">
-		delete from asset_manage where asset_id = #{asset_id}
+		delete from asset_manage where asset_id = #{id}
     </delete>
  		
 </mapper>  
