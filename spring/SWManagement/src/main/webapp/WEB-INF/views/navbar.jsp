@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-    <title>sw°ü¸® ÇÁ·Î±×·¥</title>
+    <title>swê´€ë¦¬ í”„ë¡œê·¸ëž¨</title>
 	<link rel="stylesheet" href="<c:url value="/resources/reset.css"/>">
 	<link rel="stylesheet" href="<c:url value="/resources/main.css"/>">
 </head>
@@ -15,31 +16,31 @@
         <section>
           <nav>
           <div class="dropdown">
-            <button class="dropdown-title">ÀÚ»ê°ü¸®</button>
+            <button class="dropdown-title">ìžì‚°ê´€ë¦¬</button>
               <div class="dropdown-content">
-                <a href="<c:url value="/asset/perchase/desc"/>">ÀÚ»ê ±¸¸Å</a>
-                <a href="<c:url value="/common/code/"/>">°øÅë ÄÚµå °ü¸®</a>
+                <a href="<c:url value="/asset/perchase/desc"/>">ìžì‚° êµ¬ë§¤</a>
+                <a href="<c:url value="/common/code/"/>">ê³µí†µ ì½”ë“œ ê´€ë¦¬</a>
               </div>
           </div>
           <div class="dropdown">
-            <button class="dropdown-title">¹«°á¼º °ü¸® </button>
+            <button class="dropdown-title">ë¬´ê²°ì„± ê´€ë¦¬ </button>
               <div class="dropdown-content">
-               <a href="<c:url value="/asset/integ/2"/>">ÀÚ»ê ¹«°á¼º µî·Ï</a>
-               <a href="<c:url value="/integ/keep/"/>">¹«°á¼º À¯Áö Á¡°Ë</a>
-               <a href="<c:url value="/config/keep/"/>">Çü»ó °ü¸®</a>
+               <a href="<c:url value="/asset/integ/2"/>">ìžì‚° ë¬´ê²°ì„± ë“±ë¡</a>
+               <a href="<c:url value="/integ/keep/"/>">ë¬´ê²°ì„± ìœ ì§€ ì ê²€</a>
+               <a href="<c:url value="/config/keep/"/>">í˜•ìƒ ê´€ë¦¬</a>
              </div>
           </div>
           <div class="dropdown">
-            <button class="dropdown-title" >À§Çè °ü¸® </button>
+            <button class="dropdown-title" >ìœ„í—˜ ê´€ë¦¬ </button>
             <div class="dropdown-content">
-               <a href="<c:url value="/vul/check/"/>">Ãë¾àÁ¡ Á¡°ËÇ×¸ñ</a>
-               <a href="<c:url value="/risk/read/"/>">À§Çè °ü¸®</a>
+               <a href="<c:url value="/vul/check/"/>">ì·¨ì•½ì  ì ê²€í•­ëª©</a>
+               <a href="<c:url value="/risk/read/"/>">ìœ„í—˜ ê´€ë¦¬</a>
            </div>
           </div>
           <div class="dropdown">
-            <button class="dropdown-title">°Ô½ÃÆÇ</button>
+            <button class="dropdown-title">ê²Œì‹œíŒ</button>
             <div class="dropdown-content">
-              <a href="#">°³¹ßÀÚ¿¡°Ô ¹®ÀÇ</a>
+              <a href="#">ê°œë°œìžì—ê²Œ ë¬¸ì˜</a>
              <a href="#">FAQ</a>
            </div>
           </div>

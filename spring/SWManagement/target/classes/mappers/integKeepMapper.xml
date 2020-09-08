@@ -7,8 +7,8 @@
 <mapper namespace="com.sw.web.mapper.integKeepMapper">
   
    <insert id="insert"> 
-   		insert into integ_keep values
- 		( #{integ_id},#{version},#{year},#{date},#{person},#{content},#{cycle},#{compare},#{hw_access},#{asset_id},#{result})
+   		insert into integ_keep (version,year,date,person,content,cycle,compare,hw_access,asset_id,result)values
+ 		(#{version},#{year},#{date},#{person},#{content},#{cycle},#{compare},#{hw_access},#{asset_id},#{result})
      </insert> 
  	
  	<select id="selectAll" resultType="IntegKeepVO">

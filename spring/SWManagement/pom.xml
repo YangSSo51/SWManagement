@@ -32,7 +32,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/m
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
 		<!-- Spring JDBC Artifacts -->
   		<dependency>
             <groupId>org.springframework</groupId>

@@ -32,12 +32,18 @@ public class IntegKeepController {
 	
 	//integ_keep에 기본정보 더해줌
 	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public String createIntegPost(@ModelAttribute("Asset") AssetManageVO vo) throws Exception {
+	public String createIntegPost(@ModelAttribute("integ") IntegKeepVO vo) throws Exception {
 		//asset_manage에서 readById로 integ_count값 가져와서 하나 증가시키고 version에 넣어주기
 		//asset_id값 가져와서 넘겨주기
-		AssetManageService.add(vo);
+		AssetManageVO asset=AssetManageService.readById(vo.getAsset_id());
+		int integ_count = asset.getInteg_count()+1;
+		AssetManageService.updateIntegCount(integ_count);
+		vo.setVersion(asset.getAsset_name()+"_"+vo.getYear()+"_"+integ_count);
 		
-		return "redirect:/asset/purchase";
+		System.out.println(vo.getVersion());
+		IntegKeepService.add(vo);
+		
+		return "redirect:/integ/read/list";
 	}
 	
 	//integ_keep 내용 보여줌

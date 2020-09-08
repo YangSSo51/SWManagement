@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>ÀÚ»ê¹«°á¼º °ü¸®</title>
+<meta charset="utf-8">
+<title>ìì‚°ë¬´ê²°ì„± ê´€ë¦¬</title>
     <style>
     td a{
     	color:green;
@@ -17,14 +16,14 @@
       <header>
         <div class="top">
           <div class="home">
-            <p>»ê¾÷Á¦¾î½Ã½ºÅÛ</p>
-            <p>SW°ü¸® ÇÁ·Î±×·¥</p>
+            <p>ì‚°ì—…ì œì–´ì‹œìŠ¤í…œ</p>
+            <p>SWê´€ë¦¬ í”„ë¡œê·¸ë¨</p>
           </div>
           <div class="menu">
-            	¹«°á¼º À¯Áö Á¡°Ë
+            	ë¬´ê²°ì„± ìœ ì§€ ì ê²€
           </div>
           <div class="login">
-            Admin´Ô
+            Adminë‹˜
           </div>
         </div>
       </header>
@@ -32,26 +31,26 @@
            <div class="right-container">
             <form class="center_form">
               <select class="select" name="">
-                <option value="ÀÚ»ê¸í">ÀÚ»ê¸í</option>
+                <option value="ìì‚°ëª…">ìì‚°ëª…</option>
               </select>
               <select class="select" name="">
-                <option value="Á¡°Ë¿¬µµ">Á¡°Ë¿¬µµ</option>
+                <option value="ì ê²€ì—°ë„">ì ê²€ì—°ë„</option>
               </select>
               <select class="select" name="">
-                <option value="Á¡°Ë°á°ú">Á¡°Ë°á°ú</option>
+                <option value="ì ê²€ê²°ê³¼">ì ê²€ê²°ê³¼</option>
               </select>
-              <button type="button" name="button">°Ë»ö</button>
+              <button type="button" name="button">ê²€ìƒ‰</button>
             </form>
             <table class="list">
               <tr>
-                <th style="width:30px;">¹øÈ£</th>
-                <th>¹«°á¼ºÁ¡°Ëº¸°í¼­</th>
-                <th>Á¡°Ë¿¬µµ</th>
-                <th>Á¡°ËÀÏÀÚ</th>
-                <th>Á¡°Ë¼³ºñ</th>
-                <th>Á¡°ËÁÖ±â</th>
-                <th>Á¡°ËÀÚ</th>
-                <th>Á¡°Ë°á°ú</th>
+                <th style="width:30px;">ë²ˆí˜¸</th>
+                <th>ë¬´ê²°ì„±ì ê²€ë³´ê³ ì„œ</th>
+                <th>ì ê²€ì—°ë„</th>
+                <th>ì ê²€ì¼ì</th>
+                <th>ì ê²€ì„¤ë¹„</th>
+                <th>ì ê²€ì£¼ê¸°</th>
+                <th>ì ê²€ì</th>
+                <th>ì ê²€ê²°ê³¼</th>
               </tr>
                 <c:set var="i" value="0"/>
               <c:forEach items="${vo}" var="vo">
@@ -69,18 +68,18 @@
               </c:forEach>
             </table>
             <div class="button_group">
-                <button type="button" id="modal_open_btn">Ãß°¡</button>
+                <button type="button" id="modal_open_btn">ì¶”ê°€</button>
             </div>
             <div>
-             <form class="" action="/integ/add" method="post">
+             <form class="" action="<c:url value="/integ/add"/>" method="post">
               <div id="modal1">
                 <div class="modal_layer">
                 <div class="middle_modal_content">
                   <div class="modal_title">
-                   	 ¹«°á¼º À¯Áö Á¡°Ë
+                   	 ë¬´ê²°ì„± ìœ ì§€ ì ê²€
                   </div>
                   <p>
-                    <span>ÀÚ»ê¸í</span>
+                    <span>ìì‚°ëª…</span>
                     <select class="" name="asset_id" style="margin-left:20px;">
                       <c:forEach items="${asset_vo}" var="vo">
                       	<option value="${vo.asset_id }" ><c:out value="${vo.asset_name}"/></option>
@@ -88,33 +87,33 @@
                     </select>
                   </p>
                   <p>
-                    <span>Á¡°ËÀÚ</span>
-                    <input type="text" style="margin-left:20px;" placeholder="¾ç¼Ò¿µ" name="person"></input>
+                    <span>ì ê²€ì</span>
+                    <input type="text" style="margin-left:20px;" placeholder="ì–‘ì†Œì˜" name="person"></input>
                   </p>
                   <p>
-                    <span>Á¡°Ë¿¬µµ</span>
+                    <span>ì ê²€ì—°ë„</span>
                     <input type="text" style="margin-left:5px;" placeholder="2020" name="year"></input>
                   </p>
                   <p>
-                    <span>Á¡°ËÀÏÀÚ</span>
+                    <span>ì ê²€ì¼ì</span>
                     <input type="text" style="margin-left:5px;" placeholder="08-28" name="date"></input>
                   </p>
                   <p>
-                    <span>Á¡°ËºĞ±â</span>
+                    <span>ì ê²€ë¶„ê¸°</span>
                     <select class="" name="cycle" style="margin-left:5px;">
-                      <option value="1ºĞ±â">1ºĞ±â</option>
-                      <option value="2ºĞ±â">2ºĞ±â</option>
-                      <option value="3ºĞ±â">3ºĞ±â</option>                      
-                      <option value="4ºĞ±â">4ºĞ±â</option>
+                      <option value="1ë¶„ê¸°">1ë¶„ê¸°</option>
+                      <option value="2ë¶„ê¸°">2ë¶„ê¸°</option>
+                      <option value="3ë¶„ê¸°">3ë¶„ê¸°</option>                      
+                      <option value="4ë¶„ê¸°">4ë¶„ê¸°</option>
                     </select>
                   </p>
-                  <p><span>Á¡°Ë³»¿ë</span></p>
+                  <p><span>ì ê²€ë‚´ìš©</span></p>
                   <div class="textarea">
                     <textarea name="content" rows="4" cols="38"></textarea>
                   </div>
                   <div class="modal_button" style="width:300px;">
-                    <button type="button" id="modal_close_btn">Ãë¼Ò</button>
-                    <button type="button" id="submit" onclick="modal(1,2)">´ÙÀ½</button>
+                    <button type="button" id="modal_close_btn">ì·¨ì†Œ</button>
+                    <button type="button" id="submit" onclick="modal(1,2)">ë‹¤ìŒ</button>
                   </div>
                 </div>
               </div><!--modal layer-->
@@ -123,53 +122,53 @@
                 <div class="modal_layer">
                 <div class="middle_modal_content">
                   <div class="modal_title">
-                    	¹«°á¼º ¸ÅÇÎ
+                    	ë¬´ê²°ì„± ë§¤í•‘
                   </div>
                   <div id="hash_logic">
 	                  <div class="soft-text">
-	                  	¿î¿µ/Á¦¾î·ÎÁ÷ ÇØ½Ã
+	                  	ìš´ì˜/ì œì–´ë¡œì§ í•´ì‹œ
 	                  </div>
 	                  <input type="text" style="width:220px;" name="hash_logic"></input>
-	                  <button type="button" class="bluebtn" id="check1">È®ÀÎ</button>
+	                  <button type="button" class="bluebtn" id="check1">í™•ì¸</button>
                   </div>
                   <div id="hash_firm">
 	                  <div class="soft-text">
-	                	  Á¦¾î½Ã½ºÅÛ Æß ¿ş¾î ÇØ½Ã°ª ÀÔ·Â
+	                	  ì œì–´ì‹œìŠ¤í…œ íŒ ì›¨ì–´ í•´ì‹œê°’ ì…ë ¥
 	                  </div>
 	                  <input type="text" style="width:220px;" name="hash_firm"></input>
-	                  <button type="button" class="bluebtn" id="check2">È®ÀÎ</button>
+	                  <button type="button" class="bluebtn" id="check2">í™•ì¸</button>
                   </div>
                   <div id="hash_op">
 	                  <div class="soft-text">
-	                	  ¿î¿µ¸Å°³º¯¼ö ÇØ½Ã°ª ÀÔ·Â
+	                	  ìš´ì˜ë§¤ê°œë³€ìˆ˜ í•´ì‹œê°’ ì…ë ¥
 	                  </div>
 	                  <input type="text" style="width:220px;" name="hash_op"></input>
-	                  <button type="button" class="bluebtn" id="check3">È®ÀÎ</button>
+	                  <button type="button" class="bluebtn" id="check3">í™•ì¸</button>
                   </div>
                   <div id="hash_step">                  
 	                  <div class="soft-text">
-	                  	¼³Á¤Á¤º¸ ÇØ½Ã°ª ÀÔ·Â
+	                  	ì„¤ì •ì •ë³´ í•´ì‹œê°’ ì…ë ¥
 	                  </div>
 	                  <input type="text" style="width:220px;" name="hash_step"></input>
-	                  <button type="button" class="bluebtn" id="check4">È®ÀÎ</button>
+	                  <button type="button" class="bluebtn" id="check4">í™•ì¸</button>
                   </div>
                   <div id="hash_engine">                  
 	                  <div class="soft-text">
-	                   	 ¿£Áö´Ï¾î¸µ S/W ÇØ½Ã
+	                   	 ì—”ì§€ë‹ˆì–´ë§ S/W í•´ì‹œ
 	                  </div>
 	                  <input type="text" style="width:220px;" name="hash_engine"></input>
-	                  <button type="button" class="bluebtn" id="check5">È®ÀÎ</button>
+	                  <button type="button" class="bluebtn" id="check5">í™•ì¸</button>
                   </div>
                   <input type="text" name="compare"/>
                   <input type="text" name="result"/>
-                  <p><span>H/W Á¡°Ë ¿©ºÎ</span></p>
+                  <p><span>H/W ì ê²€ ì—¬ë¶€</span></p>
                   <div style="margin:3px 0 6px 30%;">
-                    <span>¿¹<input type="checkbox"/></span><span>¾Æ´Ï¿ä<input type="checkbox" name="no2"/></span>
+                    <span>ì˜ˆ<input type="checkbox" name="checkbox" value="O"/></span><span>ì•„ë‹ˆìš”<input type="checkbox" name="checkbox" value="X"/></span>
                   	<input type="text" name="hw_access"></input>
                   </div>
                   <div class="modal_button" style="width:300px;">
-                    <button type="button" id="modal_close_btn">Ãë¼Ò</button>
-                    <button type="submit" >ÀúÀå</button>
+                    <button type="button" id="modal_close_btn">ì·¨ì†Œ</button>
+                    <button type="submit" >ì €ì¥</button>
                   </div>
                 </div>
               </div><!--modal layer-->
@@ -186,74 +185,85 @@
        $("#modal_close_btn").click(function(){
           $("#modal1").attr("style", "display:none");
       });
+
+       $("input[name=checkbox]:checked").each(function() { 
+           console.log( 'checkboxê°’ : '+$(this).val() );
+           $("input[name=hw_access]").val($(this).val());
+       });
       function modal(x,y){
        	  var asset_id = $("select[name=asset_id]").val();
 		  var id;
+
+		  var main_device;
+		  
 		  var hash_logic;
 		  var hash_firm;
 		  var hash_op;
 		  var hash_step;
 		  var hash_engine;
-		  var result = "true";
+		  var compare = 0;
+		  var result
 		  <c:forEach items="${asset_vo}" var="vo">
 			id = "${vo.asset_id}";
 			if(id==asset_id){
 				if("${vo.main_device}"==="PLC" || "${vo.main_device}"==="DCS"){
 		            $("#hash_engine").attr("style", "display:none");
+		            main_device="PLC";
 				}else{
 		            $("#hash_firm").attr("style", "display:none");
 		            $("#hash_op").attr("style", "display:none");
 		            $("#hash_step").attr("style", "display:none");
+		            main_device="PC";
 				}
 			    $("#check1").click(function(){
 			    	hash_logic = $("input[name=hash_logic]").val();
 		            if(hash_logic=="${vo.hash_logic}"){
-				    	alert("¿Ã¹Ù¸¥ ÇØ½¬°ª");
+				    	alert("ì˜¬ë°”ë¥¸ í•´ì‰¬ê°’");
+				    	compare+=1;
 		            }else{
-			            result="false";
-						alert("ÇØ½¬°ªÀÌ ¿Ã¹Ù¸£Áö¾Ê½À´Ï´Ù.")
+						alert("í•´ì‰¬ê°’ì´ ì˜¬ë°”ë¥´ì§€ì•ŠìŠµë‹ˆë‹¤.")
 				    }
-				    $("input[name=result]").val(result);
+				    check(main_device,compare);
 			    });
 			    $("#check2").click(function(){
 			    	hash_firm = $("input[name=hash_firm]").val();
 		            if(hash_engine=="${vo.hash_firm}"){
-				    	alert("¿Ã¹Ù¸¥ ÇØ½¬°ª");
+				    	alert("ì˜¬ë°”ë¥¸ í•´ì‰¬ê°’");
+				    	compare+=1;
 		            }else{
-			            result="false";
-						alert("ÇØ½¬°ªÀÌ ¿Ã¹Ù¸£Áö¾Ê½À´Ï´Ù.")
+						alert("í•´ì‰¬ê°’ì´ ì˜¬ë°”ë¥´ì§€ì•ŠìŠµë‹ˆë‹¤.")
 				    }
-				    $("input[name=result]").val(result);
+				    check(main_device,compare);
 			    });
 			    $("#check3").click(function(){
 			    	hash_op = $("input[name=hash_op]").val();
 		            if(hash_engine=="${vo.hash_op}"){
-				    	alert("¿Ã¹Ù¸¥ ÇØ½¬°ª");
+				    	alert("ì˜¬ë°”ë¥¸ í•´ì‰¬ê°’");
+				    	compare+=1;
 		            }else{
-			            result="false";
-						alert("ÇØ½¬°ªÀÌ ¿Ã¹Ù¸£Áö¾Ê½À´Ï´Ù.")
+						alert("í•´ì‰¬ê°’ì´ ì˜¬ë°”ë¥´ì§€ì•ŠìŠµë‹ˆë‹¤.")
 				    }
-				    $("input[name=result]").val(result);
+				    check(main_device,compare);
 			    });
 			    $("#check4").click(function(){
 				    hash_step = $("input[name=hash_step]").val();
 		            if(hash_engine=="${vo.hash_step}"){
-				    	alert("¿Ã¹Ù¸¥ ÇØ½¬°ª");
+				    	alert("ì˜¬ë°”ë¥¸ í•´ì‰¬ê°’");
+				    	compare+=1;
 		            }else{
-			            result="false";
-						alert("ÇØ½¬°ªÀÌ ¿Ã¹Ù¸£Áö¾Ê½À´Ï´Ù.")
+						alert("í•´ì‰¬ê°’ì´ ì˜¬ë°”ë¥´ì§€ì•ŠìŠµë‹ˆë‹¤.")
 				    }
-				    $("input[name=result]").val(result);
+				    check(main_device,compare);
 			    });
 			    $("#check5").click(function(){
 				    hash_engine = $("input[name=hash_engine]").val();
 		            if(hash_engine=="${vo.hash_engine}"){
-				    	alert("¿Ã¹Ù¸¥ ÇØ½¬°ª");
+				    	alert("ì˜¬ë°”ë¥¸ í•´ì‰¬ê°’");
+				    	compare+=1;
 		            }else{
-			            result="false";
-						alert("ÇØ½¬°ªÀÌ ¿Ã¹Ù¸£Áö¾Ê½À´Ï´Ù.")
+						alert("í•´ì‰¬ê°’ì´ ì˜¬ë°”ë¥´ì§€ì•ŠìŠµë‹ˆë‹¤.")
 				    }
-				    $("input[name=result]").val(result);
+				    check(main_device,compare);
 			    });
 			}
 		  </c:forEach>
@@ -261,30 +271,18 @@
             $("#modal"+x).attr("style", "display:none");
             $("#modal"+y).attr("style", "display:block");
       }
-      function check(x){
-    	  var asset_id = $("select[name=asset_id]").val();
-		  var id;
-		  var hash_logic;
-		  var hash_firm;
-		  var hash_op;
-		  var hash_step;
-		  var hash_engine;
-		  <c:forEach items="${asset_vo}" var="vo">
-			id = "${vo.asset_id}";
-			if(id==asset_id){
-				if("${vo.main_device}"==="PLC" || "${vo.main_device}"==="DCS"){
-		            $("#hash_engine").attr("style", "display:none");
-				}else{
-		            $("#hash_firm").attr("style", "display:none");
-		            $("#hash_op").attr("style", "display:none");
-		            $("#hash_step").attr("style", "display:none");
-				}
-			    $("#modal_close_btn").click(function(){
-		            hash_engine="${vo.hash_engine}";
-			    	alert(hash_engine);
-			    });
+      function check(x,compare){
+          var result;
+			if(x==="PLC"){
+				if(compare==4) result="O";
+				else result="X";
+			}else{
+				if(compare==2) result="O";
+				else result="X";
 			}
-		  </c:forEach>
+		    $("input[name=result]").val(result);
+		    $("input[name=compare]").val(result);
+		    
       }
   </script>
 
