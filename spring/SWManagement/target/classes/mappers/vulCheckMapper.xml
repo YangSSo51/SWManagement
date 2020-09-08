@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace = "com.sw.web.mapper.vulCheckMapper">
+	
+	<insert id = "insert">
+		insert into vul_check (field_num, field, item_num, item, importance) values ( #{field_num}, #{field}, #{item_num}, #{item}, #{importance})
+	</insert>
+	
+	<select id = "selectAll" resultType="VulCheckVO">
+		select * from vul_check
+	</select>
+	
+	<!-- 수정 삭제 넣어야하니..? -->
+
+
+
+</mapper>  
