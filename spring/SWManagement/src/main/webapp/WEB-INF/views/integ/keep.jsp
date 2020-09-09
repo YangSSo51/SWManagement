@@ -159,12 +159,12 @@
 	                  <input type="text" style="width:220px;" name="hash_engine"></input>
 	                  <button type="button" class="bluebtn" id="check5">확인</button>
                   </div>
-                  <input type="text" name="compare"/>
-                  <input type="text" name="result"/>
+                  <input type="text" name="compare" hidden/>
+                  <input type="text" name="result" hidden/>
                   <p><span>H/W 점검 여부</span></p>
                   <div style="margin:3px 0 6px 30%;">
                     <span>예<input type="checkbox" name="checkbox" value="O"/></span><span>아니요<input type="checkbox" name="checkbox" value="X"/></span>
-                  	<input type="text" name="hw_access"></input>
+                  	<input type="text" name="hw_access" hidden></input>
                   </div>
                   <div class="modal_button" style="width:300px;">
                     <button type="button" id="modal_close_btn">취소</button>
@@ -229,7 +229,7 @@
 			    });
 			    $("#check2").click(function(){
 			    	hash_firm = $("input[name=hash_firm]").val();
-		            if(hash_engine=="${vo.hash_firm}"){
+		            if(hash_firm=="${vo.hash_firm}"){
 				    	alert("올바른 해쉬값");
 				    	compare+=1;
 		            }else{
@@ -239,7 +239,7 @@
 			    });
 			    $("#check3").click(function(){
 			    	hash_op = $("input[name=hash_op]").val();
-		            if(hash_engine=="${vo.hash_op}"){
+		            if(hash_op=="${vo.hash_op}"){
 				    	alert("올바른 해쉬값");
 				    	compare+=1;
 		            }else{
@@ -249,13 +249,13 @@
 			    });
 			    $("#check4").click(function(){
 				    hash_step = $("input[name=hash_step]").val();
-		            if(hash_engine=="${vo.hash_step}"){
+		            if(hash_step=="${vo.hash_step}"){
 				    	alert("올바른 해쉬값");
 				    	compare+=1;
 		            }else{
 						alert("해쉬값이 올바르지않습니다.")
-				    }
-				    check(main_device,compare);
+		            }
+					check(main_device,compare);
 			    });
 			    $("#check5").click(function(){
 				    hash_engine = $("input[name=hash_engine]").val();

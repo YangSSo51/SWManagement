@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import com.sw.web.domain.AssetManageVO;
@@ -32,12 +34,27 @@ public class AssetController {
 	}
 	
 	//asset_manage 내용 보여줌
-	@RequestMapping(value="/read/list",method=RequestMethod.GET)
-	public String readAssetAllGet(Model model) throws Exception {
+	@RequestMapping(value="/read/list/{name}",method=RequestMethod.GET)
+	public String readAssetAllGet(@PathVariable("name") String name,Model model) throws Exception {
 		List<AssetManageVO> vo = AssetManageService.readList();
-		model.addAttribute("vo",vo);
-		//설비유형에 따라 다르게 보여주기
-		return "asset/integ";
+		ArrayList<AssetManageVO> plc = new ArrayList<AssetManageVO>();
+		ArrayList<AssetManageVO> pc = new ArrayList<AssetManageVO>();
+		
+		for(int i=0;i<vo.size();i++) {
+			if(vo.get(i).getMain_device().equals("PLC")||vo.get(i).getMain_device().equals("DCS")) {
+				plc.add(vo.get(i));
+			}else {
+				pc.add(vo.get(i));
+			}
+		}
+		if(name.equals("plc")) {
+			model.addAttribute("vo",plc);
+			return "asset/integ_plc";
+		}else {
+			model.addAttribute("vo",pc);
+			return "asset/integ";
+		}
+
 	}
 		
 	//asset_manage 중 자산명과 asset_name으로 읽어옴 내용 보여줌

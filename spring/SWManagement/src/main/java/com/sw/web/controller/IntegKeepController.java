@@ -56,7 +56,6 @@ public class IntegKeepController {
 	@RequestMapping(value="/read/list",method=RequestMethod.GET)
 	public String readIntegAllGet(Model model) throws Exception {
 		List<IntegKeepVO> vo = IntegKeepService.readList();
-		System.out.println("integ_id : "+vo.get(0).getInteg_id());
 		List<AssetManageVO> asset_vo = AssetManageService.readList();
 		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
 		AssetManageVO temp;
@@ -87,21 +86,20 @@ public class IntegKeepController {
 	public String readIntegByIdGet(@PathVariable("id") int id,Model model) throws Exception {
 		IntegKeepVO vo = IntegKeepService.readById(id);
 		AssetManageVO asset_name = AssetManageService.readById(vo.getAsset_id());
+		List<AssetManageVO> asset_vo = AssetManageService.readList();
+
 		model.addAttribute("vo",vo);
+		model.addAttribute("asset_vo",asset_vo);
 		model.addAttribute("asset_name",asset_name);
+		
 		return "integ/detail";
 	}
 
-	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
-	public String updateIntegGet(@PathVariable("id") int id, Model model) throws Exception {
-		IntegKeepVO vo = IntegKeepService.readById(id);
-		model.addAttribute("vo",vo);
-		return "integ/update";
-	}
+
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public String updateIntegPost(@ModelAttribute("Integ") IntegKeepVO vo) throws Exception {
 		IntegKeepService.update(vo);
-		return "redirect:/integ/read/detail/{id}";
+		return "redirect:/integ/read/detail/"+vo.getInteg_id();
 	}
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
 	public String deleteInteg(@PathVariable("id") int id) throws Exception {
