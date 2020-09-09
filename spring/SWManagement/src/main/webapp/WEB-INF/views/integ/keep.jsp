@@ -55,8 +55,8 @@
                 <c:set var="i" value="0"/>
               <c:forEach items="${vo}" var="vo">
               <tr>
-                <td style="width:30px;">1</td>
-                <td><a href="<c:url value="/integ/keep/detail"/>"><c:out value="${vo.version}"/></a></td>
+                <td style="width:30px;"><c:out value="${i+1}"/></td>
+                <td><a href="<c:url value="/integ/read/detail/${vo.integ_id}"/>"><c:out value="${vo.version}"/></a></td>
                 <td><c:out value="${vo.year}"/></td>
                 <td><c:out value="${vo.date}"/></td>
                 <td>${asset_name[i].asset_name }</td>
@@ -186,9 +186,11 @@
           $("#modal1").attr("style", "display:none");
       });
 
-       $("input[name=checkbox]:checked").each(function() { 
-           console.log( 'checkbox값 : '+$(this).val() );
-           $("input[name=hw_access]").val($(this).val());
+       $("input:checkbox").on('click', function() { 
+           if ( $(this).prop('checked') ) {
+			   $("input[name=hw_access]").val($(this).val());
+	           alert($(this).val());
+		   }
        });
       function modal(x,y){
        	  var asset_id = $("select[name=asset_id]").val();

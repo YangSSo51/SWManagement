@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.AssetPurchaseVO;
 import com.sw.web.domain.IntegKeepVO;
+import com.sw.web.domain.UserVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.IntegKeepService;
 
@@ -37,9 +39,13 @@ public class IntegKeepController {
 		//asset_id값 가져와서 넘겨주기
 		AssetManageVO asset=AssetManageService.readById(vo.getAsset_id());
 		int integ_count = asset.getInteg_count()+1;
-		AssetManageService.updateIntegCount(integ_count);
+		asset.setInteg_count(integ_count);
+		System.out.println("integ_count : "+integ_count);
+		AssetManageService.updateIntegCount(asset);
 		vo.setVersion(asset.getAsset_name()+"_"+vo.getYear()+"_"+integ_count);
 		
+		if(vo.getResult().equals("O") && vo.getHw_access().equals("O")) vo.setResult("적합");
+		else vo.setResult("부적합");
 		System.out.println(vo.getVersion());
 		IntegKeepService.add(vo);
 		
@@ -50,6 +56,7 @@ public class IntegKeepController {
 	@RequestMapping(value="/read/list",method=RequestMethod.GET)
 	public String readIntegAllGet(Model model) throws Exception {
 		List<IntegKeepVO> vo = IntegKeepService.readList();
+		System.out.println("integ_id : "+vo.get(0).getInteg_id());
 		List<AssetManageVO> asset_vo = AssetManageService.readList();
 		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
 		AssetManageVO temp;
@@ -75,7 +82,32 @@ public class IntegKeepController {
 		return "asset/integ";
 	}
 	
+	//상세정보 읽어옴
+	@RequestMapping(value="/read/detail/{id}",method=RequestMethod.GET)
+	public String readIntegByIdGet(@PathVariable("id") int id,Model model) throws Exception {
+		IntegKeepVO vo = IntegKeepService.readById(id);
+		AssetManageVO asset_name = AssetManageService.readById(vo.getAsset_id());
+		model.addAttribute("vo",vo);
+		model.addAttribute("asset_name",asset_name);
+		return "integ/detail";
+	}
 
-
+	@RequestMapping(value="/update/{id}",method=RequestMethod.GET)
+	public String updateIntegGet(@PathVariable("id") int id, Model model) throws Exception {
+		IntegKeepVO vo = IntegKeepService.readById(id);
+		model.addAttribute("vo",vo);
+		return "integ/update";
+	}
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public String updateIntegPost(@ModelAttribute("Integ") IntegKeepVO vo) throws Exception {
+		IntegKeepService.update(vo);
+		return "redirect:/integ/read/detail/{id}";
+	}
+	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
+	public String deleteInteg(@PathVariable("id") int id) throws Exception {
+		//integ_count 하나 줄이기
+		IntegKeepService.delete(id);
+		return "redirect:/integ/read/list";
+	}
 	
 }

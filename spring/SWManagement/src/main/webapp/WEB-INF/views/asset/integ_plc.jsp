@@ -35,8 +35,8 @@
               <button type="submit" name="button">검색</button>
             </form>
             <div class="tab-group">
-              <a href="<c:url value="/asset/integ/2"/>"><button type="button" name="button" class="white">PLC</button></a>
-              <a href="<c:url value="/asset/integ/1"/>"><button type="button" name="button" style="margin-left:-5px;">PC/Server</button></a>
+              <a href="<c:url value="/asset/integ/2"/>"><button type="button" name="button">PLC</button></a>
+              <a href="<c:url value="/asset/integ/1"/>"><button type="button" name="button" class="white" style="margin-left:-5px;">PC/Server</button></a>
             </div>
             <hr>
             <table class="list">

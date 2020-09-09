@@ -1,7 +1,7 @@
 package com.sw.web.domain;
 
 public class IntegKeepVO {
-	private int iteg_id;
+	private int integ_id;
 	private String version;
 	private String year;
 	private String date;
@@ -12,11 +12,11 @@ public class IntegKeepVO {
 	private String hw_access;
 	private int asset_id;
 	private String result;
-	public int getIteg_id() {
-		return iteg_id;
+	public int getInteg_id() {
+		return integ_id;
 	}
-	public void setIteg_id(int iteg_id) {
-		this.iteg_id = iteg_id;
+	public void setInteg_id(int integ_id) {
+		this.integ_id = integ_id;
 	}
 	public String getVersion() {
 		return version;
