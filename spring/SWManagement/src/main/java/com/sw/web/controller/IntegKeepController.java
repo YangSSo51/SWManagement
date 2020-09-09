@@ -98,6 +98,8 @@ public class IntegKeepController {
 
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public String updateIntegPost(@ModelAttribute("Integ") IntegKeepVO vo) throws Exception {
+		if(vo.getResult().equals("O") && vo.getHw_access().equals("O")) vo.setResult("적합");
+		else vo.setResult("부적합");
 		IntegKeepService.update(vo);
 		return "redirect:/integ/read/detail/"+vo.getInteg_id();
 	}
