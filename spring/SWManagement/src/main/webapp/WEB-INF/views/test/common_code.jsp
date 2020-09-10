@@ -42,49 +42,42 @@
                 <th style="width:30px;">id</th>
                 <th>대표코드</th>
                 <th>대표코드명</th>
-                <th>사용여부</th>
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" ></td>
                 <td style="width:30px;">1</td>
                 <td>A1</td>
                 <td>설비유형</td>
-                <td>O</td>
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" ></td>
                 <td style="width:30px;">2</td>
                 <td>A2</td>
                 <td>OS유형</td>
-                <td>O</td>
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" ></td>
                 <td style="width:30px;">3</td>
                 <td>A3</td>
                 <td>무결성대상</td>
-                <td>O</td>
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" ></td>
                 <td style="width:30px;">4</td>
                 <td>A4</td>
                 <td>PLC/DCS S/W 무결성 대상</td>
-                <td>O</td>
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" ></td>
                 <td style="width:30px;">5</td>
                 <td>A5</td>
                 <td>PLC/DCS 정보 무결성 대상</td>
-                <td>O</td>
               </tr>
               <tr>
                 <td style="width:15px;"><input type="checkbox" ></td>
                 <td style="width:30px;">6</td>
                 <td>A6</td>
                 <td>PC/Server S/W 무결성 대상</td>
-                <td>O</td>
               </tr>
             </table>
             <div class="button_group">
@@ -105,13 +98,6 @@
                     <span>코드명</span>
                   </p>
                     <input type="text" placeholder=""></input>
-                  <p><span>사용여부</span></p>
-                    <div class="modal_inner">
-                      <span>예</span>
-                      <label><input type="checkbox"></label>
-                      <span>아니요</span>
-                      <label><input type="checkbox"></label>
-                    </div>
                   </form>
                   <div class="modal_button" style="width:300px;">
                     <button type="button" id="modal_close_btn">취소</button>
