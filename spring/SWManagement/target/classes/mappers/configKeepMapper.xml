@@ -28,17 +28,17 @@
     <update id="update">
 	 	update config_keep set person=#{person},date=#{date},date_start=#{date_start},date_end=#{date_end},work_name=#{work_name},
 	 	work_type=#{work_type},work_content=#{work_content},equipment=#{equipment},memo=#{memo}
-		 where integ_id=#{integ_id}
+		 where config_id=#{config_id}
     </update>
     
     <update id="updateAdmin">
 	 	update config_keep set m_review=#{m_review},m_vul=#{m_vul},m_path=#{m_path},m_infra=#{m_infra},m_locate=#{m_locate},m_okay=#{m_okay}
-		 where integ_id=#{integ_id}
+		 where config_id=#{config_id}
     </update>
 
  
     <delete id="delete">
-		delete from config_keep where integ_id = #{id}
+		delete from config_keep where config_id = #{id}
     </delete>
  		
 </mapper>  

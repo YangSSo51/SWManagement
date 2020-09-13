@@ -42,7 +42,7 @@
               <c:forEach items="${vo}" var="vo">
               <tr>
                 <td style="width:30px;"><c:out value="${i+1 }"/></td>
-                <td>${asset_name[i].asset_name }</td>
+                <td><a href="<c:url value="/config/read/detail/${vo.config_id}"/>"><c:out value="${asset_name[i].asset_name }"/></a></td>
                 <td>${vo.person }</td>
                 <td>${vo.work_name }</td>
                 <td>${vo.work_type }</td>

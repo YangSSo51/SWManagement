@@ -83,6 +83,10 @@ public class ConfigKeepController {
 	
 	@RequestMapping(value="/update/admin",method=RequestMethod.POST)
 	public String updateConfigAdminPost(@ModelAttribute("Config") ConfigKeepVO vo) throws Exception {
+		if(check(vo.getM_review())&&check(vo.getM_vul())&&check(vo.getM_path())&&check(vo.getM_infra())&&check(vo.getM_locate())){
+			vo.setM_okay("O");
+		}
+		else vo.setM_okay("X");
 		ConfigKeepService.updateAdmin(vo);
 		return "redirect:/config/read/detail/"+vo.getConfig_id();
 	}
@@ -93,4 +97,8 @@ public class ConfigKeepController {
 		return "redirect:/config/read/list";
 	}
 	
+	public boolean check(String x) {
+		if(x.equals("O")) return true;
+		else return false;
+	}
 }
