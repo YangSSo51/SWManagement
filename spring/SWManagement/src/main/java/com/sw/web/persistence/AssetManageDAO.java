@@ -10,6 +10,7 @@ public interface AssetManageDAO {
 	public AssetManageVO readById(int id) throws Exception;
 	public List<AssetManageVO> readByName(String name) throws Exception;
 	public void updateIntegCount(AssetManageVO vo) throws Exception;
+	public void updateRiskCount(AssetManageVO vo) throws Exception;
 	public void updatePLC(AssetManageVO vo) throws Exception;
 	public void updateServer(AssetManageVO vo) throws Exception;
 	public void delete(int id) throws Exception;

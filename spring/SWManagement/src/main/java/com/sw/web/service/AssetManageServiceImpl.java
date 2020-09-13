@@ -39,6 +39,11 @@ public class AssetManageServiceImpl implements AssetManageService {
 	public void updateIntegCount(AssetManageVO vo) throws Exception{
 		assetManageDAO.updateIntegCount(vo);
 	}
+	
+	public void updateRiskCount(AssetManageVO vo) throws Exception{
+		assetManageDAO.updateRiskCount(vo);
+	}
+	
 	public void updatePLC(AssetManageVO vo) throws Exception {
 		assetManageDAO.updatePLC(vo);
 	}

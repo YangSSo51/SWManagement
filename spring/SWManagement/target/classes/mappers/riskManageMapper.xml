@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sw.web.mapper.riskManageMapper">
+  
+   <insert id="insert"> 
+   		 insert into risk_manage (version,cycle,date,asset_id)values
+ 		(#{version},#{cycle},#{date},#{asset_id})
+     </insert> 
+ 	
+ 	<select id="selectAll" resultType="RiskManageVO">
+     <![CDATA[
+ 		select * from risk_manage
+      ]]> 
+     </select>
+     
+ 	 <select id="selectById" resultType="RiskManageVO">
+ 		select * from risk_manage where risk_id = #{id}
+     </select> 
+     
+     <select id="selectByAssetId" resultType="RiskManageVO">
+ 		select * from risk_manage where asset_id = #{id}
+     </select>
+ 	
+ 	 <select id="selectBySearch" resultType="RiskManageVO">
+ 		select * from risk_manage where asset_id=#{id}
+     </select>
+     
+     
+    <update id="update">
+	 	update risk_manage set cycle=#{cycle},date=#{date}
+		 where risk_id=#{risk_id}
+    </update>
+
+ 
+    <delete id="delete">
+		delete from risk_manage where risk_id = #{id}
+    </delete>
+ 		
+</mapper>  

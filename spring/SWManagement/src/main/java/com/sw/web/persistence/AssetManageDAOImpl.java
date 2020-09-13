@@ -47,6 +47,11 @@ public class AssetManageDAOImpl implements AssetManageDAO {
 	public void updateIntegCount(AssetManageVO vo) throws Exception{
 		sqlSession.update(namespace+".updateIntegCount",vo);
 	}
+	
+	public void updateRiskCount(AssetManageVO vo) throws Exception{
+		sqlSession.update(namespace+".updateRiskCount",vo);
+	}
+	
 	@Override
 	public void updatePLC(AssetManageVO vo) throws Exception {
 	    sqlSession.update(namespace + ".updatePLC", vo);
