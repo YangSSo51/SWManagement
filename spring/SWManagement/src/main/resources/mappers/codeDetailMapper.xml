@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	
+	
+<mapper namespace = "com.sw.web.mapper.codeDetailMapper">
+
+	<insert id = "insert">
+		insert into common_code_detail (reprec, detailc, detailc_n, use_value) values (#{reprec}, #{detailc}, #{detailc_n}, #{use_value})
+		
+	</insert>
+	<!-- <insert id = "insert">
+		insert into common_code_detail (reprec, detailc, detailc_n, use) values (#{reprec}, #{detailc}, #{detailc_n}, #{use})
+		
+	</insert> -->
+	
+	
+	<select id = "selectAll" resultType="CodeDetailVO">
+		select * from common_code_detail
+	</select>
+	
+	<select id = "selectById" resultType = "CodeDetailVO">
+		select * from common_code_detail where id = #{id}
+	</select>
+
+	
+	
+	<update id="board_update_question">
+       update board set board_id = #{board_id}, board_title = #{board_title}, board_content= #{board_content} , board_upload = #{board_upload}, user_id = #{user_id}, problem_id = #{problem_id} where board_id = #{board_id}
+    </update>
+	
+	<update id = "update">
+		update common_code_detail set reprec=#{reprec}, detailc=#{detailc}, detailc_n=#{detailc_n}, use_value=#{use_value}
+		where id = #{id}
+	</update>
+</mapper> 	

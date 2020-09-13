@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="com.sw.web.mapper.codeMasterMapper">
-  
-
-     <insert id="insert"> 
-   		insert into common_code_master (reprec, reprec_n) values
- 		( #{reprec}, #{reprec_n})
-     </insert> 
- 	
-     <select id="selectById" resultType="CodeMasterVO">
- 		select * from common_code_master where id = #{id}
-     </select>
- 	
-     <select id="selectAll" resultType="CodeMasterVO">
-     <![CDATA[
- 		select * from common_code_master
-      ]]> 
-     </select>
- 	
-     <update id="update">
-	 	update common_code_master set reprec=#{reprec},reprec_n=#{reprec_n}
-		 where id=#{id}
-    </update>
- 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-</mapper>  
+	
+	
+<mapper namespace = "com.sw.web.mapper.codeMasterMapper">
+
+	<insert id = "insert">
+		insert into common_code_master (reprec, reprec_n) values (#{reprec}, #{reprec_n})
+		
+	</insert>
+	
+	<select id = "selectAll" resultType="CodeMasterVO">
+		select * from common_code_master
+	</select>
+	
+	<select id = "selectById" resultType = "CodeMasterVO">
+		select * from common_code_master where id = #{id}
+	</select>
+	<select id = "selectByCodeName" resultType = "CodeMasterVO">
+		select * from common_code_master where reprec = #{reprec}
+	</select>
+	
+	<update id = "update">
+		update common_code_master set reprec=#{reprec}, reprec_n=#{reprec_n}
+		where id = #{id}
+	</update>
+</mapper> 	
