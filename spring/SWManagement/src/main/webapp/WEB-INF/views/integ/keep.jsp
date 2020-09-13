@@ -129,38 +129,38 @@
 	                  	운영/제어로직 해시
 	                  </div>
 	                  <input type="text" style="width:220px;" name="hash_logic"></input>
-	                  <button type="button" class="bluebtn" id="check1">확인</button>
+	                  <button type="button" class="bluebtn" onclick="check(1)">확인</button>
                   </div>
                   <div id="hash_firm">
 	                  <div class="soft-text">
 	                	  제어시스템 펌 웨어 해시값 입력
 	                  </div>
 	                  <input type="text" style="width:220px;" name="hash_firm"></input>
-	                  <button type="button" class="bluebtn" id="check2">확인</button>
+	                  <button type="button" class="bluebtn" onclick="check(2)">확인</button>
                   </div>
                   <div id="hash_op">
 	                  <div class="soft-text">
 	                	  운영매개변수 해시값 입력
 	                  </div>
 	                  <input type="text" style="width:220px;" name="hash_op"></input>
-	                  <button type="button" class="bluebtn" id="check3">확인</button>
+	                  <button type="button" class="bluebtn" onclick="check(3)">확인</button>
                   </div>
                   <div id="hash_step">                  
 	                  <div class="soft-text">
 	                  	설정정보 해시값 입력
 	                  </div>
 	                  <input type="text" style="width:220px;" name="hash_step"></input>
-	                  <button type="button" class="bluebtn" id="check4">확인</button>
+	                  <button type="button" class="bluebtn" onclick="check(4)">확인</button>
                   </div>
                   <div id="hash_engine">                  
 	                  <div class="soft-text">
 	                   	 엔지니어링 S/W 해시
 	                  </div>
 	                  <input type="text" style="width:220px;" name="hash_engine"></input>
-	                  <button type="button" class="bluebtn" id="check5">확인</button>
+	                  <button type="button" class="bluebtn" onclick="check(5)">확인</button>
                   </div>
-                  <input type="text" name="compare" hidden/>
-                  <input type="text" name="result" hidden/>
+                  <input type="text" name="compare" />
+                  <input type="text" name="result" />
                   <p><span>H/W 점검 여부</span></p>
                   <div style="margin:3px 0 6px 30%;">
                     <span>예<input type="checkbox" name="checkbox" value="O"/></span><span>아니요<input type="checkbox" name="checkbox" value="X"/></span>
@@ -178,6 +178,7 @@
             </div><!--right-container-->
   </body>
   <script>
+  var compare=0;
       $("#modal_open_btn").click(function(){
           $("#modal1").attr("style", "display:block");
       });
@@ -194,98 +195,80 @@
        });
       function modal(x,y){
        	  var asset_id = $("select[name=asset_id]").val();
-		  var id;
-
-		  var main_device;
-		  
-		  var hash_logic;
-		  var hash_firm;
-		  var hash_op;
-		  var hash_step;
-		  var hash_engine;
-		  var compare = 0;
-		  var result
-		  <c:forEach items="${asset_vo}" var="vo">
-			id = "${vo.asset_id}";
-			if(id==asset_id){
-				if("${vo.main_device}"==="PLC" || "${vo.main_device}"==="DCS"){
-		            $("#hash_engine").attr("style", "display:none");
-		            main_device="PLC";
-				}else{
-		            $("#hash_firm").attr("style", "display:none");
-		            $("#hash_op").attr("style", "display:none");
-		            $("#hash_step").attr("style", "display:none");
-		            main_device="PC";
-				}
-			    $("#check1").click(function(){
-			    	hash_logic = $("input[name=hash_logic]").val();
-		            if(hash_logic=="${vo.hash_logic}"){
-				    	alert("올바른 해쉬값");
-				    	compare+=1;
-		            }else{
-						alert("해쉬값이 올바르지않습니다.")
-				    }
-				    check(main_device,compare);
-			    });
-			    $("#check2").click(function(){
-			    	hash_firm = $("input[name=hash_firm]").val();
-		            if(hash_firm=="${vo.hash_firm}"){
-				    	alert("올바른 해쉬값");
-				    	compare+=1;
-		            }else{
-						alert("해쉬값이 올바르지않습니다.")
-				    }
-				    check(main_device,compare);
-			    });
-			    $("#check3").click(function(){
-			    	hash_op = $("input[name=hash_op]").val();
-		            if(hash_op=="${vo.hash_op}"){
-				    	alert("올바른 해쉬값");
-				    	compare+=1;
-		            }else{
-						alert("해쉬값이 올바르지않습니다.")
-				    }
-				    check(main_device,compare);
-			    });
-			    $("#check4").click(function(){
-				    hash_step = $("input[name=hash_step]").val();
-		            if(hash_step=="${vo.hash_step}"){
-				    	alert("올바른 해쉬값");
-				    	compare+=1;
-		            }else{
-						alert("해쉬값이 올바르지않습니다.")
-		            }
-					check(main_device,compare);
-			    });
-			    $("#check5").click(function(){
-				    hash_engine = $("input[name=hash_engine]").val();
-		            if(hash_engine=="${vo.hash_engine}"){
-				    	alert("올바른 해쉬값");
-				    	compare+=1;
-		            }else{
-						alert("해쉬값이 올바르지않습니다.")
-				    }
-				    check(main_device,compare);
-			    });
-			}
-		  </c:forEach>
-		  
-            $("#modal"+x).attr("style", "display:none");
-            $("#modal"+y).attr("style", "display:block");
+		  $.ajax({
+				contentType : 'application/json',
+				dataType : 'json',			     
+  	       	    url: "/web/id_check.do",
+	            type: "POST",
+	            data:JSON.stringify({
+					"asset_id":asset_id
+	   		 	}),
+	             success: function(data){              
+		             alert(data);
+	                if(data===1){
+			            $("#hash_engine").attr("style", "display:none");
+					}else{
+			            $("#hash_firm").attr("style", "display:none");
+			            $("#hash_op").attr("style", "display:none");
+			            $("#hash_step").attr("style", "display:none");
+					}
+	             },
+	             error: function(){
+	                 alert("simpleWithObject err");
+	             }
+		  });
+          $("#modal"+x).attr("style", "display:none");
+          $("#modal"+y).attr("style", "display:block");
       }
-      function check(x,compare){
+      function check(x){
+       	  var asset_id = $("select[name=asset_id]").val();
+    	  var hash_logic = $("input[name=hash_logic]").val();
+    	  var hash_firm = $("input[name=hash_firm]").val();
+    	  var hash_op = $("input[name=hash_op]").val();
+    	  var hash_step = $("input[name=hash_step]").val();
+    	  var hash_engine = $("input[name=hash_engine]").val();
+    	  
+		  $.ajax({
+				contentType : 'application/json',
+  	       	    url: "/web/value_check.do",
+	            type: "POST",
+	            data:JSON.stringify({
+					"asset_id":asset_id,
+					"hash_logic":hash_logic,
+					"hash_firm":hash_firm,
+					"hash_op":hash_op,
+					"hash_step":hash_step,
+					"hash_engine":hash_engine,
+					"integ_count":x
+	   		 	}),
+	             success: function(data){
+		            var result = data.split("/");
+		            if(result[0]==="OK"){
+			            compare+=1;
+		            	setResult(result[1],compare);               
+						alert("올바른 해쉬값이 입력되었습니다.");
+		            }else{
+						alert("해쉬값을 확인해주세요");
+				    }
+	             },
+	     		error:function(request, error) {
+	    			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    		}
+		  });
+      }
+      function setResult(x,compare){
           var result;
-			if(x==="PLC"){
-				if(compare==4) result="O";
-				else result="X";
-			}else{
-				if(compare==2) result="O";
-				else result="X";
-			}
-		    $("input[name=result]").val(result);
-		    $("input[name=compare]").val(result);
-		    
+         if(x==="PLC" || x==="DCS"){
+            if(compare==4) result="O";
+            else result="X";
+         }else{
+            if(compare==2) result="O";
+            else result="X";
+         }
+          $("input[name=result]").val(result);
+          $("input[name=compare]").val(result);
       }
+
   </script>
 
 </html>
