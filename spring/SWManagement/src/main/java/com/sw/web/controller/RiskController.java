@@ -29,6 +29,15 @@ public class RiskController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
+	@RequestMapping(value="/add",method=RequestMethod.GET)
+	public String createriskGet(Model model) throws Exception {
+		List<AssetManageVO> asset_vo = AssetManageService.readList();
+		
+		model.addAttribute("asset_vo",asset_vo);
+
+		return "risk/add";
+	}
+	
 	//risk_manage에 정보 더해줌
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createriskPost(@ModelAttribute("risk") RiskManageVO vo) throws Exception {
@@ -79,10 +88,12 @@ public class RiskController {
 	//상세정보 읽어옴
 	@RequestMapping(value="/read/detail/{id}",method=RequestMethod.GET)
 	public String readriskByIdGet(@PathVariable("id") int id,Model model) throws Exception {
+		List<RiskManageVO> list = RiskManageService.readList();
 		RiskManageVO vo = RiskManageService.readById(id);
 		AssetManageVO asset_name = AssetManageService.readById(vo.getAsset_id());
 		List<AssetManageVO> asset_vo = AssetManageService.readList();
 
+		model.addAttribute("list",list);
 		model.addAttribute("vo",vo);
 		model.addAttribute("asset_vo",asset_vo);
 		model.addAttribute("asset_name",asset_name);

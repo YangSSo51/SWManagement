@@ -1,6 +1,9 @@
 package com.sw.web.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +16,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.IntegKeepVO;
+import com.sw.web.domain.RiskManageVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.IntegKeepService;
+import com.sw.web.service.RiskManageService;
 
 @RestController
 @RequestMapping(value="")
@@ -23,6 +28,8 @@ public class AjaxRestController {
 	private AssetManageService AssetManageService;
 	@Autowired
 	private IntegKeepService IntegKeepService;
+	@Autowired
+	private RiskManageService RiskManageService;
 	
 	@PostMapping("/asset/update")    
 	public String restController(@RequestBody String data)  throws Exception {
@@ -111,5 +118,17 @@ public class AjaxRestController {
 			return 1;
 		}
 		else return -1;
+	}
+	
+	@RequestMapping(value = "/risk_select.do", method = RequestMethod.POST)
+	public String restRiskSelectController(@RequestBody RiskManageVO vo)  throws Exception {
+    	int id = vo.getRisk_id();
+    	System.out.println(id);
+    	if(id>0) {
+        	System.out.println("detail페이지");
+    		return "/risk/read/detail/"+id;
+    	}else {
+    		return "/risk/add";
+    	}
 	}
 }

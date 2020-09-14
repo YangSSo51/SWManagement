@@ -5,9 +5,9 @@ import java.util.List;
 import com.sw.web.domain.CodeDetailVO;
 
 public interface CodeDetailDAO {
-	public void add(CodeDetailVO vo) throws Exception; // Ãß°¡	
+	public void add(CodeDetailVO vo) throws Exception; // ì¶”ê°€	
 	public List<CodeDetailVO> readList() throws Exception;
-	public CodeDetailVO read(int id) throws Exception; //id·Î °Ë»öÇØ¼­ °¡Á®¿À±â
-	public void update(CodeDetailVO vo) throws Exception; // ¼öÁ¤ÇÏ±â
+	public CodeDetailVO read(int id) throws Exception; //idë¡œ ê²€ìƒ‰í•´ì„œ ê°€ì ¸ì˜¤ê¸°
+	public void update(CodeDetailVO vo) throws Exception; // ìˆ˜ì •í•˜ê¸°
 
 }

@@ -23,33 +23,29 @@
       </header>
 <%@ include file="../navbar.jsp"%>
           <div class="right-container">
-            <div class="danger-select">
-              <h3>위험 관리 내역을 확인할 버전을 선택하세요</h3>
-              <h3>*위험관리보고서를 추가하려면 '새 버전 추가'를 선택하세요</h3>
-              <select class="" name="risk_id" style="margin-left:20px;">
-                <c:forEach items="${list}" var="vo">
-                	<option value="${vo.risk_id }" ><c:out value="${vo.version}"/></option>
-                </c:forEach>
-                     <option value="0" >새 버전 추가</option>
-              </select>
-              <button type="button" name="button" onclick="select()">선택</button>
-            </div>
+             <form class="" action="<c:url value="/risk/add"/>" method="post">
             <table class="danger-list1">
               <tr>
-                <td style="border-right:none;">(${asset_name.asset_name })의 위험 관리 내역서</td>
+                <td style="border-right:none;">(주급수계통/DCS)의 위험 관리 내역서</td>
                 <td style="border-left:none;" ></td>
               </tr>
               <tr>
                 <td class="small-td">점검일자</td>
-                <td>${vo.date }</td>
+                <td><input type="text" name="date"></td>
               </tr>
               <tr>
                 <td class="small-td">자산명</td>
-                <td>${asset_name.asset_name }</td>
+                <td>
+	              <select class="" name="asset_id">
+	                <c:forEach items="${asset_vo}" var="vo">
+	                	<option value="${vo.asset_id }" ><c:out value="${vo.asset_name}"/></option>
+	                </c:forEach>
+	              </select>
+              </td>
               </tr>
               <tr>
                 <td class="small-td">점검주기</td>
-                <td>${vo.cycle }</td>
+                <td><input type="text" name="cycle" placeholder="점검주기 입력"></td>
               </tr>
             </table>
             <table class="danger-list1" style="border-top:none;">
@@ -111,26 +107,12 @@
                 </select></td>
               </tr>
             </table>
+            <div class="big_button_group">
+              <a href="#"><button class="button" type="submit">완료</button></a>
+            </div>
+            </form>
         </div>
   </body>
-<script>
-function select(){
- 	  var risk_id = $("select[name=risk_id]").val();
-	  $.ajax({
-	 contentType : 'application/json',
-       	  url: "/web/risk_select.do",
-          type: "POST",
-          data:JSON.stringify({
-				"risk_id":risk_id
- 		 	}),
-           success: function(data){              
-   			alert("성공"+data);
-   			window.location.href="/web/"+data;
-           },
-    		error:function(request, error) {
-    			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-    		}
-	  });
-}
-</script>
+
+
 </html>

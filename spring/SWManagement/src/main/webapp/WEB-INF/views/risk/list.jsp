@@ -34,8 +34,8 @@
               <table class="list" style="margin-top:50px;">
                 <tr>
                   <th style="width:30px;">id</th>
-                  <th>자산명</th>
                   <th>위험관리보고서</th>
+                  <th>자산명</th>
                   <th>점검일자</th>
                   <th>점검주기</th>
                 </tr>
@@ -43,8 +43,8 @@
               <c:forEach items="${vo}" var="vo">
                 <tr>
                   <td style="width:30px;"><c:out value="${i+1}"/></td>
+                  <td><a href="<c:url value="/risk/read/detail/${vo.risk_id}"/>"><c:out value="${vo.version}"/></a></td>
                   <td><c:out value="${asset_name[i].asset_name }"/></td>
-                  <td><c:out value="${vo.version}"/></td>
                   <td><c:out value="${vo.date}"/></td>
                   <td><c:out value="${vo.cycle}"/></td>
                 </tr>
