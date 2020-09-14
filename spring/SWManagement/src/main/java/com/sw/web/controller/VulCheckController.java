@@ -19,22 +19,23 @@ import com.sw.web.domain.VulCheckVO;
 import com.sw.web.service.VulCheckService;
 
 @Controller
-@RequestMapping(value="vul") //여기에 테이블 이름 들어감
+@RequestMapping(value="vul")
 public class VulCheckController {
 	
 	@Autowired
 	private VulCheckService VulCheckService;
+	
 	/*
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String createVulPost(@ModelAttribute("")) throws Exception {
 		return "test/vul_check";
 	}
 	*/
-	@RequestMapping(value="/read", method=RequestMethod.GET)
+	@RequestMapping(value="/read/list", method=RequestMethod.GET)
 	public String readVulGet(Model model) throws Exception {
 		List<VulCheckVO> vo = VulCheckService.readList();
-		model.addAttribute("vul",vo);
-		return "test/vul_check";
+		model.addAttribute("vo",vo);
+		return "vul/list";
 	}
 	
 }

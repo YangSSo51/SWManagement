@@ -4,10 +4,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.sw.web.domain.IntegKeepVO;
 import com.sw.web.domain.VulCheckVO;;
 
 public interface VulCheckService {
 	public List<VulCheckVO> readList() throws Exception;
 	public void add(VulCheckVO vo) throws Exception;
-
+	public IntegKeepVO readById(int id) throws Exception;
 }

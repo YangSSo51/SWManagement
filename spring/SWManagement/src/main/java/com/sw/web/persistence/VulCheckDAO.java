@@ -7,6 +7,5 @@ import com.sw.web.domain.VulCheckVO;
 public interface VulCheckDAO {
 	public void add(VulCheckVO vo) throws Exception;
 	public List<VulCheckVO> readList() throws Exception;
-	
-
+	public VulCheckVO readById(int id) throws Exception;
 }

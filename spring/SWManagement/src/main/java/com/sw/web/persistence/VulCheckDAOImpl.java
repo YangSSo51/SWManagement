@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sw.web.domain.IntegKeepVO;
 import com.sw.web.domain.VulCheckVO;
 
 @Repository
@@ -23,11 +24,16 @@ public class VulCheckDAOImpl implements VulCheckDAO {
 	}
 
 	@Override
-	public List<VulCheckVO> readList() throws Exception {
-		List<VulCheckVO> vulList = new ArrayList<VulCheckVO>();
-		vulList = sqlSession.selectList(namespace + ".selectAll");
-		return vulList;
+	public VulCheckVO readById(int id) throws Exception {
+		VulCheckVO vo = sqlSession.selectOne(namespace+".selectById", id);
+		return vo;  
+	}
 
+	@Override
+	public List<VulCheckVO> readList() throws Exception {
+		List<VulCheckVO> list = new ArrayList<VulCheckVO>();
+		list = sqlSession.selectList(namespace + ".selectAll");
+		return list;
 	}
 
 }
