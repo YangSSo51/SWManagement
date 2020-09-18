@@ -17,9 +17,11 @@ import com.google.gson.JsonParser;
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.IntegKeepVO;
 import com.sw.web.domain.RiskManageVO;
+import com.sw.web.domain.RiskStorageVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.IntegKeepService;
 import com.sw.web.service.RiskManageService;
+import com.sw.web.service.RiskStorageService;
 
 @RestController
 @RequestMapping(value="")
@@ -30,6 +32,8 @@ public class AjaxRestController {
 	private IntegKeepService IntegKeepService;
 	@Autowired
 	private RiskManageService RiskManageService;
+	@Autowired
+	private RiskStorageService RiskStorageService;
 	
 	@PostMapping("/asset/update")    
 	public String restController(@RequestBody String data)  throws Exception {
@@ -126,9 +130,26 @@ public class AjaxRestController {
     	System.out.println(id);
     	if(id>0) {
         	System.out.println("detail페이지");
-    		return "/risk/read/detail/"+id;
+    		return "risk/read/detail/"+id;
     	}else {
-    		return "/risk/add";
+    		return "risk/add";
     	}
+	}
+	
+	@RequestMapping(value = "/risk_storage.do", method = RequestMethod.POST)
+	public String restRiskStorageController(@RequestBody RiskStorageVO vo)  throws Exception {
+    	System.out.println("risk_storage");
+    	System.out.println(vo.getResult());
+    	int id = RiskManageService.readList().size()+1;
+    	
+    	for(RiskStorageVO v:vo.getList()) {
+    		v.setRisk_id(id);
+    		System.out.println("risk_id : "+v.getRisk_id());
+    		System.out.println("item_num : "+v.getItem_num());
+    		System.out.println("result : "+v.getResult());
+    		RiskStorageService.add(v);
+    	}
+    	
+    	return "risk/read/list";
 	}
 }

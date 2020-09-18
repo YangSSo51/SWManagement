@@ -28,9 +28,14 @@ public class VulCheckServiceImpl implements VulCheckService {
 	}
 
 	@Override
-	public IntegKeepVO readById(int id) throws Exception {
-		vulcheckDAO.readById(id);
-		return null;
+	public VulCheckVO readById(int id) throws Exception {
+		return vulcheckDAO.readById(id);
 	}
 
+	@Override
+	public VulCheckVO readByItemNum(String id) throws Exception {
+		System.out.println("Service "+id);
+		System.out.println(vulcheckDAO.readByItemNum(id));
+		return vulcheckDAO.readByItemNum(id);
+	}
 }

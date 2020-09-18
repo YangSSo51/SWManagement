@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="<c:url value="/resources/serializeObject.js"/>"></script>
+
 <meta charset="utf-8">
 <title>위험 관리</title>
 </head>
@@ -62,57 +65,89 @@
                 <th class="small-td">중요도</th>
                 <th>이행여부</th>
               </tr>
+              <c:set var="i" value="0"/>
+              <c:forEach items="${list}" var="list">
               <tr>
-                <td class="small-td">1.1</td>
-                <td>계정관리</td>
-                <td class="small-td">1.1</td>
-                <td>필수디지털자산 계정 관리(승인, 사용, 변경, 불용 및 삭제 절차) 및 문서화를 하고 있는가?</td>
-                <td class="small-td">상</td>
-                <td><select class="yn-select" name="">
+              <form name="form">
+              <input type="hidden" name="item_num" value="${list.item_num}"/>
+                <td class="small-td">${list.field_num }</td>
+                <td>${list.field }</td>
+                <td class="small-td">${list.item_num }</td>
+                <td>${list.item}</td>
+                <td class="small-td">${list.importance}</td>
+                <td><select class="yn-select" name="result">
                   <option value="Y">Y</option>
                   <option value="N">N</option>
                 </select></td>
+                </form>
               </tr>
-              <tr>
-                <td class="small-td">1.1</td>
-                <td>계정관리</td>
-                <td class="small-td">1.2</td>
-                <td>검토절차의 수립 및 이에 따른 필수디지털자산 계정의 <br>불법적인 사용 및 변경 여부에 대해 주기적 검토를 하고 있는가?(최소 분기 1회)</td>
-                <td class="small-td">중</td>
-                <td><select class="yn-select" name="">
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
-                </select></td>
-              </tr>
-              <tr>
-                <td class="small-td">1.1</td>
-                <td>계정관리</td>
-                <td class="small-td">1.3</td>
-                <td>주어진 업무를 수행하는데 필요한 만큼의 제한된 접근권한을 각 계정에 부여하고 있는가?</td>
-                <td class="small-td">상</td>
-                <td><select class="yn-select" name="">
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
-                </select></td>
-              </tr>
-              <tr>
-                <td class="small-td">1.1</td>
-                <td>계정관리</td>
-                <td class="small-td">1.4</td>
-                <td>업무의 변경 시 계정에 대한 접근권한 검토를 통해 <br>업무에 기반한 제한된 접근권한이 부여되고 있음을 보장하고 있는가?</td>
-                <td class="small-td">상</td>
-                <td><select class="yn-select" name="">
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
-                </select></td>
-              </tr>
+              <c:set var="i" value="${i+1 }"/>
+              </c:forEach>
             </table>
             <div class="big_button_group">
-              <a href="#"><button class="button" type="submit">완료</button></a>
+              <button class="button" type="submit" onclick="send()">완료</button>
             </div>
             </form>
         </div>
   </body>
+<script>
+/*
+function select(){
+ 	  var risk_id = $("select[name=risk_id]").val();
+	  $.ajax({
+	 contentType : 'application/json',
+       	  url: "/web/risk_select.do",
+          type: "POST",
+          data:JSON.stringify({
+				"risk_id":risk_id
+ 		 	}),
+           success: function(data){              
+   			alert("성공"+data);
+   			window.location.href="/web/"+data;
+           },
+    		error:function(request, error) {
+    			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		}
+	  });
+}
+*/
+function send(){
+	var totData = new Object();
 
+	var dataList = new Array();
+
+    <c:set var="i" value="0"/>
+    <c:forEach items="${list}" var="list">
+		var data = new Object();
+		  i = "${i}";
+		    	
+		data["item_num"] = document.getElementsByName('item_num')[i].value;
+
+		data["result"] = document.getElementsByName('result')[i].value;
+		
+	
+		//data["result"] = $("select[name=result[i+1]]").val();
+	
+		dataList.push(data);
+     <c:set var="i" value="${i+1 }"/>
+	 </c:forEach>
+
+	totData["list"] = dataList;
+	  
+	  $.ajax({
+	 contentType : 'application/json',
+     	  url: "/web/risk_storage.do",
+        type: "POST",
+        data:JSON.stringify(totData),
+         success: function(data){              
+ 			alert("성공"+data);
+ 			window.location.href="/web/"+data;
+         },
+  		error:function(request, error) {
+  			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+  		}
+	  });
+}
+</script>
 
 </html>

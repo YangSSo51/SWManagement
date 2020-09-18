@@ -53,37 +53,39 @@
                 <div id="modal">
                   <div class="modal_layer">
                   <div class="small_modal_content">
+				<form class="" action="<c:url value="/vul/add"/>" method="post">
                     <div class="modal_title">
                      	 통제항목 등록
                     </div>
-                      <form class="" action="index.html" method="post">
                     <p>
                       <span>점검분야 번호</span>
                     </p>
-                      <input type="text" placeholder="1.1"></input>
+                      <input type="text" placeholder="1.1" name="field_num"></input>
                     <p>
                       <span>점검분야</span>
                     </p>
-                      <input type="text" placeholder="계정관리"></input>
+                      <input type="text" placeholder="계정관리" name="field"></input>
                     <p>
                       <span>점검항목 번호</span>
                     </p>
-                      <input type="text" placeholder="1.1.1"></input>
+                      <input type="text" placeholder="1.1.1" name="item_num"></input>
                       <p>
                         <span>점검항목 중요도</span>
-                      <select class="" name="">
-                        <option value="">상</option>
+                      <select class="" name="importance">
+                        <option value="상">상</option>
+                        <option value="중">중</option>
+                        <option value="하">하</option>                        
                       </select>
                     </p>
                       <p>
                         <span>점검항목 내용</span>
                       </p>
-                      <textarea name="name" rows="8" cols="35"></textarea>
-                    </form>
+                      <textarea rows="8" cols="35" name="item"></textarea>
                     <div class="modal_button" style="width:300px;">
                       <button type="button" id="modal_close_btn">취소</button>
-                      <button type="button" id="submit">등록</button>
+                      <button type="submit" id="submit">등록</button>
                     </div>
+                    </form>
                   </div>
                 </div><!--modal layer-->
               </div><!--modal-->

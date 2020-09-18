@@ -16,8 +16,12 @@ import java.util.List;
 
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.RiskManageVO;
+import com.sw.web.domain.RiskStorageVO;
+import com.sw.web.domain.VulCheckVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.RiskManageService;
+import com.sw.web.service.RiskStorageService;
+import com.sw.web.service.VulCheckService;
 
 @Controller
 @RequestMapping(value="risk")
@@ -25,34 +29,39 @@ public class RiskController {
 	@Autowired
 	private AssetManageService AssetManageService;
 	@Autowired
-	private RiskManageService RiskManageService;
+	private RiskManageService RiskManageService;	
+	@Autowired
+	private VulCheckService VulCheckService;
+	@Autowired
+	private RiskStorageService RiskStorageService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public String createriskGet(Model model) throws Exception {
 		List<AssetManageVO> asset_vo = AssetManageService.readList();
-		
 		model.addAttribute("asset_vo",asset_vo);
 
+		//risk storage에  vul list만큼 더해주기
+		List<VulCheckVO> list = VulCheckService.readList();
+		
+		model.addAttribute("list",list);
 		return "risk/add";
 	}
 	
 	//risk_manage에 정보 더해줌
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createriskPost(@ModelAttribute("risk") RiskManageVO vo) throws Exception {
-		//asset_manage에서 readById로 risk_count값 가져와서 하나 증가시키고 version에 넣어주기
-		//asset_id값 가져와서 넘겨주기
+		//자산에 저장된 risk_count값을 기준으로 버전명 넣어주기
 		AssetManageVO asset=AssetManageService.readById(vo.getAsset_id());
 		int risk_count = asset.getRisk_count()+1;
 		asset.setRisk_count(risk_count);
-		System.out.println("risk_count : "+risk_count);
+		//risk_count값 갱신
 		AssetManageService.updateRiskCount(asset);
 		vo.setVersion(asset.getAsset_name()+"_"+risk_count);
-		
-		System.out.println(vo.getVersion());
 		RiskManageService.add(vo);
 		
+
 		return "redirect:/risk/read/list";
 	}
 	
@@ -91,13 +100,23 @@ public class RiskController {
 		List<RiskManageVO> list = RiskManageService.readList();
 		RiskManageVO vo = RiskManageService.readById(id);
 		AssetManageVO asset_name = AssetManageService.readById(vo.getAsset_id());
-		List<AssetManageVO> asset_vo = AssetManageService.readList();
-
+		List<VulCheckVO> vul_list = VulCheckService.readList();
+		List<RiskStorageVO> risk = new ArrayList<RiskStorageVO>();
+		RiskStorageVO temp = new RiskStorageVO();
+		
+		for(int i=0;i<vul_list.size();i++) {
+			temp.setItem_num(vul_list.get(i).getItem_num());
+			temp.setRisk_id(id);
+			temp=RiskStorageService.readByItemNum(temp);
+			risk.add(temp);
+		}
+		
 		model.addAttribute("list",list);
 		model.addAttribute("vo",vo);
-		model.addAttribute("asset_vo",asset_vo);
 		model.addAttribute("asset_name",asset_name);
-		
+		model.addAttribute("vul_list",vul_list);
+		model.addAttribute("risk",risk);
+
 		return "risk/detail";
 	}
 

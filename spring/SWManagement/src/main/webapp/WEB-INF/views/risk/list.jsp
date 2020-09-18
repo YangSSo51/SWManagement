@@ -54,7 +54,7 @@
               </table>
         </div>
         <div class="button_group" style="width:1350px;">
-          <a href="<c:url value="/risk/manage"/>"><button class="button" style="width:80px;">위험관리</button></a>
+          <a href="<c:url value="/risk/add"/>"><button class="button" style="width:80px;">위험관리</button></a>
         </div>
   </body>
 

@@ -36,4 +36,12 @@ public class VulCheckDAOImpl implements VulCheckDAO {
 		return list;
 	}
 
+	@Override
+	public VulCheckVO readByItemNum(String id) throws Exception {
+		System.out.println("DAO "+id);
+		VulCheckVO vo = sqlSession.selectOne(namespace+".selectByItemNum", id);
+		System.out.println(vo.getId());
+		return vo;  
+	}
+
 }

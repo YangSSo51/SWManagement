@@ -31,6 +31,11 @@ public class RiskStorageServiceImpl implements RiskStorageService {
 	}
 	
 	@Override
+	public RiskStorageVO readByItemNum(RiskStorageVO vo) throws Exception {
+		return RiskStorageDAO.readByItemNum(vo);
+	}
+	
+	@Override
 	public void update(RiskStorageVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		RiskStorageDAO.update(vo);

@@ -66,50 +66,18 @@
                 <th class="small-td">중요도</th>
                 <th>이행여부</th>
               </tr>
+               <c:set var="i" value="0"/>
+              <c:forEach items="${vul_list}" var="list">
               <tr>
-                <td class="small-td">1.1</td>
-                <td>계정관리</td>
-                <td class="small-td">1.1</td>
-                <td>필수디지털자산 계정 관리(승인, 사용, 변경, 불용 및 삭제 절차) 및 문서화를 하고 있는가?</td>
-                <td class="small-td">상</td>
-                <td><select class="yn-select" name="">
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
-                </select></td>
+                <td class="small-td">${list.field_num }</td>
+                <td>${list.field }</td>
+                <td class="small-td">${list.item_num }</td>
+                <td>${list.item}</td>
+                <td class="small-td">${list.importance}</td>
+                <td>${risk[i].result }</td>
               </tr>
-              <tr>
-                <td class="small-td">1.1</td>
-                <td>계정관리</td>
-                <td class="small-td">1.2</td>
-                <td>검토절차의 수립 및 이에 따른 필수디지털자산 계정의 <br>불법적인 사용 및 변경 여부에 대해 주기적 검토를 하고 있는가?(최소 분기 1회)</td>
-                <td class="small-td">중</td>
-                <td><select class="yn-select" name="">
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
-                </select></td>
-              </tr>
-              <tr>
-                <td class="small-td">1.1</td>
-                <td>계정관리</td>
-                <td class="small-td">1.3</td>
-                <td>주어진 업무를 수행하는데 필요한 만큼의 제한된 접근권한을 각 계정에 부여하고 있는가?</td>
-                <td class="small-td">상</td>
-                <td><select class="yn-select" name="">
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
-                </select></td>
-              </tr>
-              <tr>
-                <td class="small-td">1.1</td>
-                <td>계정관리</td>
-                <td class="small-td">1.4</td>
-                <td>업무의 변경 시 계정에 대한 접근권한 검토를 통해 <br>업무에 기반한 제한된 접근권한이 부여되고 있음을 보장하고 있는가?</td>
-                <td class="small-td">상</td>
-                <td><select class="yn-select" name="">
-                  <option value="Y">Y</option>
-                  <option value="N">N</option>
-                </select></td>
-              </tr>
+              <c:set var="i" value="${i+1 }"/>
+              </c:forEach>
             </table>
         </div>
   </body>
