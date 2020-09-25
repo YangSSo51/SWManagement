@@ -48,7 +48,16 @@
                 <td>${vo.work_type }</td>
                 <td>${vo.date }</td>
                 <td>${vo.date_start }</td>
-                <td><i class="fa fa-check"></i></td>
+                <td>
+                <c:choose>
+	                <c:when test="${vo.m_okay eq 'O'}">
+	               		<i class="fa fa-check"></i>
+	                </c:when>
+	                <c:otherwise>
+	                   <i class="fa fa-close"></i>
+	                </c:otherwise>
+                </c:choose>
+                </td>
               </tr>
               <c:set var="i" value="${i+1 }"/>
               </c:forEach>
@@ -56,7 +65,6 @@
 
             <div class="button_group">
                 <button type="button" id="modal_open_btn" style="width:80px;">작업 등록</button>
-            	<button type="button" id="modal_open_btn2" style="width:80px;">수정</button>
             </div>
               <div id="modal1">
                 <div class="modal_layer">
@@ -118,34 +126,7 @@
                 </div>
               </div><!--modal layer-->
               </div><!--modal-->
-              <div id="modal2">
-                <div class="modal_layer">
-                <div class="middle_modal_content">
-                  <div class="modal_title">
-              	      작업 신청서 승인
-                  </div>
-          		  <form class="" action="<c:url value="/config/update/admin"/>" method="post">
-                  <p><span>작업 내역 검토</span></p>
-                  <input type="text" style="width:300px;" value="작업 내용을 기능적으로 검토하였습니까?"></input>
-                  <div style="margin:3px 0 6px 30%;">
-                    <span>예<input type="checkbox"></span><span>아니요<input type="checkbox" name="no2"></span>
-                  	<input type="text" name="m_review">
-                  </div>
-                  <p><span>보안 영향도 검사</span></p>
-                  <div style="margin-left:10px;">
-                  <p> 1.취약점을 분석하였습니까?<input style="float:right" type="checkbox" ></p>
-                  <p> 2.연결경로를 검사하였습니까?<input style="float:right" type="checkbox"></p>
-                  <p> 3.정보통신기반시설을 점검하였습니까?<input style="float:right" type="checkbox"></p>
-                  <p> 4.위치 변경을 점검하였습니까?<input style="float:right" type="checkbox"></p>
-                </div>
-                  </form>
-                  <div class="modal_button" style="width:300px;">
-                    <button type="button" id="modal_close_btn">취소</button>
-                    <button type="button" id="submit" style="width:80px;">승인완료</button>
-                  </div>
-                </div>
-              </div><!--modal layer-->
-              </div><!--modal-->
+            
         </div>
   </body>
   <script>

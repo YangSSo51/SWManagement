@@ -25,16 +25,16 @@
           <div class="dropdown">
             <button class="dropdown-title">무결성 관리 </button>
               <div class="dropdown-content">
-               <a href="<c:url value="/asset/integ/2"/>">자산 무결성 등록</a>
-               <a href="<c:url value="/integ/keep/"/>">무결성 유지 점검</a>
-               <a href="<c:url value="/config/keep/"/>">형상 관리</a>
+               <a href="<c:url value="/asset/read/list/2"/>">자산 무결성 등록</a>
+               <a href="<c:url value="/integ/read/list"/>">무결성 유지 점검</a>
+               <a href="<c:url value="/config/read/list"/>">형상 관리</a>
              </div>
           </div>
           <div class="dropdown">
             <button class="dropdown-title" >위험 관리 </button>
             <div class="dropdown-content">
-               <a href="<c:url value="/vul/check/"/>">취약점 점검항목</a>
-               <a href="<c:url value="/risk/read/"/>">위험 관리</a>
+               <a href="<c:url value="/vul/read/list"/>">취약점 점검항목</a>
+               <a href="<c:url value="/risk/read/list"/>">위험 관리</a>
            </div>
           </div>
           <div class="dropdown">

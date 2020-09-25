@@ -67,11 +67,44 @@
               </c:forEach>
             </table>
             <div class="button_group">
-                <button type="button" id="updateBtn">수정</button>
+                <button type="button" id="modal_open_btn">등록하기</button>
+                <div id="modal1">
+                <div class="modal_layer">
+                <div class="middle_modal_content">
+                  <div class="modal_title">
+                    	무결성 매핑
+                  </div>
+                  <div id="hash_logic">
+	                  <div class="soft-text">
+	                  	운영/제어로직 해시
+	                  </div>
+	                  <input type="file" style="margin: 5px 20px;"></input>
+	                  <input type="text" style="width:220px;" name="hash_logic"></input>
+	                  <button type="button" style="margin-top:-10px; margin-left:-20px;" class="bluebtn" onclick="check(1)">변경</button>
+                  </div>
+                  <div id="hash_firm">
+	                  <div class="soft-text">
+	                	  제어시스템 펌 웨어 해시값 입력
+	                  </div>
+	                  <input type="file" style="margin: 5px 20px;"></input>
+	                  <input type="text" style="width:220px;" name="hash_firm"></input>
+	                  <button type="button" style="margin-top:-10px; margin-left:-20px;"  class="bluebtn" onclick="check(2)">변경</button>
+                  </div>
+                  
+                  <div class="modal_button" style="width:300px;">
+                    <button type="button" id="modal_close_btn">취소</button>
+                    <button type="submit" >저장</button>
+                  </div>
+                </div>
+              </div><!--modal layer-->
+              </div><!--modal-->
             </div>
             </div><!--right-container-->
   </body>
   <script>
+  $("#modal_open_btn").click(function(){
+      $("#modal1").attr("style", "display:block");
+  });
   !function(e,i){if("function"==typeof define&&define.amd)define(["exports","jquery"],function(e,r){return i(e,r)});else if("undefined"!=typeof exports){var r=require("jquery");i(exports,r)}else i(e,e.jQuery||e.Zepto||e.ender||e.$)}(this,function(e,i){function r(e,r){function n(e,i,r){return e[i]=r,e}function a(e,i){for(var r,a=e.match(t.key);void 0!==(r=a.pop());)if(t.push.test(r)){var u=s(e.replace(/\[\]$/,""));i=n([],u,i)}else t.fixed.test(r)?i=n([],r,i):t.named.test(r)&&(i=n({},r,i));return i}function s(e){return void 0===h[e]&&(h[e]=0),h[e]++}function u(e){switch(i('[name="'+e.name+'"]',r).attr("type")){case"checkbox":return"on"===e.value?!0:e.value;default:return e.value}}function f(i){if(!t.validate.test(i.name))return this;var r=a(i.name,u(i));return l=e.extend(!0,l,r),this}function d(i){if(!e.isArray(i))throw new Error("formSerializer.addPairs expects an Array");for(var r=0,t=i.length;t>r;r++)this.addPair(i[r]);return this}function o(){return l}function c(){return JSON.stringify(o())}var l={},h={};this.addPair=f,this.addPairs=d,this.serialize=o,this.serializeJSON=c}var t={validate:/^[a-z_][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,key:/[a-z0-9_]+|(?=\[\])/gi,push:/^$/,fixed:/^\d+$/,named:/^[a-z0-9_]+$/i};return r.patterns=t,r.serializeObject=function(){return new r(i,this).addPairs(this.serializeArray()).serialize()},r.serializeJSON=function(){return new r(i,this).addPairs(this.serializeArray()).serializeJSON()},"undefined"!=typeof i.fn&&(i.fn.serializeObject=r.serializeObject,i.fn.serializeJSON=r.serializeJSON),e.FormSerializer=r,r});
    
       function check(x){

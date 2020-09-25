@@ -159,8 +159,8 @@
 	                  <input type="text" style="width:220px;" name="hash_engine"></input>
 	                  <button type="button" class="bluebtn" onclick="check(5)">확인</button>
                   </div>
-                  <input type="text" name="compare" />
-                  <input type="text" name="result" />
+                  <input type="text" name="compare" hidden/>
+                  <input type="text" name="result" hidden/>
                   <p><span>H/W 점검 여부</span></p>
                   <div style="margin:3px 0 6px 30%;">
                     <span>예<input type="checkbox" name="checkbox" value="O"/></span><span>아니요<input type="checkbox" name="checkbox" value="X"/></span>

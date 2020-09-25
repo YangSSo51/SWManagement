@@ -98,7 +98,13 @@ public class ConfigKeepController {
 	}
 	
 	public boolean check(String x) {
-		if(x.equals("O")) return true;
-		else return false;
+		boolean result=false;
+		try {
+			if(x.equals("O")) result=true;
+			else result=false;
+		}catch(NullPointerException e) {
+			System.out.println("null");
+		}
+		return result;
 	}
 }

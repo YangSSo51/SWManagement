@@ -101,16 +101,27 @@ public class RiskController {
 		RiskManageVO vo = RiskManageService.readById(id);
 		AssetManageVO asset_name = AssetManageService.readById(vo.getAsset_id());
 		List<VulCheckVO> vul_list = VulCheckService.readList();
-		List<RiskStorageVO> risk = new ArrayList<RiskStorageVO>();
-		RiskStorageVO temp = new RiskStorageVO();
-		
-		for(int i=0;i<vul_list.size();i++) {
-			temp.setItem_num(vul_list.get(i).getItem_num());
-			temp.setRisk_id(id);
-			temp=RiskStorageService.readByItemNum(temp);
-			risk.add(temp);
+		List<RiskStorageVO> risk = RiskStorageService.readById(id);
+		System.out.println(id);
+		for(int i=0;i<risk.size();i++) {
+			System.out.println(risk.get(i).getItem_num()+" : "+risk.get(i).getResult());
 		}
-		
+		//RiskStorageVO temp = new RiskStorageVO();
+		/*
+		for(int i=0;i<vul_list.size();i++) {
+			//temp.setItem_num(vul_list.get(i).getItem_num());
+			//temp.setRisk_id(id);
+			temp = RiskStorageService.readById(id);
+			try {
+				if(temp.getResult()!=null) {
+					risk.add(temp);
+					System.out.println(temp.getResult());
+				}
+			}catch(NullPointerException e) {
+				System.out.println("null");
+			}
+		}*/
+		System.out.println(risk.size());
 		model.addAttribute("list",list);
 		model.addAttribute("vo",vo);
 		model.addAttribute("asset_name",asset_name);

@@ -139,9 +139,10 @@ public class AjaxRestController {
 	@RequestMapping(value = "/risk_storage.do", method = RequestMethod.POST)
 	public String restRiskStorageController(@RequestBody RiskStorageVO vo)  throws Exception {
     	System.out.println("risk_storage");
-    	System.out.println(vo.getResult());
-    	int id = RiskManageService.readList().size()+1;
     	
+    	int id = RiskManageService.readList().size();
+    	System.out.println(id);
+
     	for(RiskStorageVO v:vo.getList()) {
     		v.setRisk_id(id);
     		System.out.println("risk_id : "+v.getRisk_id());
