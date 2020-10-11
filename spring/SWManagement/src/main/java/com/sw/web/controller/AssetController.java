@@ -16,13 +16,17 @@ import java.util.List;
 
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.AssetPurchaseVO;
+import com.sw.web.domain.RiskManageVO;
 import com.sw.web.service.AssetManageService;
+import com.sw.web.service.AssetPurchaseService;
 
 @Controller
 @RequestMapping(value="asset")
 public class AssetController {
 	@Autowired
 	private AssetManageService AssetManageService;
+	@Autowired
+	private AssetPurchaseService AssetPurchaseService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
@@ -68,17 +72,24 @@ public class AssetController {
 	//asset_purchase 내용 다 채우기
 	@RequestMapping(value="/purchase/add",method=RequestMethod.POST)
 	public String createAssetPurchasePost(@ModelAttribute("asset") AssetPurchaseVO vo) throws Exception {
-		//전체 내용 add
+		AssetPurchaseService.add(vo);
 		return "redirect:/asset/purchase";
 	}
 	
 	//asset_purchase 내용 보여줌
 	@RequestMapping(value="/purchase/read",method=RequestMethod.GET)
 	public String readAssetPurchaseGet(Model model) throws Exception {
-		//List<UserVO> vo = UserSerivce.readUserList();
-		//model.addAttribute("user",vo);
-		//날짜순에 따라 다르게 보여주기
-		//현재시간 가져와서 등록일자 넣어줘야함
+		List<AssetPurchaseVO> vo = AssetPurchaseService.readList();
+		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
+		AssetManageVO temp;
+		
+		for(int i=0;i<vo.size();i++) {
+			temp = AssetManageService.readById(vo.get(i).getAsset_id());
+			System.out.println(i+"번째 데이터 : "+temp.getAsset_name());
+			asset_name.add(temp);
+		}
+		model.addAttribute("vo",vo);
+		model.addAttribute("asset_name",asset_name);
 		return "asset/purchase";
 	}
 

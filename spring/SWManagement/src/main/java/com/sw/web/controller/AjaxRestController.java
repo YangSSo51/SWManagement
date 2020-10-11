@@ -15,10 +15,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.sw.web.domain.AssetManageVO;
+import com.sw.web.domain.AssetPurchaseVO;
 import com.sw.web.domain.IntegKeepVO;
 import com.sw.web.domain.RiskManageVO;
 import com.sw.web.domain.RiskStorageVO;
 import com.sw.web.service.AssetManageService;
+import com.sw.web.service.AssetPurchaseService;
 import com.sw.web.service.IntegKeepService;
 import com.sw.web.service.RiskManageService;
 import com.sw.web.service.RiskStorageService;
@@ -29,11 +31,33 @@ public class AjaxRestController {
 	@Autowired
 	private AssetManageService AssetManageService;
 	@Autowired
+	private AssetPurchaseService AssetPurchaseService;
+	@Autowired
 	private IntegKeepService IntegKeepService;
 	@Autowired
 	private RiskManageService RiskManageService;
 	@Autowired
 	private RiskStorageService RiskStorageService;
+	
+	@ResponseBody
+	@RequestMapping(value = "/asset_add.do", method = RequestMethod.POST)
+	public String restAssetAddController(@RequestBody AssetManageVO vo)  throws Exception {
+    	AssetManageService.add(vo);
+		return "ok";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/asset_purchase.do", method = RequestMethod.POST)
+	public String restAssetPurchaseController(@RequestBody AssetPurchaseVO vo)  throws Exception {
+    	List<AssetManageVO> list= AssetManageService.readList();
+    	int id = list.get(list.size()-1).getAsset_id();
+		
+    	vo.setAsset_id(id);
+    	vo.setConfirm("O");
+    	vo.setDate("10/4");
+		AssetPurchaseService.add(vo);
+		return "asset/purchase/read";
+	}
 	
 	@PostMapping("/asset/update")    
 	public String restController(@RequestBody String data)  throws Exception {
