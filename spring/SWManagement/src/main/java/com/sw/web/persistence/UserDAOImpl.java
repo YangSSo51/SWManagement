@@ -43,17 +43,31 @@ public class UserDAOImpl implements UserDAO {
 	    sqlSession.update(namespace + ".update", user);
 	}
 	
+	
+	
 	public boolean login(UserVO user) throws Exception{
 		String name=sqlSession.selectOne(namespace+".login",user);
 		System.out.println("이름: "+ name);
 		return (name==null)?false:true;
 	}
 	
-
-	@Override
+		
 	public UserVO viewUser(UserVO user) throws Exception {
 		return sqlSession.selectOne(namespace+".viewuser",user);
 	}
+	
+	
+	//아이디 중복체크 플랜b
+	public int idChk(String user_id) {		
+		int result = sqlSession.selectOne(namespace+ ".idChk", user_id);
+		System.out.println("===> Mybatis로 idCheck");
+		return result;
+	}
+	
+	
+	
+	
+	
 
 
 }

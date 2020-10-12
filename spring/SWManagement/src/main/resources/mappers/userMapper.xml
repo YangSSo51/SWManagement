@@ -8,18 +8,18 @@
   
 
      <insert id="insert"> 
-   		insert into user (name, passwd) values
- 		( #{name}, #{passwd})
+   		insert into user (user_id, password, email) values
+ 		( #{user_id}, #{password}, #{email})
      </insert> 
      
  	 <select id="login" resultType="String">
- 	 	select name from user
- 	 	where name=#{name} AND passwd=#{passwd}
+ 	 	select user_id from user
+ 	 	where user_id=#{user_id} AND password=#{password}
  	 </select>
  	 
  	 <select id="viewuser" resultType="UserVO">
  	 	select * from user
- 	 	where name=#{name} AND passwd=#{passwd}
+ 	 	where user_id=#{user_id} AND password=#{password}
  	 </select>
  	
      <select id="selectById" resultType="UserVO">
@@ -33,9 +33,14 @@
      </select>
  	
      <update id="update">
-	 	update user set name=#{name},passwd=#{passwd}
+	 	update user set user_id=#{user_id},password=#{password}
 		 where id=#{id}
     </update>
+    
+    <!-- 아이디 중복체크 -->
+    <select id = "idChk" resultType ="int">
+    	SELECT count(*) from user where user_id = #{user_id}
+    </select>
  
     <delete id="delete">
 		delete from user where id = #{id}
