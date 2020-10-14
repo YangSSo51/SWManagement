@@ -43,19 +43,36 @@ public class AssetController {
 		List<AssetManageVO> vo = AssetManageService.readList();
 		ArrayList<AssetManageVO> plc = new ArrayList<AssetManageVO>();
 		ArrayList<AssetManageVO> pc = new ArrayList<AssetManageVO>();
-		
+		ArrayList<String> check1 = new ArrayList<String>();
+		ArrayList<String> check2 = new ArrayList<String>();
+
 		for(int i=0;i<vo.size();i++) {
 			if(vo.get(i).getMain_device().equals("PLC")||vo.get(i).getMain_device().equals("DCS")) {
 				plc.add(vo.get(i));
+			    try {
+					if(vo.get(i).getHash_logic().length()>0) check1.add("true");
+					else check1.add("false");		 
+			    } catch (NullPointerException ex) {
+					check1.add("false");		 
+			    }
 			}else {
 				pc.add(vo.get(i));
+			    try {
+					if(vo.get(i).getHash_logic().length()>0) check2.add("true");
+					else check2.add("false");		 
+			    } catch (NullPointerException ex) {
+					check2.add("false");		 
+			    }
 			}
 		}
-		if(name.equals("plc")) {
+
+		if(name.equals("1")) {
 			model.addAttribute("vo",plc);
+			model.addAttribute("check",check1);
 			return "asset/integ_plc";
 		}else {
 			model.addAttribute("vo",pc);
+			model.addAttribute("check",check2);
 			return "asset/integ";
 		}
 
