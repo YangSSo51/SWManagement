@@ -31,43 +31,51 @@
               <tr>
                 <th style="width:30px;">id</th>
                 <th>자산명</th>
-                <th>작업 신청서</th>
+                <th>신청자</th>
+                <th>작업명</th>
+                <th>작업종류</th>
                 <th>신청일자</th>
+                <th>작업일자</th>
                 <th>승인여부</th>
               </tr>
               <tr>
                 <td style="width:30px;">1</td>
                 <td>발전소경보계통/MCR OIS</td>
-                <td><button type="button" class="detail-btn">상세보기</button></td>
-                <td>2020-09-30</td>
+                <td>김은지</td>
+                <td>주급수계통 내<br> 프로그램 신규설치</td>
+                <td>프로그램 신규 설치</td>
+                <td>2020-02-24</td>
+                <td>2020-02-24</td>
                 <td><i class="fa fa-check"></i></td>
               </tr>
              <tr>
-                <td style="width:30px;">2</td>
-                <td>주급수계통/제어서버</td>
-                <td><button type="button" class="detail-btn">상세보기</button></td>
-                <td>2020-07-15</td>
+                <td style="width:30px;">1</td>
+                <td>주급수계통/DCS</td>
+                <td>양소영</td>
+                <td>계통 내 DCS 제어 로직 변경</td>
+                <td>로직변경</td>
+                <td>2020-08-28</td>
+                <td>2020-08-28</td>
                 <td><i class="fa fa-close"></i></td>
               </tr>
               <tr>
                 <td style="width:30px;">3</td>
-                <td>제어봉제어계통/PLC </td>
-                <td><button type="button" class="detail-btn">상세보기</button></td>
-                <td>2020-03-02</td>
+                <td>지진감시계통/제어PC</td>
+                <td>권해나</td>
+                <td>지진감시계통 내 PC 프로그램 보안 설정</td>
+                <td>프로그램 업데이트</td>
+                <td>2020-07-31</td>
+                <td>2020-07-31</td>
                 <td><i class="fa fa-check"></i></td>
               </tr>
               <tr>
                 <td style="width:30px;">4</td>
-                <td>지진감시계통/제어PC</td>
-                <td><button type="button" class="detail-btn">상세보기</button></td>
-                <td>2020-03-01</td>
-                <td><i class="fa fa-close"></i></td>
-              </tr>
-              <tr>
-                <td style="width:30px;">5</td>
                 <td>자동지진정지계통/PLC</td>
-                <td><button type="button" class="detail-btn">상세보기</button></td>
-                <td>2020-01-15</td>
+                <td>주소영</td>
+                <td>지진감시계통 내 PC 보안설정</td>
+                <td>프로그램 업데이트</td>
+                <td>2020-08-31</td>
+                <td>2020-08-31</td>
                 <td><i class="fa fa-check"></i></td>
               </tr>
             </table>

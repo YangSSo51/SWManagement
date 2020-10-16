@@ -48,7 +48,7 @@ public class CodeDetailController {
 		for(CodeMasterVO tmp:mvo) {
 			logger.info(tmp.getId()+" " + tmp.getReprec()+ " " + tmp.getReprec_n());
 		}
-		return "test/common_code_detail";
+		return "code/common_code_detail";
 	}
 	
 	/*
@@ -101,7 +101,7 @@ public class CodeDetailController {
 	
 	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public String createCodeDetailGet() throws Exception {
-		return "test/common_code_detail";
+		return "code/common_code_detail";
 	}
 	
 	@RequestMapping(value="/add",method=RequestMethod.POST)

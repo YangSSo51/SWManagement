@@ -30,14 +30,18 @@
 		 where asset_id=#{asset_id}
     </update>
     
+    <update id="updateRiskCount">
+	 	update asset_manage set risk_count=#{risk_count}
+		 where asset_id=#{asset_id}
+    </update>
+    
      <update id="updatePLC">
-	 	update asset_manage set integ_check=#{integ_check},hw_access=#{hw_access},hash_logic=#{hash_logic},
-	 	hash_firm=#{hash_firm},hash_op=#{hash_op},hash_step=#{hash_step}
+	 	update asset_manage set hash_logic=#{hash_logic},hash_firm=#{hash_firm},hash_op=#{hash_op},hash_step=#{hash_step}
 		 where asset_id=#{asset_id}
     </update>
     
     <update id="updateServer">
-	 	update asset_manage set integ_check=#{integ_check},hw_access=#{hw_access},hash_logic=#{hash_logic},hash_engine=#{hash_engine}
+	 	update asset_manage set hash_logic=#{hash_logic},hash_engine=#{hash_engine}
 		 where asset_id=#{asset_id}
     </update>
  

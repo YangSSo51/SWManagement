@@ -557,7 +557,7 @@ hr{
 	border-top:1px solid #dbdbdb;
 	margin-top: 0;
 }
-#modal .small_modal_content, #modal0 .small_modal_content{
+.small_modal_content, #modal0 .small_modal_content{
 	width:300px;
 	margin:80px auto;
 	padding:20px;

@@ -23,8 +23,7 @@
      
      <select id="selectByAssetId" resultType="IntegKeepVO">
  		select * from integ_keep where asset_id = #{id}
-     </select>
- 	
+ 	</select>
  	 <select id="selectBySearch" resultType="IntegKeepVO">
  		select * from integ_keep where asset_id=#{id}
      </select>
