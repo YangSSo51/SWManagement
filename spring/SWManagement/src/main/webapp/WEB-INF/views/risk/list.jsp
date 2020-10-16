@@ -23,13 +23,9 @@
       </header>
 <%@ include file="../navbar.jsp"%>
         <div class="right-container">
-            <form class="center_form">
-              <select class="select" name="">
-                <option value="자산명">자산명</option>
-                <option value="버전">버전</option>
-              </select>
-              <input type="search" name="" value="" placeholder="">
-              <button type="button" name="button">검색</button>
+            <form class="center_form" action="<c:url value="/risk/search"/>" method="POST" >
+              <input type="search" name="search" value="" placeholder="자산명 입력">
+              <button type="submit">검색</button>
             </form>
               <table class="list" style="margin-top:50px;">
                 <tr>

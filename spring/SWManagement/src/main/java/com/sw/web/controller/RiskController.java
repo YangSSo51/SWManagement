@@ -15,8 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sw.web.domain.AssetManageVO;
+import com.sw.web.domain.ConfigKeepVO;
 import com.sw.web.domain.RiskManageVO;
 import com.sw.web.domain.RiskStorageVO;
+import com.sw.web.domain.SearchVO;
 import com.sw.web.domain.VulCheckVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.RiskManageService;
@@ -69,6 +71,36 @@ public class RiskController {
 	@RequestMapping(value="/read/list",method=RequestMethod.GET)
 	public String readriskAllGet(Model model) throws Exception {
 		List<RiskManageVO> vo = RiskManageService.readList();
+		List<AssetManageVO> asset_vo = AssetManageService.readList();
+		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
+		AssetManageVO temp;
+		
+		for(int i=0;i<vo.size();i++) {
+			temp = AssetManageService.readById(vo.get(i).getAsset_id());
+			asset_name.add(temp);
+		}
+		model.addAttribute("vo",vo);
+		model.addAttribute("asset_name",asset_name);
+		model.addAttribute("asset_vo",asset_vo);
+
+		return "risk/list";
+	}
+	
+	@RequestMapping(value="/search",method=RequestMethod.POST)
+	public String readConfigByNameGet(@ModelAttribute("Search") SearchVO search,Model model) throws Exception {
+		List<AssetManageVO> name = AssetManageService.readByName(search.getSearch());
+		List<RiskManageVO> vo = new ArrayList<RiskManageVO>();
+		List<RiskManageVO> risk;
+		System.out.println("name size : "+name.size());
+
+		for(int i=0;i<name.size();i++) {
+			risk = RiskManageService.readByAssetId(name.get(i).getAsset_id());
+			System.out.println("asset_id : "+name.get(i).getAsset_id());
+			for(int j=0;j<risk.size();j++) {
+				vo.add(risk.get(j));
+			}
+		}
+		
 		List<AssetManageVO> asset_vo = AssetManageService.readList();
 		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
 		AssetManageVO temp;

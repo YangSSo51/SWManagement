@@ -65,11 +65,9 @@ public class ConfigKeepController {
 		List<AssetManageVO> name = AssetManageService.readByName(search.getSearch());
 		List<ConfigKeepVO> vo = new ArrayList<ConfigKeepVO>();
 		List<ConfigKeepVO> config;
-		System.out.println("name size : "+name.size());
 
 		for(int i=0;i<name.size();i++) {
 			config = ConfigKeepService.readByAssetId(name.get(i).getAsset_id());
-			System.out.println("asset_id : "+name.get(i).getAsset_id());
 			for(int j=0;j<config.size();j++) {
 				vo.add(config.get(j));
 			}
