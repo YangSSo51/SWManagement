@@ -23,9 +23,9 @@
       </header>
 <%@ include file="../navbar.jsp"%>
           <div class="right-container">
-            <form class="center_form">
-              <input type="search" name="" value="" placeholder="검색어 입력">
-              <button type="button" name="button">검색</button>
+            <form class="center_form" action="<c:url value="/config/search"/>" method="POST" >
+              <input type="search" name="search" value="" placeholder="자산명 입력">
+              <button type="submit">검색</button>
             </form>
             <table class="list">
               <tr>

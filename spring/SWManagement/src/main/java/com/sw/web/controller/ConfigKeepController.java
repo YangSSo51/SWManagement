@@ -18,6 +18,7 @@ import java.util.List;
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.AssetPurchaseVO;
 import com.sw.web.domain.ConfigKeepVO;
+import com.sw.web.domain.SearchVO;
 import com.sw.web.domain.UserVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.ConfigKeepService;
@@ -58,7 +59,36 @@ public class ConfigKeepController {
 
 		return "config/keep";
 	}
+	
+	@RequestMapping(value="/search",method=RequestMethod.POST)
+	public String readConfigByNameGet(@ModelAttribute("Search") SearchVO search,Model model) throws Exception {
+		List<AssetManageVO> name = AssetManageService.readByName(search.getSearch());
+		List<ConfigKeepVO> vo = new ArrayList<ConfigKeepVO>();
+		List<ConfigKeepVO> config;
+		System.out.println("name size : "+name.size());
+
+		for(int i=0;i<name.size();i++) {
+			config = ConfigKeepService.readByAssetId(name.get(i).getAsset_id());
+			System.out.println("asset_id : "+name.get(i).getAsset_id());
+			for(int j=0;j<config.size();j++) {
+				vo.add(config.get(j));
+			}
+		}
 		
+		List<AssetManageVO> asset_vo = AssetManageService.readList();
+		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
+		AssetManageVO temp;
+		
+		for(int i=0;i<vo.size();i++) {
+			temp = AssetManageService.readById(vo.get(i).getAsset_id());
+			asset_name.add(temp);
+		}
+		model.addAttribute("vo",vo);
+		model.addAttribute("asset_name",asset_name);
+		model.addAttribute("asset_vo",asset_vo);
+
+		return "config/keep";
+	}
 	
 	//상세정보 읽어옴
 	@RequestMapping(value="/read/detail/{id}",method=RequestMethod.GET)

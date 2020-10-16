@@ -22,7 +22,7 @@
      </select> 
      
      <select id="selectByAssetId" resultType="ConfigKeepVO">
- 		select * from config_keep where config_id = #{id}
+ 		select * from config_keep where asset_id = #{id}
      </select>    
      
     <update id="update">
