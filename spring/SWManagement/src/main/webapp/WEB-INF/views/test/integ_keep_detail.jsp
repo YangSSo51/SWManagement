@@ -52,13 +52,13 @@
               </tr>
               <tr>
                 <td class="detail-title">점검설비</td>
-                <td id="right">주급수계통/제어서버_2020_1</td>
+                <td id="right">주급수계통/제어서버</td>
                 <td class="small-td" id="side"></td>
                 <td class="small-td" id="left"></td>
               </tr>
               <tr>
                 <td class="detail-title">점검내용</td>
-                <td id="right">해당 자산은 7월 15일 진행한 무결성 유지 점검에서 무결성 정보 유치중 상태를 받았음</td>
+                <td id="right">해당 자산은 7월 15일 진행한 무결성 유지 점검에서 무결성 정보 유지중 상태를 받았음</td>
                 <td class="small-td" id="side"></td>
                 <td class="small-td" id="left"></td>
               </tr>

@@ -42,7 +42,7 @@ public class CommonCodeController {
 	public String readCodeMasterGet(Model model) throws Exception {
 		List<CodeMasterVO> vo = codeMasterService.readList();
 		model.addAttribute("code",vo);
-		return "test/common_code";
+		return "code/common_code";
 	}
 	
 	/*
@@ -51,7 +51,7 @@ public class CommonCodeController {
 	
 	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public String createCodeMasterGet() throws Exception {
-		return "test/common_code";
+		return "code/common_code";
 	}
 	
 	@RequestMapping(value="/add",method=RequestMethod.POST)

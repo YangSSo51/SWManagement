@@ -15,26 +15,49 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
+import com.sw.web.domain.AssetManageVO;
+import com.sw.web.domain.RiskManageVO;
+import com.sw.web.domain.RiskStorageVO;
 import com.sw.web.domain.VulCheckVO;
 import com.sw.web.service.VulCheckService;
+import com.sw.web.service.RiskManageService;
+import com.sw.web.service.RiskStorageService;
 
 @Controller
-@RequestMapping(value="vul") //ø©±‚ø° ≈◊¿Ã∫Ì ¿Ã∏ß µÈæÓ∞®
+@RequestMapping(value="vul")
 public class VulCheckController {
 	
 	@Autowired
 	private VulCheckService VulCheckService;
-	/*
-	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String createVulPost(@ModelAttribute("")) throws Exception {
-		return "test/vul_check";
+	@Autowired
+	private RiskManageService RiskManageSerivce;
+	@Autowired
+	private RiskStorageService RiskStorageService;
+	
+	//vul_checkÏóê Ï†ïÎ≥¥ ÎçîÌï¥Ï§å
+	@RequestMapping(value="/add",method=RequestMethod.POST)
+	public String createriskPost(@ModelAttribute("vul") VulCheckVO vo) throws Exception {
+		VulCheckService.add(vo);
+		
+		/*
+		//risk storageÏóê  risk_idÎßåÌÅº ÎçîÌï¥Ï£ºÍ∏∞
+		List<RiskManageVO> list = RiskManageSerivce.readList();
+		RiskStorageVO temp = new RiskStorageVO();
+		for(int i=0;i<list.size();i++) {
+			temp.setRisk_id(list.get(i).getRisk_id());
+			temp.setItem_num(vo.getItem_num());
+			temp.setResult("NO");
+			RiskStorageService.add(temp);
+		}*/
+				
+		return "redirect:/vul/read/list";
 	}
-	*/
-	@RequestMapping(value="/read", method=RequestMethod.GET)
+	
+	@RequestMapping(value="/read/list", method=RequestMethod.GET)
 	public String readVulGet(Model model) throws Exception {
 		List<VulCheckVO> vo = VulCheckService.readList();
-		model.addAttribute("vul",vo);
-		return "test/vul_check";
+		model.addAttribute("vo",vo);
+		return "vul/list";
 	}
 	
 }

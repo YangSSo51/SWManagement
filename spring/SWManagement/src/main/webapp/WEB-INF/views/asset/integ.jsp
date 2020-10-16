@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -11,103 +11,154 @@
 <script src="<c:url value="/resources/serializeObject.js"/>"></script>
 
 <meta charset="EUC-KR">
-<title>Çü»ó°ü¸®</title>
+<title>í˜•ìƒê´€ë¦¬</title>
 </head>
 <body>
       <header>
         <div class="top">
           <div class="home">
-            <p>»ê¾÷Á¦¾î½Ã½ºÅÛ</p>
-            <p>SW°ü¸® ÇÁ·Î±×·¥</p>
+            <p>ì‚°ì—…ì œì–´ì‹œìŠ¤í…œ</p>
+            <p>SWê´€ë¦¬ í”„ë¡œê·¸ë¨</p>
           </div>
           <div class="menu">
-            	ÀÚ»ê ¹«°á¼º °ü¸®
+            	ìì‚° ë¬´ê²°ì„± ê´€ë¦¬
           </div>
           <div class="login">
-            Admin´Ô
+            Adminë‹˜
           </div>
         </div>
       </header>
 <%@ include file="../navbar.jsp"%>
         <div class="right-container">
             <form class="center_form" action="<c:url value="/asset/read/"/>" method="GET" >
-              <input type="search" name="name" value="" placeholder="ÀÚ»ê¸í ÀÔ·Â">
-              <button type="submit" name="button">°Ë»ö</button>
+              <input type="search" name="name" value="" placeholder="ìì‚°ëª… ì…ë ¥">
+              <button type="submit" name="button">ê²€ìƒ‰</button>
             </form>
             <div class="tab-group">
-              <a href="<c:url value="/asset/integ/2"/>"><button type="button" name="button" class="white">PLC</button></a>
-              <a href="<c:url value="/asset/integ/1"/>"><button type="button" name="button" style="margin-left:-5px;">PC/Server</button></a>
+              <a href="<c:url value="/asset/read/list/1"/>"><button type="button" name="button" class="white">PLC</button></a>
+              <a href="<c:url value="/asset/read/list/2"/>"><button type="button" name="button" style="margin-left:-5px;">PC/Server</button></a>
             </div>
             <hr>
             <table class="list">
               <tr>
-                <th style="width:15px;"></th>
-                <th>ÀÚ»ê¸í</th>
-                <th>¼³ºñÀ¯Çü</th>
-                <th>OSÀ¯Çü</th>
-                <th>¹«°á¼º <br>Á¡°Ë ±â´É <br>º¸À¯ ¿©ºÎ</th>
-                <th>ÇÏµå¿ş¾î<br> Á¢±Ù ÅëÁ¦ ¿©ºÎ</th>
-                <th>¿î¿µ/Á¦¾î·ÎÁ÷<br> ÇØ½Ã °ª ÀÔ·Â</th>
-                <th>¿£Áö´Ï¾î¸µ S/W<br>ÇØ½Ã °ª ÀÔ·Â</th>
+                <th>ìì‚°ëª…</th>
+                <th>ì„¤ë¹„ìœ í˜•</th>
+                <th>OSìœ í˜•</th>
+                <th>ë¬´ê²°ì„± <br>ì ê²€ ê¸°ëŠ¥ <br>ë³´ìœ  ì—¬ë¶€</th>
+                <th>í•˜ë“œì›¨ì–´<br> ì ‘ê·¼ í†µì œ ì—¬ë¶€</th>
+                <th>ìš´ì˜/ì œì–´ë¡œì§<br> í•´ì‹œ ê°’ ì…ë ¥</th>
+                <th>ì—”ì§€ë‹ˆì–´ë§ S/W<br>í•´ì‹œ ê°’ ì…ë ¥</th>
               </tr>
+              <c:set var="i" value="0"/>
               <c:forEach items="${vo}" var="vo">
               <tr>
-                <td style="width:15px;"><input type="checkbox" name="check" onclick="check(${vo.asset_id})"></td>
-                <form name="form">
-	                <input type="text" name="vo[${vo.asset_id}][asset_id]" value="${vo.asset_id}" hidden disabled>
 	                <td><c:out value="${vo.asset_name }"/></td>
 	                <td><c:out value="${vo.main_device}"/></td>
 	                <td><c:out value="${vo.sub_device}"/></td>
-	                <td><input type="text" name="vo[${vo.asset_id}][integ_check]" value="${vo.integ_check}" disabled></td>
-	                <td><input type="text" name="vo[${vo.asset_id}][hw_access]" value="${vo.hw_access}" disabled></td>
-	                <td><input type="text" name="vo[${vo.asset_id}][hash_logic]" value="${vo.hash_logic}" disabled></td>
-	                <td><input type="text" name="vo[${vo.asset_id}][hash_engine]" value="${vo.hash_engine}" disabled></td>
-              	</form>
+	                <td>${vo.integ_check}</td>
+	                <td>${vo.hw_access}</td>
+	                <c:choose>
+	                	<c:when test ="${check[i] eq 'true'}">
+	                		<td colspan="2">ì´ë¯¸ í•´ì‰¬ê°’ì´ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.</td>
+		           		</c:when>
+		           		<c:otherwise>
+		           			<td colspan="2"><button type="button" style="width:100px; margin:3px 0;" id="modal_open_btn">í•´ì‹œê°’ ë“±ë¡</button></td>
+		           		</c:otherwise>
+		           </c:choose>
+		           <div id="modal1">
+	                <div class="modal_layer">
+	                <div class="middle_modal_content">
+	                  <div class="modal_title">
+	                    	ë¬´ê²°ì„± ë§¤í•‘
+	                  </div>
+	                  <input type="text" name="asset_id" value="${vo.asset_id}" hidden></input>
+	                  <div id="hash_logic">
+		                  <div class="soft-text">
+		                  	ìš´ì˜/ì œì–´ë¡œì§ í•´ì‹œ
+		                  </div>
+		                  <form method="POST" enctype="multipart/form-data" name="fileUploadForm">
+		                  	<input type="file" name="file" style="margin: 5px 20px;"></input>
+		                  </form>
+		                  <input type="text" style="width:220px;" name="hash_logic"></input>
+		                  <button type="button" style="margin-top:-10px; margin-left:0;" class="bluebtn" onclick="send(0)">ë³€ê²½</button>
+	                  </div>
+	                  <div id="hash_firm">
+		                  <div class="soft-text">
+		                	 ì—”ì§€ë‹ˆì–´ë§ í•´ì‹œê°’ ì…ë ¥
+		                  </div>
+		                  <form method="POST" enctype="multipart/form-data" name="fileUploadForm">
+		                  <input type="file" name="file" style="margin: 5px 20px;"></input>
+		                  </form>
+		                  <input type="text" style="width:220px;" name="hash_engine"></input>
+		                  <button type="button" style="margin-top:-10px; margin-left:0;"  class="bluebtn" onclick="send(1)">ë³€ê²½</button>
+	                  </div>
+	                  
+	                  <div class="modal_button" style="width:300px;">
+	                    <button type="button" id="modal_close_btn">ì·¨ì†Œ</button>
+	                    <button type="submit" onclick="update()" >ì €ì¥</button>
+	                  </div>
+	                </div>
+	              </div><!--modal layer-->
+	              </div><!--modal-->
               </tr>
+              <c:set var="i" value="${i+1 }"/>
               </c:forEach>
             </table>
-            <div class="button_group">
-                <button type="button" id="updateBtn">¼öÁ¤</button>
-            </div>
             </div><!--right-container-->
   </body>
   <script>
-  !function(e,i){if("function"==typeof define&&define.amd)define(["exports","jquery"],function(e,r){return i(e,r)});else if("undefined"!=typeof exports){var r=require("jquery");i(exports,r)}else i(e,e.jQuery||e.Zepto||e.ender||e.$)}(this,function(e,i){function r(e,r){function n(e,i,r){return e[i]=r,e}function a(e,i){for(var r,a=e.match(t.key);void 0!==(r=a.pop());)if(t.push.test(r)){var u=s(e.replace(/\[\]$/,""));i=n([],u,i)}else t.fixed.test(r)?i=n([],r,i):t.named.test(r)&&(i=n({},r,i));return i}function s(e){return void 0===h[e]&&(h[e]=0),h[e]++}function u(e){switch(i('[name="'+e.name+'"]',r).attr("type")){case"checkbox":return"on"===e.value?!0:e.value;default:return e.value}}function f(i){if(!t.validate.test(i.name))return this;var r=a(i.name,u(i));return l=e.extend(!0,l,r),this}function d(i){if(!e.isArray(i))throw new Error("formSerializer.addPairs expects an Array");for(var r=0,t=i.length;t>r;r++)this.addPair(i[r]);return this}function o(){return l}function c(){return JSON.stringify(o())}var l={},h={};this.addPair=f,this.addPairs=d,this.serialize=o,this.serializeJSON=c}var t={validate:/^[a-z_][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,key:/[a-z0-9_]+|(?=\[\])/gi,push:/^$/,fixed:/^\d+$/,named:/^[a-z0-9_]+$/i};return r.patterns=t,r.serializeObject=function(){return new r(i,this).addPairs(this.serializeArray()).serialize()},r.serializeJSON=function(){return new r(i,this).addPairs(this.serializeArray()).serializeJSON()},"undefined"!=typeof i.fn&&(i.fn.serializeObject=r.serializeObject,i.fn.serializeJSON=r.serializeJSON),e.FormSerializer=r,r});
-   
-      function check(x){
-  		if($("input[name=check]").is(":checked")){ 
-				document.getElementsByName('vo['+x+'][asset_id]')[0].removeAttribute("disabled");
-    			document.getElementsByName('vo['+x+'][integ_check]')[0].removeAttribute("disabled");
-    			document.getElementsByName('vo['+x+'][hw_access]')[0].removeAttribute("disabled");
-    			document.getElementsByName('vo['+x+'][hash_logic]')[0].removeAttribute("disabled");
-    			document.getElementsByName('vo['+x+'][hash_engine]')[0].removeAttribute("disabled");
-    			
-   		}else {
-   			document.getElementsByName('vo['+x+'][asset_id]')[0].setAttribute("disabled",true);
-   			document.getElementsByName('vo['+x+'][integ_check]')[0].setAttribute("disabled",true);
-   			document.getElementsByName('vo['+x+'][hw_access]')[0].setAttribute("disabled",true);
-   			document.getElementsByName('vo['+x+'][hash_logic]')[0].setAttribute("disabled",true);
-   			document.getElementsByName('vo['+x+'][hash_engine]')[0].setAttribute("disabled",true);
-   		}
-   		
-   	}
-      $('#updateBtn').on('click', function(){
-    		var form = {}
-    		form = $('form').serializeObject();
-    	    $.ajax({
-    	        url: "/web/asset/update",
-    	        type: "POST",
-    	        data: JSON.stringify(form),
-    	        contentType: "application/json; charset=utf-8;",
-    	        dataType: "json",
-    	        success: function(data){
-    	            for(var i=0; i<data.length; i++){
-    	                $('#result').append(data[i]);
-    	            }
-    	        }
-    	    });
-    	    location.reload();
-    	})
+  $("#modal_open_btn").click(function(){
+      $("#modal1").attr("style", "display:block");
+  });
+  function send(x){
+	  var data = new FormData();
+	  data.append("file",$("input[name=file]")[x].files[0]);
+
+      alert(data);
+	  $.ajax({
+			contentType : 'application/json',
+			enctype: 'multipart/form-data',
+			//dataType : 'json',	
+		    contentType : false,
+		    processData : false,
+	       	url: "/web/file.do",
+            type: "POST",
+            data:data,
+             success: function(data){              
+	            alert(data);
+	      	    if(x==0) $("input[name=hash_logic]").attr('value',data);
+	      	    if(x==1) $("input[name=hash_engine]").attr('value',data);
+             },
+     		error:function(request, error) {
+    			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		}
+	  });
+  }
+  function update(){
+	  var hash_logic = $("input[name=hash_logic]").val();
+	  var hash_engine = $("input[name=hash_engine]").val();
+	  var asset_id = $("input[name=asset_id]").val();
+
+	  $.ajax({
+			contentType : 'application/json',
+	        contentType: "application/json; charset=utf-8;",
+	       	url: "/web/asset_update.do",
+            type: "POST",
+            data:JSON.stringify({
+				"asset_id":asset_id,
+				"hash_logic":hash_logic,
+				"hash_engine":hash_engine,
+				"main_device":2,
+   		 	}),
+             success: function(data){              
+	   			window.location.href="/web/"+data;
+             },
+     		error:function(request, error) {
+    			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		}
+	  });
+
+  }
   </script>
   
 </html>

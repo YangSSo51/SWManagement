@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sw.web.persistence.VulCheckDAO;
+import com.sw.web.domain.IntegKeepVO;
 import com.sw.web.domain.VulCheckVO;
 
 @Service
@@ -26,4 +27,15 @@ public class VulCheckServiceImpl implements VulCheckService {
 
 	}
 
+	@Override
+	public VulCheckVO readById(int id) throws Exception {
+		return vulcheckDAO.readById(id);
+	}
+
+	@Override
+	public VulCheckVO readByItemNum(String id) throws Exception {
+		System.out.println("Service "+id);
+		System.out.println(vulcheckDAO.readByItemNum(id));
+		return vulcheckDAO.readByItemNum(id);
+	}
 }
