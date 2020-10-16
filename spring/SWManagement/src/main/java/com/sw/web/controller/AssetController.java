@@ -124,21 +124,40 @@ public class AssetController {
 	}
 	
 	//asset_purchase 내용 보여줌
-	@RequestMapping(value="/purchase/read",method=RequestMethod.GET)
-	public String readAssetPurchaseGet(Model model) throws Exception {
-		List<AssetPurchaseVO> vo = AssetPurchaseService.readList();
+	@RequestMapping(value="/purchase/read/{num}",method=RequestMethod.GET)
+	public String readAssetPurchaseGet(@PathVariable("num") String num,Model model) throws Exception {
+		 List<AssetPurchaseVO> vo;
+		if(num.equals("1")) vo = AssetPurchaseService.readList();
+		else vo = AssetPurchaseService.readListReverse();
 		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
 		AssetManageVO temp;
 		
 		for(int i=0;i<vo.size();i++) {
 			temp = AssetManageService.readById(vo.get(i).getAsset_id());
-			System.out.println(i+"번째 데이터 : "+temp.getAsset_name());
 			asset_name.add(temp);
 		}
 		model.addAttribute("vo",vo);
 		model.addAttribute("asset_name",asset_name);
 		return "asset/purchase";
 	}
-
+	@RequestMapping(value="/purchase/search/{num}",method=RequestMethod.POST)
+	public String readAssetPurchaseByNameGet(@PathVariable("num") String num,@ModelAttribute("Search") SearchVO search,Model model) throws Exception {
+		List<AssetManageVO> name = AssetManageService.readByName(search.getSearch());
+		List<AssetPurchaseVO> vo = new ArrayList<AssetPurchaseVO>();
+		for(int i=0;i<name.size();i++) {
+			vo.add(AssetPurchaseService.readById(name.get(i).getAsset_id()));
+		}
+		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
+		AssetManageVO temp;
+		System.out.println("search : "+search.getSearch());
+		System.out.println("vo크기:"+vo.size());
+		for(int i=0;i<vo.size();i++) {
+			temp = AssetManageService.readById(vo.get(i).getAsset_id());
+			asset_name.add(temp);
+		}
+		model.addAttribute("vo",vo);
+		model.addAttribute("asset_name",asset_name);
+		return "asset/purchase";
+	}
 	
 }

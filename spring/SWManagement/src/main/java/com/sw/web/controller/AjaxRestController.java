@@ -3,6 +3,8 @@ package com.sw.web.controller;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +64,10 @@ public class AjaxRestController {
 		
     	vo.setAsset_id(id);
     	vo.setConfirm("O");
-    	vo.setDate("10/4");
+    	SimpleDateFormat format = new SimpleDateFormat ( "MM.dd");
+    	Date time = new Date();
+		
+    	vo.setDate(format.format(time));
 		AssetPurchaseService.add(vo);
 		return "asset/purchase/read";
 	}
@@ -198,7 +203,6 @@ public class AjaxRestController {
         
         while((text=br.readLine())!=null) {
         	result+=text;
-        	System.out.println(text);
         }
 		System.out.println("파일전송 성공 : "+fileName);
 		System.out.println(result);

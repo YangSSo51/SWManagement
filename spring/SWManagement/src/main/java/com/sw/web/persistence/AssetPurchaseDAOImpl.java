@@ -24,10 +24,16 @@ public class AssetPurchaseDAOImpl implements AssetPurchaseDAO {
 	public void add(AssetPurchaseVO vo) throws Exception {
 		sqlSession.insert(namespace + ".insert", vo);		
 	}
-
+	
 	public List<AssetPurchaseVO> readList() throws Exception {
 		List<AssetPurchaseVO> list = new ArrayList<AssetPurchaseVO>();
 		list = sqlSession.selectList(namespace + ".selectAll");
+		return list;
+	}
+	
+	public List<AssetPurchaseVO> readListReverse() throws Exception {
+		List<AssetPurchaseVO> list = new ArrayList<AssetPurchaseVO>();
+		list = sqlSession.selectList(namespace + ".selectAllReverse");
 		return list;
 	}
 	

@@ -26,7 +26,12 @@ public class AssetPurchaseServiceImpl implements AssetPurchaseService {
 		return AssetPurchaseDAO.readList();
 	}
 	
+	public List<AssetPurchaseVO> readListReverse() throws Exception{
+		return AssetPurchaseDAO.readListReverse();
+	}
+	
 	public AssetPurchaseVO readById(int id) throws Exception {
 		return AssetPurchaseDAO.readById(id);
 	}
+
 }

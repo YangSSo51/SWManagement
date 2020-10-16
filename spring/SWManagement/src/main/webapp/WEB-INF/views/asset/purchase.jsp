@@ -25,13 +25,13 @@
       </header>
 <%@ include file="../navbar.jsp"%>
 	<div class="right-container">
-            <form class="center_form" style="margin-top:60px;">
-              <input type="search" name="" value="" placeholder="자산명 입력">
-              <button type="button" name="button">검색</button>
+	        <form class="center_form"  style="margin-top:60px;" action="<c:url value="/asset/purchase/search/2"/>" method="POST" >
+              <input type="search" name="search" value="" placeholder="자산명 입력">
+              <button type="submit">검색</button>
             </form>
             <div class="tab-group">
-              <a href="<c:url value="/asset/perchase/desc"/>"><button type="button" name="button" class="white" >최신순</button></a>
-              <a href="<c:url value="/asset/perchase/asc"/>"><button type="button" name="button" style="margin-left:-5px;">오래된 순</button></a>
+              <a href="<c:url value="/asset/purchase/read/1"/>"><button type="button" name="button" class="white" >최신순</button></a>
+              <a href="<c:url value="/asset/purchase/read/2"/>"><button type="button" name="button" style="margin-left:-5px;">오래된 순</button></a>
             </div>
             <hr>
             <table class="list" style="margin-top:30px;">
