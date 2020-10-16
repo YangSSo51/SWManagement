@@ -18,7 +18,7 @@
           <div class="dropdown">
             <button class="dropdown-title">자산관리</button>
               <div class="dropdown-content">
-                <a href="<c:url value="/asset/perchase/desc"/>">자산 구매</a>
+                <a href="<c:url value="/asset/purchase/read"/>">자산 구매</a>
                 <a href="<c:url value="/common/code/"/>">공통 코드 관리</a>
               </div>
           </div>

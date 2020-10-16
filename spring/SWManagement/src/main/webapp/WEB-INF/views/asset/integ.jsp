@@ -30,9 +30,9 @@
       </header>
 <%@ include file="../navbar.jsp"%>
         <div class="right-container">
-            <form class="center_form" action="<c:url value="/asset/read/"/>" method="GET" >
-              <input type="search" name="name" value="" placeholder="자산명 입력">
-              <button type="submit" name="button">검색</button>
+            <form class="center_form" action="<c:url value="/asset/search/2"/>" method="POST" >
+              <input type="search" name="search" value="" placeholder="자산명 입력">
+              <button type="submit">검색</button>
             </form>
             <div class="tab-group">
               <a href="<c:url value="/asset/read/list/1"/>"><button type="button" name="button" class="white">PLC</button></a>
@@ -114,7 +114,6 @@
 	  var data = new FormData();
 	  data.append("file",$("input[name=file]")[x].files[0]);
 
-      alert(data);
 	  $.ajax({
 			contentType : 'application/json',
 			enctype: 'multipart/form-data',
@@ -125,7 +124,6 @@
             type: "POST",
             data:data,
              success: function(data){              
-	            alert(data);
 	      	    if(x==0) $("input[name=hash_logic]").attr('value',data);
 	      	    if(x==1) $("input[name=hash_engine]").attr('value',data);
              },
