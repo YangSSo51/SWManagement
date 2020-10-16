@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sw.web.domain.RiskStorageVO;
-import com.sw.web.domain.UserVO;
-
 
 @Repository
 public class RiskStorageDAOImpl implements RiskStorageDAO {

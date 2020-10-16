@@ -18,7 +18,6 @@ import java.util.List;
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.AssetPurchaseVO;
 import com.sw.web.domain.IntegKeepVO;
-import com.sw.web.domain.UserVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.IntegKeepService;
 
@@ -29,9 +28,7 @@ public class IntegKeepController {
 	private AssetManageService AssetManageService;
 	@Autowired
 	private IntegKeepService IntegKeepService;
-	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
+		
 	//integ_keep에 기본정보 더해줌
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createIntegPost(@ModelAttribute("integ") IntegKeepVO vo) throws Exception {

@@ -36,9 +36,7 @@ public class RiskController {
 	private VulCheckService VulCheckService;
 	@Autowired
 	private RiskStorageService RiskStorageService;
-	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
+		
 	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public String createriskGet(Model model) throws Exception {
 		List<AssetManageVO> asset_vo = AssetManageService.readList();

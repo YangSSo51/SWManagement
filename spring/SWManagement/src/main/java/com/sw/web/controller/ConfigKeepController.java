@@ -19,7 +19,6 @@ import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.AssetPurchaseVO;
 import com.sw.web.domain.ConfigKeepVO;
 import com.sw.web.domain.SearchVO;
-import com.sw.web.domain.UserVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.ConfigKeepService;
 
@@ -30,9 +29,7 @@ public class ConfigKeepController {
 	private AssetManageService AssetManageService;
 	@Autowired
 	private ConfigKeepService ConfigKeepService;
-	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
+		
 	//Config_keep에 기본정보 더해줌
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createConfigPost(@ModelAttribute("Config") ConfigKeepVO vo) throws Exception {

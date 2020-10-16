@@ -29,9 +29,7 @@ public class AssetController {
 	private AssetManageService AssetManageService;
 	@Autowired
 	private AssetPurchaseService AssetPurchaseService;
-	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
+		
 	//asset_manage에 기본정보 더해줌
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createAssetPost(@ModelAttribute("Asset") AssetManageVO vo) throws Exception {
