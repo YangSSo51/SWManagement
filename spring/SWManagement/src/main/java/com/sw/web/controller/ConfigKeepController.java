@@ -18,7 +18,7 @@ import java.util.List;
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.AssetPurchaseVO;
 import com.sw.web.domain.ConfigKeepVO;
-import com.sw.web.domain.UserVO;
+import com.sw.web.domain.SearchVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.ConfigKeepService;
 
@@ -29,9 +29,7 @@ public class ConfigKeepController {
 	private AssetManageService AssetManageService;
 	@Autowired
 	private ConfigKeepService ConfigKeepService;
-	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
+		
 	//Config_keep에 기본정보 더해줌
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createConfigPost(@ModelAttribute("Config") ConfigKeepVO vo) throws Exception {
@@ -58,7 +56,34 @@ public class ConfigKeepController {
 
 		return "config/keep";
 	}
+	
+	@RequestMapping(value="/search",method=RequestMethod.POST)
+	public String readConfigByNameGet(@ModelAttribute("Search") SearchVO search,Model model) throws Exception {
+		List<AssetManageVO> name = AssetManageService.readByName(search.getSearch());
+		List<ConfigKeepVO> vo = new ArrayList<ConfigKeepVO>();
+		List<ConfigKeepVO> config;
+
+		for(int i=0;i<name.size();i++) {
+			config = ConfigKeepService.readByAssetId(name.get(i).getAsset_id());
+			for(int j=0;j<config.size();j++) {
+				vo.add(config.get(j));
+			}
+		}
 		
+		List<AssetManageVO> asset_vo = AssetManageService.readList();
+		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
+		AssetManageVO temp;
+		
+		for(int i=0;i<vo.size();i++) {
+			temp = AssetManageService.readById(vo.get(i).getAsset_id());
+			asset_name.add(temp);
+		}
+		model.addAttribute("vo",vo);
+		model.addAttribute("asset_name",asset_name);
+		model.addAttribute("asset_vo",asset_vo);
+
+		return "config/keep";
+	}
 	
 	//상세정보 읽어옴
 	@RequestMapping(value="/read/detail/{id}",method=RequestMethod.GET)
@@ -98,7 +123,13 @@ public class ConfigKeepController {
 	}
 	
 	public boolean check(String x) {
-		if(x.equals("O")) return true;
-		else return false;
+		boolean result=false;
+		try {
+			if(x.equals("O")) result=true;
+			else result=false;
+		}catch(NullPointerException e) {
+			System.out.println("null");
+		}
+		return result;
 	}
 }

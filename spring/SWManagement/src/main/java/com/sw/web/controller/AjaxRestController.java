@@ -1,5 +1,10 @@
 package com.sw.web.controller;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.sw.web.domain.AssetManageVO;
+import com.sw.web.domain.AssetPurchaseVO;
 import com.sw.web.domain.IntegKeepVO;
 import com.sw.web.domain.RiskManageVO;
 import com.sw.web.domain.RiskStorageVO;
 import com.sw.web.service.AssetManageService;
+import com.sw.web.service.AssetPurchaseService;
 import com.sw.web.service.IntegKeepService;
 import com.sw.web.service.RiskManageService;
 import com.sw.web.service.RiskStorageService;
@@ -29,11 +39,38 @@ public class AjaxRestController {
 	@Autowired
 	private AssetManageService AssetManageService;
 	@Autowired
+	private AssetPurchaseService AssetPurchaseService;
+	@Autowired
 	private IntegKeepService IntegKeepService;
 	@Autowired
 	private RiskManageService RiskManageService;
 	@Autowired
 	private RiskStorageService RiskStorageService;
+
+	private final String PATH = "C:/Users/mayso/Github/main/spring/SWManagement/src/main/webapp/WEB-INF/upload/";
+
+	@ResponseBody
+	@RequestMapping(value = "/asset_add.do", method = RequestMethod.POST)
+	public String restAssetAddController(@RequestBody AssetManageVO vo)  throws Exception {
+    	AssetManageService.add(vo);
+		return "ok";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/asset_purchase.do", method = RequestMethod.POST)
+	public String restAssetPurchaseController(@RequestBody AssetPurchaseVO vo)  throws Exception {
+    	List<AssetManageVO> list= AssetManageService.readList();
+    	int id = list.get(list.size()-1).getAsset_id();
+		
+    	vo.setAsset_id(id);
+    	vo.setConfirm("O");
+    	SimpleDateFormat format = new SimpleDateFormat ( "MM.dd");
+    	Date time = new Date();
+		
+    	vo.setDate(format.format(time));
+		AssetPurchaseService.add(vo);
+		return "asset/purchase/read";
+	}
 	
 	@PostMapping("/asset/update")    
 	public String restController(@RequestBody String data)  throws Exception {
@@ -139,9 +176,10 @@ public class AjaxRestController {
 	@RequestMapping(value = "/risk_storage.do", method = RequestMethod.POST)
 	public String restRiskStorageController(@RequestBody RiskStorageVO vo)  throws Exception {
     	System.out.println("risk_storage");
-    	System.out.println(vo.getResult());
-    	int id = RiskManageService.readList().size()+1;
     	
+    	int id = RiskManageService.readList().size();
+    	System.out.println(id);
+
     	for(RiskStorageVO v:vo.getList()) {
     		v.setRisk_id(id);
     		System.out.println("risk_id : "+v.getRisk_id());
@@ -152,4 +190,37 @@ public class AjaxRestController {
     	
     	return "risk/read/list";
 	}
+	@RequestMapping(value = {"/file.do"}, method = RequestMethod.POST)
+	public String signupMemberPost(MultipartHttpServletRequest mtf) throws Exception {
+		String fileTag = "file";
+		String fileName="";
+		MultipartFile file = mtf.getFile(fileTag);
+		fileName = file.getOriginalFilename();
+        //String ext = fileName.substring(fileName.lastIndexOf(".")+1,fileName.length());
+		String text,result="";
+        InputStreamReader is = new InputStreamReader(file.getInputStream());
+        BufferedReader br = new BufferedReader(is);
+        
+        while((text=br.readLine())!=null) {
+        	result+=text;
+        }
+		System.out.println("파일전송 성공 : "+fileName);
+		System.out.println(result);
+		return result;
+	}
+	
+	@RequestMapping(value = "/asset_update.do", method = RequestMethod.POST)
+	public String restAssetUpdateController(@RequestBody AssetManageVO vo)  throws Exception {
+		if(vo.getMain_device().equals("1")) {
+			AssetManageService.updatePLC(vo);
+			return "asset/read/list/1";
+		}
+		else {
+			AssetManageService.updateServer(vo);
+	    	return "asset/read/list/2";
+		}
+	}
 }
+
+
+

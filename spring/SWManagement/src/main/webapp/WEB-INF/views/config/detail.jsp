@@ -76,7 +76,16 @@
               </tr>
               <tr>
                 <td class="detail-title">관리자 승인여부</td>
-                <td id="right">${vo.m_okay}</td>
+                <td id="right">
+                <c:choose>
+	                <c:when test="${vo.m_okay eq 'O'}">
+	               		<i class="fa fa-check"></i>
+	                </c:when>
+	                <c:otherwise>
+	                   <i class="fa fa-close"></i>
+	                </c:otherwise>
+                </c:choose>
+                </td>
                 <td class="small-td" id="side"></td>
                 <td class="small-td" id="left"></td>
               </tr>

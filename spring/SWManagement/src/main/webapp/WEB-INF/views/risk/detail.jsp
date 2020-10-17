@@ -68,14 +68,16 @@
               </tr>
                <c:set var="i" value="0"/>
               <c:forEach items="${vul_list}" var="list">
-              <tr>
-                <td class="small-td">${list.field_num }</td>
-                <td>${list.field }</td>
-                <td class="small-td">${list.item_num }</td>
-                <td>${list.item}</td>
-                <td class="small-td">${list.importance}</td>
-                <td>${risk[i].result }</td>
+              <c:if test="${risk[i].result != null}">
+	              <tr>
+	                <td class="small-td">${list.field_num }</td>
+	                <td>${list.field }</td>
+	                <td class="small-td">${list.item_num }</td>
+	                <td>${list.item}</td>
+	                <td class="small-td">${list.importance}</td>
+	                <td>${risk[i].result }</td>
               </tr>
+              </c:if>
               <c:set var="i" value="${i+1 }"/>
               </c:forEach>
             </table>

@@ -11,5 +11,10 @@ public interface UserDAO {
 	public void delete(int id) throws Exception;
 	public void update(UserVO user) throws Exception;
 	public boolean login(UserVO user)throws Exception;
+
 	public UserVO viewUser(UserVO user)throws Exception;
+	
+
+	public int idChk(String user_id) throws Exception; 
+	
 }

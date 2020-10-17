@@ -15,4 +15,8 @@ public interface UserService {
 	public boolean login(UserVO vo,HttpSession session) throws Exception;
 	public UserVO viewUser(UserVO vo) throws Exception;
 	public void logout(HttpSession session) throws Exception;
+	
+	public int idChk(String user_id) throws Exception; //아이디 중복체크 플랜B
+	
+	
 }

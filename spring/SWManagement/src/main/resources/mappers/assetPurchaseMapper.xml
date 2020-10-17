@@ -16,11 +16,14 @@
      <select id="selectById" resultType="AssetPurchaseVO">
  		select * from asset_purchase where asset_id = #{asset_id}
      </select>
- 	
+
      <select id="selectAll" resultType="AssetPurchaseVO">
      <![CDATA[
  		select * from asset_purchase
       ]]> 
      </select>
  		
+ 	 <select id="selectAllReverse" resultType="AssetPurchaseVO">
+ 		 select * from asset_purchase order by asset_id DESC;
+ 	 </select>
 </mapper>  

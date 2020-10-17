@@ -15,8 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sw.web.domain.AssetManageVO;
+import com.sw.web.domain.ConfigKeepVO;
 import com.sw.web.domain.RiskManageVO;
 import com.sw.web.domain.RiskStorageVO;
+import com.sw.web.domain.SearchVO;
 import com.sw.web.domain.VulCheckVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.RiskManageService;
@@ -34,9 +36,7 @@ public class RiskController {
 	private VulCheckService VulCheckService;
 	@Autowired
 	private RiskStorageService RiskStorageService;
-	
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
+		
 	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public String createriskGet(Model model) throws Exception {
 		List<AssetManageVO> asset_vo = AssetManageService.readList();
@@ -83,6 +83,36 @@ public class RiskController {
 
 		return "risk/list";
 	}
+	
+	@RequestMapping(value="/search",method=RequestMethod.POST)
+	public String readConfigByNameGet(@ModelAttribute("Search") SearchVO search,Model model) throws Exception {
+		List<AssetManageVO> name = AssetManageService.readByName(search.getSearch());
+		List<RiskManageVO> vo = new ArrayList<RiskManageVO>();
+		List<RiskManageVO> risk;
+		System.out.println("name size : "+name.size());
+
+		for(int i=0;i<name.size();i++) {
+			risk = RiskManageService.readByAssetId(name.get(i).getAsset_id());
+			System.out.println("asset_id : "+name.get(i).getAsset_id());
+			for(int j=0;j<risk.size();j++) {
+				vo.add(risk.get(j));
+			}
+		}
+		
+		List<AssetManageVO> asset_vo = AssetManageService.readList();
+		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
+		AssetManageVO temp;
+		
+		for(int i=0;i<vo.size();i++) {
+			temp = AssetManageService.readById(vo.get(i).getAsset_id());
+			asset_name.add(temp);
+		}
+		model.addAttribute("vo",vo);
+		model.addAttribute("asset_name",asset_name);
+		model.addAttribute("asset_vo",asset_vo);
+
+		return "risk/list";
+	}
 		
 	//자산명에 따라 검색결과를 출력해줌
 	@RequestMapping(value="/read/{name}",method=RequestMethod.GET)
@@ -101,16 +131,27 @@ public class RiskController {
 		RiskManageVO vo = RiskManageService.readById(id);
 		AssetManageVO asset_name = AssetManageService.readById(vo.getAsset_id());
 		List<VulCheckVO> vul_list = VulCheckService.readList();
-		List<RiskStorageVO> risk = new ArrayList<RiskStorageVO>();
-		RiskStorageVO temp = new RiskStorageVO();
-		
-		for(int i=0;i<vul_list.size();i++) {
-			temp.setItem_num(vul_list.get(i).getItem_num());
-			temp.setRisk_id(id);
-			temp=RiskStorageService.readByItemNum(temp);
-			risk.add(temp);
+		List<RiskStorageVO> risk = RiskStorageService.readById(id);
+		System.out.println(id);
+		for(int i=0;i<risk.size();i++) {
+			System.out.println(risk.get(i).getItem_num()+" : "+risk.get(i).getResult());
 		}
-		
+		//RiskStorageVO temp = new RiskStorageVO();
+		/*
+		for(int i=0;i<vul_list.size();i++) {
+			//temp.setItem_num(vul_list.get(i).getItem_num());
+			//temp.setRisk_id(id);
+			temp = RiskStorageService.readById(id);
+			try {
+				if(temp.getResult()!=null) {
+					risk.add(temp);
+					System.out.println(temp.getResult());
+				}
+			}catch(NullPointerException e) {
+				System.out.println("null");
+			}
+		}*/
+		System.out.println(risk.size());
 		model.addAttribute("list",list);
 		model.addAttribute("vo",vo);
 		model.addAttribute("asset_name",asset_name);

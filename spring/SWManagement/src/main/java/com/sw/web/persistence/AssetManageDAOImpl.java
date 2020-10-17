@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sw.web.domain.AssetManageVO;
-import com.sw.web.domain.UserVO;
-
 
 @Repository
 public class AssetManageDAOImpl implements AssetManageDAO {
