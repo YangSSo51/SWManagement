@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +52,25 @@ public class CodeDetailController {
 		return "code/common_code_detail";
 	}
 	
+	@RequestMapping(value="/read/{name}", method=RequestMethod.GET)
+	public String readCodeDetailGet(@PathVariable("name") String name,Model model) throws Exception {
+		List<CodeDetailVO> vo = codeDetailService.readList();
+		List<CodeMasterVO> mvo = codeMasterservice.readList();
+		List<CodeDetailVO> temp = new ArrayList<CodeDetailVO>();
+		if(name.equals("1")) {
+			for(int i=0;i<10;i++) {
+				temp.add(vo.get(i));
+			}
+		}else {
+			for(int i=10;i<vo.size();i++) {
+				temp.add(vo.get(i));
+			}
+		}
+		model.addAttribute("code",temp);
+		model.addAttribute("master",mvo);
+		if(name.equals("1")) return "code/common_code_detail";
+		else return "code/common_code_detail2";
+	}
 	/*
 	 * 상세코드 등록할 때 대표코드 디폴트로 보여주기
 	 */

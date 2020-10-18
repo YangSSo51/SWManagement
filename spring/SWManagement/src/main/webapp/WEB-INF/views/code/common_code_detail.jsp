@@ -107,8 +107,8 @@ function getMastername(page){
               <button type="button" name="button">검색</button>
             </form>
             <div class="tab-group">
-              <a href="<c:url value="/common/code"/>"><button type="button" name="button" class="white" >대표코드</button></a>
-              <a href="<c:url value="/common/code/detail/1"/>"><button type="button" name="button" style="margin-left:-5px;">상세코드</button></a>
+              <a href="<c:url value="/code/read"/>"><button type="button" name="button" class="white" >대표코드</button></a>
+              <a href="<c:url value="/detail/read"/>"><button type="button" name="button" style="margin-left:-5px;">상세코드</button></a>
               <a><button type="button" name="button" style="float:right;" id="modal_open_btn">상세코드 등록</button></a>
             </div>
             <hr>
@@ -137,59 +137,10 @@ function getMastername(page){
             </table>
             <div class="button_group">
               <div class="center-page">
-                <span><a href="<c:url value="/common/code/detail/1"/>">1</a></span>
-                <span><a href="<c:url value="/common/code/detail/2"/>" style="color:#dbdbdb;">2</a></span>
+                <span><a href="<c:url value="/detail/read/1"/>">1</a></span>
+                <span><a href="<c:url value="/detail/read/2"/>" style="color:#dbdbdb;">2</a></span>
               </div>
-                <button type="button" id="modal_modify_btn" onclick="modify()">수정</button>
             </div>
-            
-            <!-- 수정 -->
-            <div id="modal">
-                <div class="modal_layer">  
-                <form class="code-form" name="codeform" action="<c:url value="/detail/update"/>" method="post">
-                <div class="small_modal_content">
-                  <div class="modal_title">
-                          상세코드 수정
-                  </div>                  
-                  <input id="id" name="id" type="hidden"  ></input>
-                  <p>
-                    <span>대표코드</span>
-                  </p>
-                 <select class="" id="reprec" name="reprec" onchange="getMastername()" style="width:100px; margin-left:20px;">
-                      <option value="none">==선택==</option>
-                      <c:forEach var="master" items="${master}">                                
-                        <option value="${master.reprec}" >${master.reprec}</option >
-                       </c:forEach>
-                  </select>
-                  <p>
-                    <span>대표코드명</span>
-                  </p>
-                  <input id="reprec_n" type="text" disabled></input>
-                  <p>
-                    <span>상세코드</span>
-                  </p>
-                    <input type="text" id="detailc" name = "detailc" placeholder="A1_1"></input>
-                  <p>
-                    <span>상세코드명</span>
-                  </p>
-                  <input type="text" id ="detailc_n" name = "detailc_n" placeholder="PLC/DCS"></input>
-                  <p><span>사용여부</span></p>
-                    <div class="modal_inner">
-                      <span>예</span>
-                      <label><input type="checkbox" name = "use_value" value = "O"></label>
-                      <span>아니요</span>
-                      <label><input type="checkbox" name = "use_value" value = "X"></label>
-                    </div>
-                    <div class="modal_button" style="width:300px;">
-                      <button type="button" id="modal_close_btn">취소</button>
-                      <button type="submit" id="submit">등록</button>
-                    </div>                
-                </div>
-                </form>
-              </div><!--modal layer-->
-              </div><!--modal-->
-              
-              
               <!-- 등록 -->
               <div id="modal2">
                  <input type = "hidden">

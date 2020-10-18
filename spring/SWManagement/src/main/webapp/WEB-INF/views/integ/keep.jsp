@@ -29,6 +29,11 @@
       </header>
 	<%@ include file="../navbar.jsp"%>
            <div class="right-container">
+           <form class="center_form" action="<c:url value="/integ/search"/>" method="POST" >
+              <input type="search" name="search" value="" placeholder="자산명 입력">
+              <button type="submit">검색</button>
+            </form>
+            <!-- 
             <form class="center_form">
               <select class="select" name="">
                 <option value="자산명">자산명</option>
@@ -41,6 +46,7 @@
               </select>
               <button type="button" name="button">검색</button>
             </form>
+             -->
             <table class="list">
               <tr>
                 <th style="width:30px;">번호</th>
