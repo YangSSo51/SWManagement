@@ -26,5 +26,8 @@ public class HomeController {
 	public String home(Locale locale, Model model) {		
 		return "main";
 	}
-	
+	@RequestMapping(value = "/question", method = RequestMethod.GET)
+	public String question() {		
+		return "question";
+	}
 }

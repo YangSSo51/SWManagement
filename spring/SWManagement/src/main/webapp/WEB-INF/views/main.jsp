@@ -26,6 +26,7 @@ img.infinite_rotating_logo{
 <body>
 <div class="logo-area">
 	<img src="<c:url value="/resources/images/main.png"/>" class="infinite_rotating_logo">
+	<a href='http://m.site.naver.com/0GiHA'><img src='https://qrcodethumb-phinf.pstatic.net/20201019_214/1603040101585Sv2A0_PNG/0GiHA.png'/></a>
 </div>
 </body>
 

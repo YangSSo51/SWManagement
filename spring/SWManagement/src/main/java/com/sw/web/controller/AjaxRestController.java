@@ -2,7 +2,10 @@ package com.sw.web.controller;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -204,6 +207,7 @@ public class AjaxRestController {
         while((text=br.readLine())!=null) {
         	result+=text;
         }
+        result = getHash(result);
 		System.out.println("파일전송 성공 : "+fileName);
 		System.out.println(result);
 		return result;
@@ -220,6 +224,19 @@ public class AjaxRestController {
 	    	return "asset/read/list/2";
 		}
 	}
+
+    public static String getHash(String str) throws IOException, NoSuchAlgorithmException {
+	    
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(str.getBytes());
+        byte byteData[] = md.digest();      
+
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < byteData.length; i++) {
+            sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+        }
+        return sb.toString();
+    }
 }
 
 
