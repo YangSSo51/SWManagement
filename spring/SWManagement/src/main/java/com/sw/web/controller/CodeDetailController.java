@@ -128,7 +128,7 @@ public class CodeDetailController {
 	public String createCodeDetailPost(@ModelAttribute("code") CodeDetailVO vo) throws Exception {
 		logger.info("createCodeDetailPost");
 		codeDetailService.add(vo);
-		return "redirect:/detail/read";
+		return "redirect:/detail/read/2";
 	}
 	
 	

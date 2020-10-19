@@ -55,6 +55,8 @@ public class AjaxRestController {
 	@ResponseBody
 	@RequestMapping(value = "/asset_add.do", method = RequestMethod.POST)
 	public String restAssetAddController(@RequestBody AssetManageVO vo)  throws Exception {
+		vo.setHw_access("O");
+		vo.setInteg_check("O");
     	AssetManageService.add(vo);
 		return "ok";
 	}
@@ -67,12 +69,12 @@ public class AjaxRestController {
 		
     	vo.setAsset_id(id);
     	vo.setConfirm("O");
-    	SimpleDateFormat format = new SimpleDateFormat ( "MM.dd");
+    	SimpleDateFormat format = new SimpleDateFormat ("MM.dd");
     	Date time = new Date();
 		
     	vo.setDate(format.format(time));
 		AssetPurchaseService.add(vo);
-		return "asset/purchase/read";
+		return "asset/purchase/read/1";
 	}
 	
 	@PostMapping("/asset/update")    

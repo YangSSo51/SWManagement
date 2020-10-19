@@ -210,7 +210,7 @@
 					"asset_id":asset_id
 	   		 	}),
 	             success: function(data){              
-		             alert(data);
+		             //alert(data);
 	                if(data===1){
 			            $("#hash_engine").attr("style", "display:none");
 					}else{
@@ -252,9 +252,9 @@
 		            if(result[0]==="OK"){
 			            compare+=1;
 		            	setResult(result[1],compare);               
-						alert("올바른 해쉬값이 입력되었습니다.");
+						alert("올바른 해시값이 입력되었습니다.");
 		            }else{
-						alert("해쉬값을 확인해주세요");
+						alert("잘못되었습니다.해시값을 확인해주세요");
 				    }
 	             },
 	     		error:function(request, error) {

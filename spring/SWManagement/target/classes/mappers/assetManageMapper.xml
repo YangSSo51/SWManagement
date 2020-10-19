@@ -7,8 +7,8 @@
 <mapper namespace="com.sw.web.mapper.assetManageMapper">
   
    <insert id="insert"> 
-   		insert into asset_manage (asset_name,main_device,sub_device) values
- 		( #{asset_name},#{main_device},#{sub_device})
+   		insert into asset_manage (asset_name,main_device,sub_device,integ_check,hw_access) values
+ 		( #{asset_name},#{main_device},#{sub_device},#{integ_check},#{hw_access})
      </insert> 
  	 
      <select id="selectById" resultType="AssetManageVO">

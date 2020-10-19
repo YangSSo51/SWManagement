@@ -101,9 +101,6 @@ $("#checkBoxId").change(function() {
             
             </table>
           
-            <div class="button_group">
-                <button type="button" id="modal_modify_btn" onclick="modify()">수정</button>
-            </div>
          	  <!-- 등록 -->    	
               <div id="modal2">
               	

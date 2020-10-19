@@ -30,8 +30,8 @@
               <button type="submit">검색</button>
             </form>
             <div class="tab-group">
-              <a href="<c:url value="/asset/purchase/read/1"/>"><button type="button" name="button" class="white" >최신순</button></a>
-              <a href="<c:url value="/asset/purchase/read/2"/>"><button type="button" name="button" style="margin-left:-5px;">오래된 순</button></a>
+              <a href="<c:url value="/asset/purchase/read/2"/>"><button type="button" name="button" >최신순</button></a>
+              <a href="<c:url value="/asset/purchase/read/1"/>"><button type="button" name="button" style="margin-left:-5px;" class="white" >오래된 순</button></a>
             </div>
             <hr>
             <table class="list" style="margin-top:30px;">
@@ -95,6 +95,12 @@
                   <option value="Win 2003">Win 2003</option>
                   <option value="Win Vista">Win Vista</option>
                   <option value="Win7">Win7</option>
+                  <option value="Win8">Win8</option>
+                  <option value="Win 2008">Win 2008</option>
+                  <option value="Win 2012">Win 2012</option>
+                  <option value="LINUX">Linux</option>
+                  <option value="UNIX">UNIX</option>
+                  <option value="QNX">QNX</option>
                 </select>
                 <p>
                   <span>구매자</span>
@@ -528,7 +534,9 @@
 	            data:JSON.stringify({
 					"asset_name":asset_name,
 					"main_device":main_device,
-					"sub_device":sub_device
+					"sub_device":sub_device,
+					"integ_check":"O",
+					"hw_access":"O"
 	   		 	}),
 	             success: function(data){
 		            //alert("ok");

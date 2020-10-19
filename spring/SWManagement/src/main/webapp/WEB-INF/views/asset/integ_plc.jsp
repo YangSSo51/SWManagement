@@ -30,7 +30,7 @@
       </header>
 <%@ include file="../navbar.jsp"%>
         <div class="right-container">
-			<form class="center_form" action="<c:url value="/asset/search/1"/>" method="POST" >
+			<form class="center_form" style="margin-top:50px;action="<c:url value="/asset/search/1"/>" method="POST" >
               <input type="search" name="search" value="" placeholder="자산명 입력">
               <button type="submit">검색</button>
             </form>

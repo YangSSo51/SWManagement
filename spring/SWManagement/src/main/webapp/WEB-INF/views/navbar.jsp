@@ -33,15 +33,14 @@
           <div class="dropdown">
             <button class="dropdown-title" >위험 관리 </button>
             <div class="dropdown-content">
-               <a href="<c:url value="/vul/read/list"/>">취약점 점검항목</a>
+               <a href="<c:url value="/vul/read/1"/>">취약점 점검항목</a>
                <a href="<c:url value="/risk/read/list"/>">위험 관리</a>
            </div>
           </div>
           <div class="dropdown">
-            <button class="dropdown-title">게시판</button>
+            <button class="dropdown-title">문의</button>
             <div class="dropdown-content">
-              <a href="#">개발자에게 문의</a>
-             <a href="#">FAQ</a>
+              <a href="<c:url value="/question"/>">개발자에게 문의</a>
            </div>
           </div>
           </nav><!-- nav -->

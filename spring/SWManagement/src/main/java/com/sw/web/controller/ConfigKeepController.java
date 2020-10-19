@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.sw.web.domain.AssetManageVO;
@@ -33,6 +35,10 @@ public class ConfigKeepController {
 	//Config_keep에 기본정보 더해줌
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createConfigPost(@ModelAttribute("Config") ConfigKeepVO vo) throws Exception {
+    	SimpleDateFormat format = new SimpleDateFormat ("MM.dd");
+    	Date time = new Date();
+		
+    	vo.setDate(format.format(time));
 		ConfigKeepService.add(vo);
 		
 		return "redirect:/config/read/list";

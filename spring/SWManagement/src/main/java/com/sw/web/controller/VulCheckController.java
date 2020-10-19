@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import com.sw.web.domain.AssetManageVO;
@@ -50,14 +52,26 @@ public class VulCheckController {
 			RiskStorageService.add(temp);
 		}*/
 				
-		return "redirect:/vul/read/list";
+		return "redirect:/vul/read/2";
 	}
 	
-	@RequestMapping(value="/read/list", method=RequestMethod.GET)
-	public String readVulGet(Model model) throws Exception {
+	@RequestMapping(value="/read/{name}", method=RequestMethod.GET)
+	public String readVulGet(@PathVariable("name") String name,Model model) throws Exception {
 		List<VulCheckVO> vo = VulCheckService.readList();
-		model.addAttribute("vo",vo);
-		return "vul/list";
+		List<VulCheckVO> temp = new ArrayList<VulCheckVO>();
+		
+		if(name.equals("1")) {
+			for(int i=0;i<14;i++) {
+				temp.add(vo.get(i));
+			}
+		}else {
+			for(int i=14;i<vo.size();i++) {
+				temp.add(vo.get(i));
+			}
+		}
+		model.addAttribute("vo",temp);
+		if(name.equals("1")) return "vul/list";
+		else return "vul/list2";
 	}
 	
 }

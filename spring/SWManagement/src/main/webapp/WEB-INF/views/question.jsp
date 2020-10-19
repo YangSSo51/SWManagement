@@ -4,15 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>형상관리</title>
+<title>문의</title>
 <style>
 .question-div{
 margin:150px auto;
-width: 500px;
+width: 1000px;
 text-align:center;
-font-size:20px;
 padding:50px;
-border : 3px solid #ffe812;
+}
+h3{
+	font-size:10px;
 }
 </style>
 </head>
@@ -34,8 +35,10 @@ border : 3px solid #ffe812;
 <%@ include file="navbar.jsp"%>
      <div class="right-container">
      	<div class="question-div">
-     	    <h1>문의사항은 카카오톡 채널을 통해 연락바랍니다</h1>
      	    <a href='https://pf.kakao.com/_nbbsK'><img src='https://qrcodethumb-phinf.pstatic.net/20201019_214/1603040101585Sv2A0_PNG/0GiHA.png'/></a>
+     	    <h1>문의사항은 카카오톡 채널을 통해 연락바랍니다</h1>
+     	    <br>
+     	    <h3>Copyright ⓒ 2020 김은지|주소영|권해나|양소영 All Rights Reserved. </h3>
      	</div>
      </div>
 </html>

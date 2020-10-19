@@ -31,12 +31,12 @@
       </header>
 <%@ include file="../navbar.jsp"%>
     <div class="right-container">
-              <div class="tab-group" style="margin-top:10px; margin-right:30px;">
+              <div class="tab-group" style="margin-top:10px;">
               <a><button type="button" name="button" style="visibility:hidden">대표코드</button></a>
               <a><button type="button" name="button" style="visibility:hidden">상세코드</button></a>
-              <a><button type="button" name="button" style="float:right;" id="modal_open_btn">상세코드 등록</button></a>
+              <a><button type="button" name="button" style="float:right; margin-right:60px;" id="modal_open_btn">점검항목 등록</button></a>
             </div>
-            <table class="list" style="width:1100px; margin-top:10px;">
+            <table class="list" style="width:1100px; margin-top:20px;">
               <tr>
                 <th style="width:50px;">분야 번호</th>
                 <th>점검 <br>분야</th>
@@ -57,8 +57,8 @@
             </table>
             <div class="button_group">
               <div class="center-page">
-                <span><a href="<c:url value="/vul/read/1"/>">1</a></span>
-                <span><a href="<c:url value="/vul/read/2"/>" style="color:#dbdbdb;">2</a></span>
+                <span><a href="<c:url value="/vul/read/1"/>" style="color:#dbdbdb;">1</a></span>
+                <span><a href="<c:url value="/vul/read/2"/>" >2</a></span>
               </div>
             </div>
                 <div id="modal">
