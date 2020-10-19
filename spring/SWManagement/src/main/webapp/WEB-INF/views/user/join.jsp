@@ -46,6 +46,50 @@
 				}
 			})
 	}
+//그 있자나 내 코드 다 갈아엎고 너 방식대로 해도 돼 밍디야 ㅇ3ㅇ... 난 그저 회원가입 되셨습니다 라는 알럿창이 보고싶어서 그래 ㅠㅡㅠ
+	/*function signupConfirm() {
+			alert("된거니?");
+			$.ajax({
+	            url: "join",
+	            type: "POST",
+	            data: $("#joinform").serialize(),
+	            success: function(data){
+	                $('#result').text(data);
+	            },
+	            error: function(){
+	                alert("serialize err");
+	            }
+	        });
+		}*/
+ //김민지 작품
+	function signupConfirm(){
+           var user = {
+                 user_id: $("#user_id").val(),
+                 password: $("#password").val(),
+                 email: $("#email").val()
+           }
+           $.ajax({
+              url: "./join",
+              type: "POST",
+              data : JSON.stringify(user),
+              contentType: "application/json; charset=utf-8;",
+              success : function(result) {
+            	  alert(result);
+            	  if(result == "success"){
+            		  alert("회원가입 성공");
+            		  window.location.href='/eunji';
+                	 }
+            	  else{
+            		  alert("회원가입 실패");
+            		  window.location.href='https://www.naver.com/';
+                 }
+              },
+              error : function() {
+                 alert("fail");
+              }
+           }
+           );
+        }
 
 
 	</script>
@@ -87,7 +131,7 @@
 
 
 	<div class="content_signup">
-			<form method="post" action="<c:url value="/join"/>">
+			<form id = "joinform" method="" action=""> <!-- 뭐냐 -->
 			<fieldset class="fld_tistory" id="agreementFieldset" style="display:block;">
 				<legend class="screen_out">회원가입 동의 폼</legend>
 				<div class="wrap_signup"> <!-- 1번 wrap -->
@@ -330,7 +374,7 @@
 						</dt>
 						<dd>
 							<div class="inp_text inp_text_type3">
-								<input type="text" id="loginId" name="email" class="inp_g" placeholder="이메일을 입력해주세요" value="">
+								<input type="text" id="email" name="email" class="inp_g" placeholder="이메일을 입력해주세요" value="">
 							</div>
 						</dd>
 					</dl>
@@ -341,7 +385,7 @@
 						</dt>
 						<dd>
 							<div class="inp_text inp_text_type3">
-								<input type="password" id="pw" name="password" class="inp_g" placeholder="영문, 숫자, 특수문자를 조합하여 10자 이상 적어주세요." value="">
+								<input type="password" id="password" name="password" class="inp_g" placeholder="영문, 숫자, 특수문자를 조합하여 10자 이상 적어주세요." value="">
 							</div>
 						</dd>
 					</dl>
@@ -394,7 +438,7 @@
 				</div><!-- cont_data-->
 				<div id="recaptchaWidget" class="g-recaptcha recaptcha-wrap"></div>
 				<div class="wrap_btn">				
-				<input type="submit" class="btn_next btn_tistory btn_tistory_type5 btn btn-primary form-control" value="회원가입"> 
+				<button type="submit" id = "signupBtn" onclick="signupConfirm();" class="btn_next btn_tistory btn_tistory_type5 btn btn-primary form-control" value="회원가입">회원가입</button>
 				</div>
 			
 			</fieldset>

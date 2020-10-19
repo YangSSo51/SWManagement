@@ -31,7 +31,7 @@
 				$("#password").focus();
 				return;
 				}
-			document.loginform.action="${path}/web/login" 
+			document.loginform.action="${path}/eunji/login" 
 			document.loginform.submit();	
 			});
 		});
@@ -68,7 +68,7 @@
 	              <p>${member.user_id }님 안녕하세요.</p>
 	              -->
 	              
-	              <c:if test = "${msg == 'failure' }">
+	              <c:if test = "${msg == false}">
 	              	<div style="color:red">
 	              		아이디 또는 비번이 일치하지 않음
 	              	</div>

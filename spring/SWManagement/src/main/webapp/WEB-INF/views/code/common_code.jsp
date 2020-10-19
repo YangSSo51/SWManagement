@@ -59,9 +59,7 @@ $("#checkBoxId").change(function() {
           <div class="menu">
             	공통코드 관리
           </div>
-          <div class="login">
-            Admin님
-          </div>
+          <%@ include file="../topnav.jsp"%>
         </div>
       </header>
 <%@ include file="../navbar.jsp"%>
