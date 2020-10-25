@@ -5,6 +5,11 @@
 <head>
 <meta charset="utf-8">
 <title>위험 관리</title>
+   <style>
+   	nav{
+   		height:200%;
+   	}
+   </style>
 </head>
 <body>
 <header>
@@ -23,17 +28,6 @@
       </header>
 <%@ include file="../navbar.jsp"%>
           <div class="right-container">
-            <div class="danger-select">
-              <h3>위험 관리 내역을 확인할 버전을 선택하세요</h3>
-              <h3>*위험관리보고서를 추가하려면 '새 버전 추가'를 선택하세요</h3>
-              <select class="" name="risk_id" style="margin-left:20px;">
-                <c:forEach items="${list}" var="vo">
-                	<option value="${vo.risk_id }" ><c:out value="${vo.version}"/></option>
-                </c:forEach>
-                     <option value="0" >새 버전 추가</option>
-              </select>
-              <button type="button" name="button" onclick="select()">선택</button>
-            </div>
             <table class="danger-list1">
               <tr>
                 <td style="border-right:none;">(${asset_name.asset_name })의 위험 관리 내역서</td>

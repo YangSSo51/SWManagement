@@ -30,7 +30,7 @@
       </header>
 <%@ include file="../navbar.jsp"%>
         <div class="right-container">
-            <form class="center_form" action="<c:url value="/asset/search/2"/>" method="POST" >
+            <form class="center_form" style="margin-top:50px;"action="<c:url value="/asset/search/2"/>" method="POST" >
               <input type="search" name="search" value="" placeholder="자산명 입력">
               <button type="submit">검색</button>
             </form>
@@ -62,7 +62,7 @@
 	                		<td colspan="2">이미 해쉬값이 등록되었습니다.</td>
 		           		</c:when>
 		           		<c:otherwise>
-		           			<td colspan="2"><button type="button" style="width:100px; margin:3px 0;" id="modal_open_btn">해시값 등록</button></td>
+		           			<td colspan="2"><button type="button" style="width:100px; margin:3px 0;" onclick="hash(${vo.asset_id})">해시값 등록</button></td>
 		           		</c:otherwise>
 		           </c:choose>
 		           <div id="modal1">
@@ -107,9 +107,11 @@
             </div><!--right-container-->
   </body>
   <script>
-  $("#modal_open_btn").click(function(){
+ function hash(x){
       $("#modal1").attr("style", "display:block");
-  });
+      $("input[name=asset_id]").val(x);
+      alert($("input[name=asset_id]").val());
+ }
   function send(x){
 	  var data = new FormData();
 	  data.append("file",$("input[name=file]")[x].files[0]);

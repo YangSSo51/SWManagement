@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -37,7 +39,7 @@ public class AssetController {
 	//asset_manage�뿉 湲곕낯�젙蹂� �뜑�빐以�
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createAssetPost(@ModelAttribute("Asset") AssetManageVO vo) throws Exception {
-		AssetManageService.add(vo);
+		AssetManageService.add(vo);		
 		return "redirect:/asset/purchase";
 	}
 	
@@ -124,12 +126,15 @@ public class AssetController {
 					return "asset/integ";
 				}
 	}	
+<<<<<<< HEAD
 	//asset_purchase �궡�슜 �떎 梨꾩슦湲�
 	@RequestMapping(value="/purchase/add",method=RequestMethod.POST)
 	public String createAssetPurchasePost(@ModelAttribute("asset") AssetPurchaseVO vo) throws Exception {
 		AssetPurchaseService.add(vo);
 		return "redirect:/asset/purchase";
 	}
+=======
+>>>>>>> fc577ee6ed7a6f67e64f02dce1de592dfaab6450
 	
 	//asset_purchase �궡�슜 蹂댁뿬以�
 	@RequestMapping(value="/purchase/read/{num}",method=RequestMethod.GET)
@@ -146,7 +151,8 @@ public class AssetController {
 		}
 		model.addAttribute("vo",vo);
 		model.addAttribute("asset_name",asset_name);
-		return "asset/purchase";
+		if(num.equals("1")) return "asset/purchase_old";
+		else return "asset/purchase";
 	}
 	@RequestMapping(value="/purchase/search/{num}",method=RequestMethod.POST)
 	public String readAssetPurchaseByNameGet(@PathVariable("num") String num,@ModelAttribute("Search") SearchVO search,Model model) throws Exception {

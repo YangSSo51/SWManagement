@@ -70,7 +70,6 @@
               </tr>
             </table>
             <div class="button_group" style="width:1100px;">
-                <a href="<c:url value="/integ/delete/${vo.integ_id}"/>"><button type="submit">삭제</button></a>
                 <button type="submit" id="modal_open_btn">수정</button>
             </div>
             <form class="" action="<c:url value="/integ/update"/>" method="post">
@@ -83,11 +82,7 @@
                   </div>
                   <p>
                     <span>자산명</span>
-                    <select class="" name="asset_id" style="margin-left:20px;">
-                      <c:forEach items="${asset_vo}" var="vo">
-                      	<option value="${vo.asset_id }" ><c:out value="${vo.asset_name}"/></option>
-                      </c:forEach>
-                    </select>
+                    <input type="text" value="${asset_name.asset_name }" readonly>
                   </p>
                   <p>
                     <span>점검자</span>

@@ -91,7 +91,6 @@
               </tr>
             </table>
               <div class="button_group">
-                <a href="<c:url value="/config/delete/${vo.config_id}"/>"><button type="button" style="width:80px;">삭제</button></a>
                 <button type="button" id="modal_open_btn" style="width:80px;">수정</button>
             	<button type="button" id="modal_open_btn2" style="width:80px;">승인</button>
             </div>
@@ -105,11 +104,7 @@
                   </div>
                   <p>
                   <span>자산명</span>
-                    <select class="" name="asset_id" style="margin-left:20px;">
-                      <c:forEach items="${asset_vo}" var="vo">
-                      	<option value="${vo.asset_id }" ><c:out value="${vo.asset_name}"/></option>
-                      </c:forEach>
-                    </select>
+                    <input type="text" value="${asset_name.asset_name }"  readonly></input>
                   </p>
                   <p>
                     <span>작업명</span>
@@ -119,7 +114,6 @@
                     <span>신청자</span>
                     <input type="text" value="${vo.person}"  name="person"></input>
                   </p>
-                  <input type="text" name="date" hidden></input>
                   <p>
                     <span>작업시작일자</span>
                     <input type="text" value="${vo.date_start}"  style="width:160px;" name="date_start"></input>

@@ -8,6 +8,11 @@
 
 <meta charset="utf-8">
 <title>위험 관리</title>
+   <style>
+   	nav{
+   		height:200%;
+   	}
+   </style>
 </head>
 <body>
 <header>

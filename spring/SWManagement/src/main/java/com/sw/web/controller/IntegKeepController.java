@@ -19,9 +19,15 @@ import javax.servlet.http.HttpSession;
 
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.AssetPurchaseVO;
+<<<<<<< HEAD
 import com.sw.web.domain.CodeMasterVO;
 import com.sw.web.domain.IntegKeepVO;
 import com.sw.web.domain.UserVO;
+=======
+import com.sw.web.domain.ConfigKeepVO;
+import com.sw.web.domain.IntegKeepVO;
+import com.sw.web.domain.SearchVO;
+>>>>>>> fc577ee6ed7a6f67e64f02dce1de592dfaab6450
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.IntegKeepService;
 
@@ -78,6 +84,7 @@ public class IntegKeepController {
 		return "integ/keep";
 	}
 		
+<<<<<<< HEAD
 	//�옄�궛紐�,�젏寃��뿰�룄,�쟻�빀 �뿬遺��뿉 �뵲�씪 寃��깋寃곌낵瑜� 異쒕젰�빐以�
 	@RequestMapping(value="/read/{name}",method=RequestMethod.GET)
 	public String readAssetByNameGet(@PathVariable("name") String name,Model model) throws Exception {
@@ -86,6 +93,34 @@ public class IntegKeepController {
 		//asset_manage�뿉�꽌 readByName�쑝濡� id媛믪쓣 媛��졇�삤怨�
 		//媛��졇�삩 id�쓽 媛��닔留뚰겮 �젏寃� �뿰�룄,�쟻�빀 �뿬遺�濡� �떎�떆 寃��깋
 		return "asset/integ";
+=======
+	@RequestMapping(value="/search",method=RequestMethod.POST)
+	public String readConfigByNameGet(@ModelAttribute("Search") SearchVO search,Model model) throws Exception {
+		List<AssetManageVO> name = AssetManageService.readByName(search.getSearch());
+		List<IntegKeepVO> vo = new ArrayList<IntegKeepVO>();
+		List<IntegKeepVO> integ;
+
+		for(int i=0;i<name.size();i++) {
+			integ = IntegKeepService.readByAssetId(name.get(i).getAsset_id());
+			for(int j=0;j<integ.size();j++) {
+				vo.add(integ.get(j));
+			}
+		}
+		
+		List<AssetManageVO> asset_vo = AssetManageService.readList();
+		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
+		AssetManageVO temp;
+		
+		for(int i=0;i<vo.size();i++) {
+			temp = AssetManageService.readById(vo.get(i).getAsset_id());
+			asset_name.add(temp);
+		}
+		model.addAttribute("vo",vo);
+		model.addAttribute("asset_name",asset_name);
+		model.addAttribute("asset_vo",asset_vo);
+
+		return "integ/keep";
+>>>>>>> fc577ee6ed7a6f67e64f02dce1de592dfaab6450
 	}
 	
 	//�긽�꽭�젙蹂� �씫�뼱�샂

@@ -72,8 +72,8 @@ $("#checkBoxId").change(function() {
               <button type="button" name="button">검색</button>
             </form>
             <div class="tab-group">
-              <a href="<c:url value="/common/code"/>"><button type="button" name="button">대표코드</button></a>
-              <a href="<c:url value="/common/code/detail/1"/>"><button type="button" name="button" class="white" style="margin-left:-5px;">상세코드</button></a>
+              <a href="<c:url value="/code/read"/>"><button type="button" name="button">대표코드</button></a>
+              <a href="<c:url value="/detail/read/1"/>"><button type="button" name="button" class="white" style="margin-left:-5px;">상세코드</button></a>
               <a><button type="button" name="button" style="float:right;" id="modal_open_btn">대표코드 등록</button></a>
             </div>
             <hr>
@@ -99,9 +99,6 @@ $("#checkBoxId").change(function() {
             
             </table>
           
-            <div class="button_group">
-                <button type="button" id="modal_modify_btn" onclick="modify()">수정</button>
-            </div>
          	  <!-- 등록 -->    	
               <div id="modal2">
               	

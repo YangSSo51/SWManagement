@@ -29,6 +29,11 @@
       </header>
 	<%@ include file="../navbar.jsp"%>
            <div class="right-container">
+           <form class="center_form" action="<c:url value="/integ/search"/>" method="POST" >
+              <input type="search" name="search" value="" placeholder="자산명 입력">
+              <button type="submit">검색</button>
+            </form>
+            <!-- 
             <form class="center_form">
               <select class="select" name="">
                 <option value="자산명">자산명</option>
@@ -41,6 +46,7 @@
               </select>
               <button type="button" name="button">검색</button>
             </form>
+             -->
             <table class="list">
               <tr>
                 <th style="width:30px;">번호</th>
@@ -204,7 +210,7 @@
 					"asset_id":asset_id
 	   		 	}),
 	             success: function(data){              
-		             alert(data);
+		             //alert(data);
 	                if(data===1){
 			            $("#hash_engine").attr("style", "display:none");
 					}else{
@@ -246,9 +252,9 @@
 		            if(result[0]==="OK"){
 			            compare+=1;
 		            	setResult(result[1],compare);               
-						alert("올바른 해쉬값이 입력되었습니다.");
+						alert("올바른 해시값이 입력되었습니다.");
 		            }else{
-						alert("해쉬값을 확인해주세요");
+						alert("잘못되었습니다.해시값을 확인해주세요");
 				    }
 	             },
 	     		error:function(request, error) {

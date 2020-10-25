@@ -24,7 +24,10 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {		
-		return "redirect:/asset/read/list/1";
+		return "main";
 	}
-	
+	@RequestMapping(value = "/question", method = RequestMethod.GET)
+	public String question() {		
+		return "question";
+	}
 }
