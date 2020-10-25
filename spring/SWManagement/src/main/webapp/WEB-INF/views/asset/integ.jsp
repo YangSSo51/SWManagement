@@ -78,7 +78,7 @@
 		                  	<input type="file" name="file" style="margin: 5px 20px;"></input>
 		                  </form>
 		                  <input type="text" style="width:220px;" name="hash_logic"></input>
-		                  <button type="button" style="margin-top:-10px; margin-left:0;" class="bluebtn" onclick="send(0)">변경</button>
+		                  <button type="button" style="margin-top:-10px; margin-left:0;" class="bluebtn" onclick="send(0)">생성</button>
 	                  </div>
 	                  <div id="hash_firm">
 		                  <div class="soft-text">
@@ -88,7 +88,7 @@
 		                  <input type="file" name="file" style="margin: 5px 20px;"></input>
 		                  </form>
 		                  <input type="text" style="width:220px;" name="hash_engine"></input>
-		                  <button type="button" style="margin-top:-10px; margin-left:0;"  class="bluebtn" onclick="send(1)">변경</button>
+		                  <button type="button" style="margin-top:-10px; margin-left:0;"  class="bluebtn" onclick="send(1)">생성</button>
 	                  </div>
 	                  
 	                  <div class="modal_button" style="width:300px;">

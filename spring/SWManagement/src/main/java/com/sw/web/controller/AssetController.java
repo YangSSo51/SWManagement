@@ -126,15 +126,14 @@ public class AssetController {
 					return "asset/integ";
 				}
 	}	
-<<<<<<< HEAD
+
 	//asset_purchase �궡�슜 �떎 梨꾩슦湲�
 	@RequestMapping(value="/purchase/add",method=RequestMethod.POST)
 	public String createAssetPurchasePost(@ModelAttribute("asset") AssetPurchaseVO vo) throws Exception {
 		AssetPurchaseService.add(vo);
 		return "redirect:/asset/purchase";
 	}
-=======
->>>>>>> fc577ee6ed7a6f67e64f02dce1de592dfaab6450
+
 	
 	//asset_purchase �궡�슜 蹂댁뿬以�
 	@RequestMapping(value="/purchase/read/{num}",method=RequestMethod.GET)

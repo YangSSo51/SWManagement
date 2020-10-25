@@ -19,15 +19,15 @@ import javax.servlet.http.HttpSession;
 
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.AssetPurchaseVO;
-<<<<<<< HEAD
+
 import com.sw.web.domain.CodeMasterVO;
 import com.sw.web.domain.IntegKeepVO;
 import com.sw.web.domain.UserVO;
-=======
+
 import com.sw.web.domain.ConfigKeepVO;
 import com.sw.web.domain.IntegKeepVO;
 import com.sw.web.domain.SearchVO;
->>>>>>> fc577ee6ed7a6f67e64f02dce1de592dfaab6450
+
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.IntegKeepService;
 
@@ -51,8 +51,8 @@ public class IntegKeepController {
 		AssetManageService.updateIntegCount(asset);
 		vo.setVersion(asset.getAsset_name()+"_"+vo.getYear()+"_"+integ_count);
 		
-		if(vo.getResult().equals("O") && vo.getHw_access().equals("O")) vo.setResult("�쟻�빀");
-		else vo.setResult("遺��쟻�빀");
+		if(vo.getResult().equals("O") && vo.getHw_access().equals("O")) vo.setResult("적합");
+		else vo.setResult("부적합");
 		System.out.println(vo.getVersion());
 		IntegKeepService.add(vo);
 		
@@ -84,7 +84,6 @@ public class IntegKeepController {
 		return "integ/keep";
 	}
 		
-<<<<<<< HEAD
 	//�옄�궛紐�,�젏寃��뿰�룄,�쟻�빀 �뿬遺��뿉 �뵲�씪 寃��깋寃곌낵瑜� 異쒕젰�빐以�
 	@RequestMapping(value="/read/{name}",method=RequestMethod.GET)
 	public String readAssetByNameGet(@PathVariable("name") String name,Model model) throws Exception {
@@ -93,7 +92,9 @@ public class IntegKeepController {
 		//asset_manage�뿉�꽌 readByName�쑝濡� id媛믪쓣 媛��졇�삤怨�
 		//媛��졇�삩 id�쓽 媛��닔留뚰겮 �젏寃� �뿰�룄,�쟻�빀 �뿬遺�濡� �떎�떆 寃��깋
 		return "asset/integ";
-=======
+		
+	}
+
 	@RequestMapping(value="/search",method=RequestMethod.POST)
 	public String readConfigByNameGet(@ModelAttribute("Search") SearchVO search,Model model) throws Exception {
 		List<AssetManageVO> name = AssetManageService.readByName(search.getSearch());
@@ -120,7 +121,7 @@ public class IntegKeepController {
 		model.addAttribute("asset_vo",asset_vo);
 
 		return "integ/keep";
->>>>>>> fc577ee6ed7a6f67e64f02dce1de592dfaab6450
+
 	}
 	
 	//�긽�꽭�젙蹂� �씫�뼱�샂
@@ -140,8 +141,8 @@ public class IntegKeepController {
 
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public String updateIntegPost(@ModelAttribute("Integ") IntegKeepVO vo) throws Exception {
-		if(vo.getResult().equals("O") && vo.getHw_access().equals("O")) vo.setResult("�쟻�빀");
-		else vo.setResult("遺��쟻�빀");
+		if(vo.getResult().equals("O") && vo.getHw_access().equals("O")) vo.setResult("적합");
+		else vo.setResult("부적합");
 		IntegKeepService.update(vo);
 		return "redirect:/integ/read/detail/"+vo.getInteg_id();
 	}

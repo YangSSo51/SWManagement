@@ -194,7 +194,7 @@
        $("input:checkbox").on('click', function() { 
            if ( $(this).prop('checked') ) {
 			   $("input[name=hw_access]").val($(this).val());
-	           alert($(this).val());
+	           //alert($(this).val());
 		   }
        });
       function modal(x,y){

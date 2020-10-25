@@ -57,7 +57,6 @@ public class VulCheckController {
 		return "redirect:/vul/read/2";
 	}
 	
-<<<<<<< HEAD
 	
 	@RequestMapping(value="/read/list", method=RequestMethod.GET)
 	public String readVulGet(Model model, HttpSession session) throws Exception {
@@ -66,7 +65,8 @@ public class VulCheckController {
 		model.addAttribute("user", user);
 		model.addAttribute("vo",vo);
 		return "vul/list";
-=======
+	}
+
 	@RequestMapping(value="/read/{name}", method=RequestMethod.GET)
 	public String readVulGet(@PathVariable("name") String name,Model model) throws Exception {
 		List<VulCheckVO> vo = VulCheckService.readList();
@@ -84,7 +84,6 @@ public class VulCheckController {
 		model.addAttribute("vo",temp);
 		if(name.equals("1")) return "vul/list";
 		else return "vul/list2";
->>>>>>> fc577ee6ed7a6f67e64f02dce1de592dfaab6450
 	}
 	
 }
