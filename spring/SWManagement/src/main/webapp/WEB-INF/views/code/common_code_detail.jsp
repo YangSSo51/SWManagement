@@ -92,9 +92,7 @@ function getMastername(page){
           <div class="menu">
                공통코드 관리(상세코드 등록)
           </div>
-          <div class="login">
-            Admin님
-          </div>
+          <%@ include file="../topnav.jsp"%>
         </div>
       </header>
 <%@ include file="../navbar.jsp"%>

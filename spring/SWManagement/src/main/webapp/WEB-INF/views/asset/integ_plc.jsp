@@ -23,9 +23,7 @@
           <div class="menu">
             	자산 무결성 관리
           </div>
-          <div class="login">
-            Admin님
-          </div>
+          <%@ include file="../topnav.jsp"%>
         </div>
       </header>
 <%@ include file="../navbar.jsp"%>

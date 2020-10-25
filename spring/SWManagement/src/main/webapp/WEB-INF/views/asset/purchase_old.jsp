@@ -18,9 +18,7 @@
           <div class="menu">
             	자산 구매
           </div>
-          <div class="login">
-            Admin님
-          </div>
+          <%@ include file="../topnav.jsp"%>
         </div>
       </header>
 <%@ include file="../navbar.jsp"%>

@@ -16,9 +16,7 @@
           <div class="menu">
             	형상 관리
           </div>
-          <div class="login">
-            Admin님
-          </div>
+          <%@ include file="../topnav.jsp"%>
         </div>
       </header>
 <%@ include file="../navbar.jsp"%>

@@ -22,9 +22,7 @@
           <div class="menu">
             	무결성 유지 점검
           </div>
-          <div class="login">
-            Admin님
-          </div>
+         <%@ include file="../topnav.jsp"%>
         </div>
       </header>
 	<%@ include file="../navbar.jsp"%>

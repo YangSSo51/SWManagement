@@ -24,9 +24,7 @@
           <div class="menu">
             	취약점 점검 항목
           </div>
-          <div class="login">
-            Admin님
-          </div>
+          <%@ include file="../topnav.jsp"%>
         </div>
       </header>
 <%@ include file="../navbar.jsp"%>
