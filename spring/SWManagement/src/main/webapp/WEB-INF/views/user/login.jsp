@@ -31,7 +31,7 @@
 				$("#password").focus();
 				return;
 				}
-			document.loginform.action="${path}/eunji/login" 
+			document.loginform.action="${path}/web/login" 
 			document.loginform.submit();	
 			});
 		});

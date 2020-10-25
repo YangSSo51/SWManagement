@@ -15,9 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.AssetPurchaseVO;
+import com.sw.web.domain.CodeMasterVO;
 import com.sw.web.domain.IntegKeepVO;
+import com.sw.web.domain.UserVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.IntegKeepService;
 
@@ -29,11 +33,11 @@ public class IntegKeepController {
 	@Autowired
 	private IntegKeepService IntegKeepService;
 		
-	//integ_keep에 기본정보 더해줌
+	//integ_keep�뿉 湲곕낯�젙蹂� �뜑�빐以�
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createIntegPost(@ModelAttribute("integ") IntegKeepVO vo) throws Exception {
-		//asset_manage에서 readById로 integ_count값 가져와서 하나 증가시키고 version에 넣어주기
-		//asset_id값 가져와서 넘겨주기
+		//asset_manage�뿉�꽌 readById濡� integ_count媛� 媛��졇���꽌 �븯�굹 利앷��떆�궎怨� version�뿉 �꽔�뼱二쇨린
+		//asset_id媛� 媛��졇���꽌 �꽆寃⑥＜湲�
 		AssetManageVO asset=AssetManageService.readById(vo.getAsset_id());
 		int integ_count = asset.getInteg_count()+1;
 		asset.setInteg_count(integ_count);
@@ -41,17 +45,22 @@ public class IntegKeepController {
 		AssetManageService.updateIntegCount(asset);
 		vo.setVersion(asset.getAsset_name()+"_"+vo.getYear()+"_"+integ_count);
 		
-		if(vo.getResult().equals("O") && vo.getHw_access().equals("O")) vo.setResult("적합");
-		else vo.setResult("부적합");
+		if(vo.getResult().equals("O") && vo.getHw_access().equals("O")) vo.setResult("�쟻�빀");
+		else vo.setResult("遺��쟻�빀");
 		System.out.println(vo.getVersion());
 		IntegKeepService.add(vo);
 		
 		return "redirect:/integ/read/list";
 	}
 	
-	//integ_keep 내용 보여줌
+	
+	
+	
+	
+	//integ_keep �궡�슜 蹂댁뿬以�
 	@RequestMapping(value="/read/list",method=RequestMethod.GET)
-	public String readIntegAllGet(Model model) throws Exception {
+	public String readIntegAllGet(Model model, HttpSession session) throws Exception {
+		UserVO user = (UserVO)session.getAttribute("user");
 		List<IntegKeepVO> vo = IntegKeepService.readList();
 		List<AssetManageVO> asset_vo = AssetManageService.readList();
 		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
@@ -61,6 +70,7 @@ public class IntegKeepController {
 			temp = AssetManageService.readById(vo.get(i).getAsset_id());
 			asset_name.add(temp);
 		}
+		model.addAttribute("user", user);
 		model.addAttribute("vo",vo);
 		model.addAttribute("asset_name",asset_name);
 		model.addAttribute("asset_vo",asset_vo);
@@ -68,17 +78,17 @@ public class IntegKeepController {
 		return "integ/keep";
 	}
 		
-	//자산명,점검연도,적합 여부에 따라 검색결과를 출력해줌
+	//�옄�궛紐�,�젏寃��뿰�룄,�쟻�빀 �뿬遺��뿉 �뵲�씪 寃��깋寃곌낵瑜� 異쒕젰�빐以�
 	@RequestMapping(value="/read/{name}",method=RequestMethod.GET)
 	public String readAssetByNameGet(@PathVariable("name") String name,Model model) throws Exception {
 		List<AssetManageVO> vo = AssetManageService.readByName(name);
 		model.addAttribute("vo",vo);
-		//asset_manage에서 readByName으로 id값을 가져오고
-		//가져온 id의 갯수만큼 점검 연도,적합 여부로 다시 검색
+		//asset_manage�뿉�꽌 readByName�쑝濡� id媛믪쓣 媛��졇�삤怨�
+		//媛��졇�삩 id�쓽 媛��닔留뚰겮 �젏寃� �뿰�룄,�쟻�빀 �뿬遺�濡� �떎�떆 寃��깋
 		return "asset/integ";
 	}
 	
-	//상세정보 읽어옴
+	//�긽�꽭�젙蹂� �씫�뼱�샂
 	@RequestMapping(value="/read/detail/{id}",method=RequestMethod.GET)
 	public String readIntegByIdGet(@PathVariable("id") int id,Model model) throws Exception {
 		IntegKeepVO vo = IntegKeepService.readById(id);
@@ -95,14 +105,14 @@ public class IntegKeepController {
 
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public String updateIntegPost(@ModelAttribute("Integ") IntegKeepVO vo) throws Exception {
-		if(vo.getResult().equals("O") && vo.getHw_access().equals("O")) vo.setResult("적합");
-		else vo.setResult("부적합");
+		if(vo.getResult().equals("O") && vo.getHw_access().equals("O")) vo.setResult("�쟻�빀");
+		else vo.setResult("遺��쟻�빀");
 		IntegKeepService.update(vo);
 		return "redirect:/integ/read/detail/"+vo.getInteg_id();
 	}
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
 	public String deleteInteg(@PathVariable("id") int id) throws Exception {
-		//integ_count 하나 줄이기
+		//integ_count �븯�굹 以꾩씠湲�
 		IntegKeepService.delete(id);
 		return "redirect:/integ/read/list";
 	}

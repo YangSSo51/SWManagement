@@ -15,10 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.AssetPurchaseVO;
+import com.sw.web.domain.CodeMasterVO;
 import com.sw.web.domain.RiskManageVO;
 import com.sw.web.domain.SearchVO;
+import com.sw.web.domain.UserVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.AssetPurchaseService;
 
@@ -30,17 +34,23 @@ public class AssetController {
 	@Autowired
 	private AssetPurchaseService AssetPurchaseService;
 		
-	//asset_manage에 기본정보 더해줌
+	//asset_manage�뿉 湲곕낯�젙蹂� �뜑�빐以�
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createAssetPost(@ModelAttribute("Asset") AssetManageVO vo) throws Exception {
 		AssetManageService.add(vo);
 		return "redirect:/asset/purchase";
 	}
 	
-	//asset_manage 내용 보여줌
+
+		
+	
+	//asset_manage �궡�슜 蹂댁뿬以�
 	@RequestMapping(value="/read/list/{name}",method=RequestMethod.GET)
-	public String readAssetAllGet(@PathVariable("name") String name,Model model) throws Exception {
+	public String readAssetAllGet(@PathVariable("name") String name,Model model, HttpSession session) throws Exception {
+		UserVO user = (UserVO)session.getAttribute("user"); //session
 		List<AssetManageVO> vo = AssetManageService.readList();
+		model.addAttribute("user", user);
+		
 		ArrayList<AssetManageVO> plc = new ArrayList<AssetManageVO>();
 		ArrayList<AssetManageVO> pc = new ArrayList<AssetManageVO>();
 		ArrayList<String> check1 = new ArrayList<String>();
@@ -77,7 +87,7 @@ public class AssetController {
 		}
 
 	}
-	//asset_manage 중 자산명과 asset_name으로 읽어옴 내용 보여줌
+	//asset_manage 以� �옄�궛紐낃낵 asset_name�쑝濡� �씫�뼱�샂 �궡�슜 蹂댁뿬以�
 			@RequestMapping(value="/search/{num}",method=RequestMethod.POST)
 			public String readAssetByNameGet(@PathVariable("num") String num,@ModelAttribute("Search") SearchVO search,Model model) throws Exception {
 				List<AssetManageVO> vo = AssetManageService.readByName(search.getSearch());
@@ -114,14 +124,14 @@ public class AssetController {
 					return "asset/integ";
 				}
 	}	
-	//asset_purchase 내용 다 채우기
+	//asset_purchase �궡�슜 �떎 梨꾩슦湲�
 	@RequestMapping(value="/purchase/add",method=RequestMethod.POST)
 	public String createAssetPurchasePost(@ModelAttribute("asset") AssetPurchaseVO vo) throws Exception {
 		AssetPurchaseService.add(vo);
 		return "redirect:/asset/purchase";
 	}
 	
-	//asset_purchase 내용 보여줌
+	//asset_purchase �궡�슜 蹂댁뿬以�
 	@RequestMapping(value="/purchase/read/{num}",method=RequestMethod.GET)
 	public String readAssetPurchaseGet(@PathVariable("num") String num,Model model) throws Exception {
 		 List<AssetPurchaseVO> vo;
@@ -148,7 +158,7 @@ public class AssetController {
 		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
 		AssetManageVO temp;
 		System.out.println("search : "+search.getSearch());
-		System.out.println("vo크기:"+vo.size());
+		System.out.println("vo�겕湲�:"+vo.size());
 		for(int i=0;i<vo.size();i++) {
 			temp = AssetManageService.readById(vo.get(i).getAsset_id());
 			asset_name.add(temp);

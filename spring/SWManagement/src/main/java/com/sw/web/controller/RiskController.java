@@ -14,11 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.sw.web.domain.AssetManageVO;
+import com.sw.web.domain.CodeMasterVO;
 import com.sw.web.domain.ConfigKeepVO;
 import com.sw.web.domain.RiskManageVO;
 import com.sw.web.domain.RiskStorageVO;
 import com.sw.web.domain.SearchVO;
+import com.sw.web.domain.UserVO;
 import com.sw.web.domain.VulCheckVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.RiskManageService;
@@ -42,21 +46,21 @@ public class RiskController {
 		List<AssetManageVO> asset_vo = AssetManageService.readList();
 		model.addAttribute("asset_vo",asset_vo);
 
-		//risk storage에  vul list만큼 더해주기
+		//risk storage�뿉  vul list留뚰겮 �뜑�빐二쇨린
 		List<VulCheckVO> list = VulCheckService.readList();
 		
 		model.addAttribute("list",list);
 		return "risk/add";
 	}
 	
-	//risk_manage에 정보 더해줌
+	//risk_manage�뿉 �젙蹂� �뜑�빐以�
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createriskPost(@ModelAttribute("risk") RiskManageVO vo) throws Exception {
-		//자산에 저장된 risk_count값을 기준으로 버전명 넣어주기
+		//�옄�궛�뿉 ���옣�맂 risk_count媛믪쓣 湲곗��쑝濡� 踰꾩쟾紐� �꽔�뼱二쇨린
 		AssetManageVO asset=AssetManageService.readById(vo.getAsset_id());
 		int risk_count = asset.getRisk_count()+1;
 		asset.setRisk_count(risk_count);
-		//risk_count값 갱신
+		//risk_count媛� 媛깆떊
 		AssetManageService.updateRiskCount(asset);
 		vo.setVersion(asset.getAsset_name()+"_"+risk_count);
 		RiskManageService.add(vo);
@@ -65,9 +69,12 @@ public class RiskController {
 		return "redirect:/risk/read/list";
 	}
 	
-	//risk_manage 내용 보여줌
+	
+	
+	//risk_manage �궡�슜 蹂댁뿬以�
 	@RequestMapping(value="/read/list",method=RequestMethod.GET)
-	public String readriskAllGet(Model model) throws Exception {
+	public String readriskAllGet(Model model, HttpSession session) throws Exception {
+		UserVO user = (UserVO)session.getAttribute("user");
 		List<RiskManageVO> vo = RiskManageService.readList();
 		List<AssetManageVO> asset_vo = AssetManageService.readList();
 		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
@@ -77,6 +84,7 @@ public class RiskController {
 			temp = AssetManageService.readById(vo.get(i).getAsset_id());
 			asset_name.add(temp);
 		}
+		model.addAttribute("user", user);
 		model.addAttribute("vo",vo);
 		model.addAttribute("asset_name",asset_name);
 		model.addAttribute("asset_vo",asset_vo);
@@ -114,17 +122,17 @@ public class RiskController {
 		return "risk/list";
 	}
 		
-	//자산명에 따라 검색결과를 출력해줌
+	//�옄�궛紐낆뿉 �뵲�씪 寃��깋寃곌낵瑜� 異쒕젰�빐以�
 	@RequestMapping(value="/read/{name}",method=RequestMethod.GET)
 	public String readAssetByNameGet(@PathVariable("name") String name,Model model) throws Exception {
 		List<AssetManageVO> vo = AssetManageService.readByName(name);
 		model.addAttribute("vo",vo);
-		//asset_manage에서 readByName으로 id값을 가져오고
-		//가져온 id로 다시 검색
+		//asset_manage�뿉�꽌 readByName�쑝濡� id媛믪쓣 媛��졇�삤怨�
+		//媛��졇�삩 id濡� �떎�떆 寃��깋
 		return "asset/risk";
 	}
 	
-	//상세정보 읽어옴
+	//�긽�꽭�젙蹂� �씫�뼱�샂
 	@RequestMapping(value="/read/detail/{id}",method=RequestMethod.GET)
 	public String readriskByIdGet(@PathVariable("id") int id,Model model) throws Exception {
 		List<RiskManageVO> list = RiskManageService.readList();
@@ -169,7 +177,7 @@ public class RiskController {
 	}
 	@RequestMapping(value="/delete/{id}",method=RequestMethod.GET)
 	public String deleterisk(@PathVariable("id") int id) throws Exception {
-		//risk_count 하나 줄이기
+		//risk_count �븯�굹 以꾩씠湲�
 		RiskManageService.delete(id);
 		return "redirect:/risk/read/list";
 	}

@@ -16,8 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 import com.sw.web.domain.AssetManageVO;
+import com.sw.web.domain.CodeMasterVO;
 import com.sw.web.domain.RiskManageVO;
 import com.sw.web.domain.RiskStorageVO;
+import com.sw.web.domain.UserVO;
 import com.sw.web.domain.VulCheckVO;
 import com.sw.web.service.VulCheckService;
 import com.sw.web.service.RiskManageService;
@@ -34,13 +36,13 @@ public class VulCheckController {
 	@Autowired
 	private RiskStorageService RiskStorageService;
 	
-	//vul_check에 정보 더해줌
+	//vul_check�뿉 �젙蹂� �뜑�빐以�
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createriskPost(@ModelAttribute("vul") VulCheckVO vo) throws Exception {
 		VulCheckService.add(vo);
 		
 		/*
-		//risk storage에  risk_id만큼 더해주기
+		//risk storage�뿉  risk_id留뚰겮 �뜑�빐二쇨린
 		List<RiskManageVO> list = RiskManageSerivce.readList();
 		RiskStorageVO temp = new RiskStorageVO();
 		for(int i=0;i<list.size();i++) {
@@ -53,9 +55,12 @@ public class VulCheckController {
 		return "redirect:/vul/read/list";
 	}
 	
+	
 	@RequestMapping(value="/read/list", method=RequestMethod.GET)
-	public String readVulGet(Model model) throws Exception {
+	public String readVulGet(Model model, HttpSession session) throws Exception {
+		UserVO user = (UserVO)session.getAttribute("user");
 		List<VulCheckVO> vo = VulCheckService.readList();
+		model.addAttribute("user", user);
 		model.addAttribute("vo",vo);
 		return "vul/list";
 	}

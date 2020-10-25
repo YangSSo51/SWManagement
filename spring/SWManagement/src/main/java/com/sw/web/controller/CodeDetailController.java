@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.sw.web.domain.CodeMasterVO;
+import com.sw.web.domain.UserVO;
 import com.sw.web.domain.CodeDetailVO;
 import com.sw.web.service.CodeMasterService;
 import com.sw.web.service.CodeDetailService;
@@ -35,13 +36,18 @@ public class CodeDetailController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	/*
-	 * 상세코드 보여주기
+	 * �긽�꽭肄붾뱶 蹂댁뿬二쇨린
 	 */
 	
+	
+	
+	
 	@RequestMapping(value="/read", method=RequestMethod.GET)
-	public String readCodeDetailGet(Model model) throws Exception {
+	public String readCodeDetailGet(Model model, HttpSession session) throws Exception {
+		UserVO user = (UserVO)session.getAttribute("user");
 		List<CodeDetailVO> vo = codeDetailService.readList();
 		List<CodeMasterVO> mvo = codeMasterservice.readList();
+		model.addAttribute("user", user);
 		model.addAttribute("code",vo);
 		model.addAttribute("master",mvo);
 		
@@ -52,7 +58,7 @@ public class CodeDetailController {
 	}
 	
 	/*
-	 * 상세코드 등록할 때 대표코드 디폴트로 보여주기
+	 * �긽�꽭肄붾뱶 �벑濡앺븷 �븣 ���몴肄붾뱶 �뵒�뤃�듃濡� 蹂댁뿬二쇨린
 	 */
 	
 	@RequestMapping(value = "/read.do", method = RequestMethod.GET)
@@ -70,7 +76,7 @@ public class CodeDetailController {
 	   }
 	
 	/*
-	 * 상세코드 수정하기 팝업창
+	 * �긽�꽭肄붾뱶 �닔�젙�븯湲� �뙘�뾽李�
 	 */
 	
 		
@@ -84,12 +90,12 @@ public class CodeDetailController {
 	      logger.info(vo.getId() + " "+ vo.getReprec() + " " + vo.getDetailc_n());
 	    //map.put("pageMaker", pageMaker);
 	      map.put("vo", vo);
-	      return map; // 넘김
+	      return map; // �꽆源�
 	      
 	   }
 	
 	/*
-	 * 상세코드 수정 백엔드
+	 * �긽�꽭肄붾뱶 �닔�젙 諛깆뿏�뱶
 	 */
 	
 	@RequestMapping(value="/update",method=RequestMethod.POST)

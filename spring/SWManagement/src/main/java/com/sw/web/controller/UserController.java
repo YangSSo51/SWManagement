@@ -33,7 +33,9 @@ public class UserController {
 			
 			@RequestMapping(value = "/login", method = RequestMethod.GET) //8080/web/login
 			   public String logintest(Model model) throws Exception {
-			      return "/user/login";      //�븘 test 媛� �뤃�뜑��援�!
+			       
+			      
+			      return "/user/login";//�븘 test 媛� �뤃�뜑��援�!
 			   }
 			
 			// �쉶�썝媛��엯 get
@@ -88,8 +90,7 @@ public class UserController {
 				ModelAndView mav = new ModelAndView();
 				if(result == true) {
 				
-					mav.setViewName("home");
-					mav.addObject("msg","success");
+					mav.setViewName("redirect:/asset/purchase/read/1");
 					request.getSession().setAttribute("user", vo);
 					
 				}else {

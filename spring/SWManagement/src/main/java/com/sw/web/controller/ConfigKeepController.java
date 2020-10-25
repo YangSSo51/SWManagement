@@ -15,10 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.sw.web.domain.AssetManageVO;
 import com.sw.web.domain.AssetPurchaseVO;
+import com.sw.web.domain.CodeMasterVO;
 import com.sw.web.domain.ConfigKeepVO;
 import com.sw.web.domain.SearchVO;
+import com.sw.web.domain.UserVO;
 import com.sw.web.service.AssetManageService;
 import com.sw.web.service.ConfigKeepService;
 
@@ -30,7 +34,7 @@ public class ConfigKeepController {
 	@Autowired
 	private ConfigKeepService ConfigKeepService;
 		
-	//Config_keep에 기본정보 더해줌
+	//Config_keep�뿉 湲곕낯�젙蹂� �뜑�빐以�
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createConfigPost(@ModelAttribute("Config") ConfigKeepVO vo) throws Exception {
 		ConfigKeepService.add(vo);
@@ -38,9 +42,12 @@ public class ConfigKeepController {
 		return "redirect:/config/read/list";
 	}
 	
-	//Config_keep 내용 보여줌
+	
+	
+	//Config_keep �궡�슜 蹂댁뿬以�
 	@RequestMapping(value="/read/list",method=RequestMethod.GET)
-	public String readConfigAllGet(Model model) throws Exception {
+	public String readConfigAllGet(Model model, HttpSession session) throws Exception {
+		UserVO user = (UserVO)session.getAttribute("user");
 		List<ConfigKeepVO> vo = ConfigKeepService.readList();
 		List<AssetManageVO> asset_vo = AssetManageService.readList();
 		List<AssetManageVO> asset_name = new ArrayList<AssetManageVO>();
@@ -50,6 +57,7 @@ public class ConfigKeepController {
 			temp = AssetManageService.readById(vo.get(i).getAsset_id());
 			asset_name.add(temp);
 		}
+		model.addAttribute("user", user);
 		model.addAttribute("vo",vo);
 		model.addAttribute("asset_name",asset_name);
 		model.addAttribute("asset_vo",asset_vo);
@@ -85,7 +93,7 @@ public class ConfigKeepController {
 		return "config/keep";
 	}
 	
-	//상세정보 읽어옴
+	//�긽�꽭�젙蹂� �씫�뼱�샂
 	@RequestMapping(value="/read/detail/{id}",method=RequestMethod.GET)
 	public String readConfigByIdGet(@PathVariable("id") int id,Model model) throws Exception {
 		ConfigKeepVO vo = ConfigKeepService.readById(id);

@@ -1,3 +1,9 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/sw/web/controller/AssetController.java=UTF-8
+encoding//src/main/java/com/sw/web/controller/CodeDetailController.java=UTF-8
 encoding//src/main/java/com/sw/web/controller/CommonCodeController.java=UTF-8
+encoding//src/main/java/com/sw/web/controller/ConfigKeepController.java=UTF-8
+encoding//src/main/java/com/sw/web/controller/IntegKeepController.java=UTF-8
+encoding//src/main/java/com/sw/web/controller/RiskController.java=UTF-8
 encoding//src/main/java/com/sw/web/controller/UserController.java=UTF-8
+encoding//src/main/java/com/sw/web/controller/VulCheckController.java=UTF-8
